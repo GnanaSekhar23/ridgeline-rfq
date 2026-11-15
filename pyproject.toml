@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rfq-inbox"
+version = "0.1.0"
+description = "Ridgeline RFQ inbox parser"
+requires-python = ">=3.11"
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.setuptools.packages.find]
+include = ["rfq*"]
+
+[project.scripts]
+rfq = "rfq.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

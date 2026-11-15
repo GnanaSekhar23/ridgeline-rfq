@@ -1,0 +1,10 @@
+.env
+.env.*
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+runs/*
+!runs/latest/
+# NOTE: cache/ is deliberately NOT ignored — committed model responses make dev replayable with no key.
