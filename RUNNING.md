@@ -2,15 +2,40 @@
 
 Python 3.11+ on Windows (native), macOS or Linux. Tested on Windows with 3.11.9 and 3.14.
 
-## Setup (one step)
+## Setup
+
+Create the venv, activate it, and install. This installs the pinned `requirements.txt` and the
+`rfq` command.
+
+**Windows PowerShell** (5.1 has no `&&`, so one command per line):
 
 ```
-python -m venv .venv && .venv\Scripts\pip install -e .
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -e .
 ```
 
-(On macOS / Linux use `.venv/bin/pip`.) This installs the pinned `requirements.txt` and the
-`rfq` command. The OpenAI key is read from the `OPENAI_API_KEY` environment variable, or from a
-`.env` file in the repo root.
+If PowerShell refuses to run `Activate.ps1` (script execution disabled), allow it for this window
+only with `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`, then activate again.
+
+**Windows cmd:**
+
+```
+python -m venv .venv && .venv\Scripts\activate.bat && pip install -e .
+```
+
+**bash** (macOS / Linux; on Windows Git Bash use `.venv/Scripts/activate`):
+
+```
+python3 -m venv .venv && source .venv/bin/activate && pip install -e .
+```
+
+**Activate the venv before running `rfq`** in each new terminal (the second line above). Without
+activating, call it by path instead: `.venv\Scripts\rfq` on Windows, `.venv/bin/rfq` on
+macOS / Linux. The same goes for `python` and `pytest` below.
+
+The OpenAI key is read from the `OPENAI_API_KEY` environment variable, or from a `.env` file in
+the repo root.
 
 ## Parse an inbox
 
@@ -47,7 +72,7 @@ python data/check_format.py parsed.json --emails data/dev/emails
 ```
 python eval/eval.py parsed.json            # vs data/dev/answer_key.json -> reports/eval.md
 python eval/eval.py parsed.json --baseline reports/eval.json   # what changed since last time
-pytest -q                                  # 125 tests; synthetic inbox replays from tests/synthetic/cache
+pytest -q                                  # 136 tests; synthetic inbox replays from tests/synthetic/cache
 ```
 
 ## Review app
