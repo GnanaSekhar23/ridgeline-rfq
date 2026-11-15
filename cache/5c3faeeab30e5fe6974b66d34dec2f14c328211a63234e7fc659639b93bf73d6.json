@@ -1,0 +1,21 @@
+{
+ "key": "5c3faeeab30e5fe6974b66d34dec2f14c328211a63234e7fc659639b93bf73d6",
+ "email_id": "E011",
+ "model": "gpt-4.1",
+ "prompt_version": "p8",
+ "created": "2026-11-15T19:45:35+00:00",
+ "usage": {
+  "input_tokens": 4627,
+  "cached_input_tokens": 2944,
+  "output_tokens": 86
+ },
+ "cost_usd": 0.005526,
+ "response": {
+  "reasoning": "Raul Medina from Sabine Valve & Fitting is replying to Jenna Okafor at Ridgeline with pricing and lead times for items previously requested. This is a supplier quoting our rep, not a customer asking us for a quote. No action is needed for quoting to a customer.",
+  "classification": "vendor_quote",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

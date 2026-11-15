@@ -83,8 +83,16 @@ def test_missing_size_or_product_is_ambiguous() -> None:
 def test_parse_size_equivalences() -> None:
     assert parse_size("1-1/2") == parse_size('1 1/2"') == parse_size("1.5")
     assert parse_size("6 x 4") == parse_size('6" x 4"')
-    assert parse_size('3/4"-10 x 4-1/2') == parse_size("3/4 x 4-1/2")
     assert parse_size("3/4 x close") == parse_size("3/4 X CLOSE")
+
+
+def test_bolt_thread_pitch_is_not_part_of_the_size() -> None:
+    """A stud written with its thread pitch ('D"-11 x L') is the catalog's 'D x L'."""
+    studs = sorted({p.size for p in parts() if p.product == "stud bolt" and " x " in p.size})
+    size = studs[-1]  # any stocked stud works; taken from the catalog, not hard-coded
+    dia, length = size.split(" x ")
+    assert parse_size(f'{dia}"-11 x {length}') == parse_size(size)
+    assert parse_size(f"{dia}-11 x {length}") == parse_size(size)
 
 
 def _P(sku, product="pipe", size="2", spec="SCH 80", material="", ends="PE", extra=""):
@@ -113,12 +121,13 @@ def test_threaded_satisfied_by_threaded_both_ends_only() -> None:
 def test_null_attribute_narrows_only_by_text_evidence() -> None:
     from rfq.matcher import _narrow_by_text
 
-    cands = [_P("smls", material="A106B SMLS"), _P("erw", material="A53B ERW")]
-    kept, notes = _narrow_by_text(cands, {"spec": "SCH 80"}, "PIPE - SCH 80 SMLS: 2in pipe, plain end")
-    assert [p.sku for p in kept] == ["smls"] and "material" in notes[0]
-    kept, notes = _narrow_by_text(cands, {"spec": "SCH 80"}, "2in pipe, plain end")  # no evidence
+    cands = [_P("316l", size="3", spec="SCH 10", material="A312 TP316L"),
+             _P("304l", size="3", spec="SCH 10", material="A312 TP304L")]
+    kept, notes = _narrow_by_text(cands, {"spec": "SCH 10"}, "PROCESS LINES - SCH 10 TP316L: 3in pipe, beveled end")
+    assert [p.sku for p in kept] == ["316l"] and "material" in notes[0]
+    kept, notes = _narrow_by_text(cands, {"spec": "SCH 10"}, "3in pipe, beveled end")  # no evidence
     assert len(kept) == 2 and not notes
-    kept, _ = _narrow_by_text(cands, {"material": "A53B ERW"}, "smls")  # stated attrs are not re-narrowed
+    kept, _ = _narrow_by_text(cands, {"material": "A312 TP304L"}, "316l")  # stated attrs are not re-narrowed
     assert len(kept) == 2
 
 

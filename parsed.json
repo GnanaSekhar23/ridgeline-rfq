@@ -8,7 +8,7 @@
     "line_items": [
       {
         "raw": "12 jts - 2\" SCH 40 A53B ERW black pipe, PE",
-        "description": "12 jts - 2\" SCH 40 A53B ERW black pipe, PE",
+        "description": "12 joints - 2\" SCH 40 A53B ERW black pipe, plain ends",
         "qty": 12,
         "uom": "EA",
         "source": "body",
@@ -18,7 +18,7 @@
       },
       {
         "raw": "(30) 2\" 3000# forged threaded 90 elbow, A105",
-        "description": "(30) 2\" 3000# forged threaded 90 elbow, A105",
+        "description": "30 each - 2\" 3000# forged threaded 90 elbow, A105",
         "qty": 30,
         "uom": "EA",
         "source": "body",
@@ -28,7 +28,7 @@
       },
       {
         "raw": "(30) 2\" 3000# forged threaded coupling, A105",
-        "description": "(30) 2\" 3000# forged threaded coupling, A105",
+        "description": "30 each - 2\" 3000# forged threaded coupling, A105",
         "qty": 30,
         "uom": "EA",
         "source": "body",
@@ -38,17 +38,17 @@
       },
       {
         "raw": "200 ft - 3/4\" SCH 40 galvanized pipe, TBE",
-        "description": "200 ft - 3/4\" SCH 40 galvanized pipe, TBE",
+        "description": "200 feet - 3/4\" SCH 40 galvanized pipe, threaded both ends",
         "qty": 200,
         "uom": "FT",
         "source": "body",
         "sku": "RL-40242",
         "match": "matched",
-        "match_reason": "3/4\" pipe SCH 40 GALV TBE: one part fits — PIPE 3/4\" SCH 40 A53 GALV TBE"
+        "match_reason": "3/4\" pipe SCH 40 A53 GALV TBE: one part fits — PIPE 3/4\" SCH 40 A53 GALV TBE"
       },
       {
         "raw": "4\" 150# RF slip-on flange, A105 x 6",
-        "description": "4\" 150# RF slip-on flange, A105 x 6",
+        "description": "6 each - 4\" 150# RF slip-on flange, A105",
         "qty": 6,
         "uom": "EA",
         "source": "body",
@@ -67,7 +67,7 @@
     "line_items": [
       {
         "raw": "10 of the 1/2 90s",
-        "description": "10 of the 1/2 90s for the skid at the plant, 316 SS threaded fittings",
+        "description": "10 of the 1/2 90s for the skid at the plant. 316 SS threaded fittings.",
         "qty": 10,
         "uom": null,
         "source": "body",
@@ -77,7 +77,7 @@
       },
       {
         "raw": "6 tees same size",
-        "description": "6 tees, 1/2 inch, for the skid at the plant, 316 SS threaded fittings",
+        "description": "6 tees, 1/2 inch, for the skid at the plant. 316 SS threaded fittings.",
         "qty": 6,
         "uom": null,
         "source": "body",
@@ -87,7 +87,7 @@
       },
       {
         "raw": "a couple caps",
-        "description": "a couple caps, 1/2 inch, for the skid at the plant, 316 SS threaded fittings",
+        "description": "A couple caps, 1/2 inch, for the skid at the plant. 316 SS threaded fittings.",
         "qty": null,
         "uom": null,
         "source": "body",
@@ -97,7 +97,7 @@
       },
       {
         "raw": "12 of the 3/4 couplings",
-        "description": "12 of the 3/4 couplings for the skid at the plant, 316 SS threaded fittings",
+        "description": "12 of the 3/4 couplings for the skid at the plant. 316 SS threaded fittings.",
         "qty": 12,
         "uom": null,
         "source": "body",
@@ -107,7 +107,7 @@
       },
       {
         "raw": "20 of the 3/4 close nipples",
-        "description": "20 of the 3/4 close nipples for the skid at the plant, 316 SS threaded fittings",
+        "description": "20 of the 3/4 close nipples for the skid at the plant. 316 SS threaded fittings.",
         "qty": 20,
         "uom": null,
         "source": "body",
@@ -126,7 +126,7 @@
     "line_items": [
       {
         "raw": "1) 20 jts - 2\"",
-        "description": "PIPE. All pipe SCH 40 A53B ERW, T&C. 20 jts - 2\"",
+        "description": "PIPE: 20 joints of 2\" pipe, SCH 40 A53B ERW, T&C, for Bayou Chemical tie-in.",
         "qty": 20,
         "uom": "EA",
         "source": "body",
@@ -136,7 +136,7 @@
       },
       {
         "raw": "2) 10 jts - 3\"",
-        "description": "PIPE. All pipe SCH 40 A53B ERW, T&C. 10 jts - 3\"",
+        "description": "PIPE: 10 joints of 3\" pipe, SCH 40 A53B ERW, T&C, for Bayou Chemical tie-in.",
         "qty": 10,
         "uom": "EA",
         "source": "body",
@@ -146,7 +146,7 @@
       },
       {
         "raw": "3) 6 jts - 4\"",
-        "description": "PIPE. All pipe SCH 40 A53B ERW, T&C. 6 jts - 4\"",
+        "description": "PIPE: 6 joints of 4\" pipe, SCH 40 A53B ERW, T&C, for Bayou Chemical tie-in.",
         "qty": 6,
         "uom": "EA",
         "source": "body",
@@ -156,7 +156,7 @@
       },
       {
         "raw": "4) 12 ea - 2\" 90 ell",
-        "description": "FITTINGS - fittings are 150# malleable iron, black. 12 ea - 2\" 90 ell",
+        "description": "FITTINGS: 12 each 2\" 90 degree elbow, 150# malleable iron, black, for Bayou Chemical tie-in.",
         "qty": 12,
         "uom": "EA",
         "source": "body",
@@ -166,7 +166,7 @@
       },
       {
         "raw": "5) 8 ea - 2\" tee",
-        "description": "FITTINGS - fittings are 150# malleable iron, black. 8 ea - 2\" tee",
+        "description": "FITTINGS: 8 each 2\" tee, 150# malleable iron, black, for Bayou Chemical tie-in.",
         "qty": 8,
         "uom": "EA",
         "source": "body",
@@ -176,7 +176,7 @@
       },
       {
         "raw": "6) 6 ea - 2\" union",
-        "description": "FITTINGS - fittings are 150# malleable iron, black. 6 ea - 2\" union",
+        "description": "FITTINGS: 6 each 2\" union, 150# malleable iron, black, for Bayou Chemical tie-in.",
         "qty": 6,
         "uom": "EA",
         "source": "body",
@@ -186,7 +186,7 @@
       },
       {
         "raw": "7) 4 ea - 2\" gate, bronze, 125#",
-        "description": "VALVES. 4 ea - 2\" gate, bronze, 125#",
+        "description": "VALVES: 4 each 2\" gate valve, bronze, 125#, for Bayou Chemical tie-in.",
         "qty": 4,
         "uom": "EA",
         "source": "body",
@@ -196,7 +196,7 @@
       },
       {
         "raw": "8) 2 ea - 2\" check, swing, bronze, 125#",
-        "description": "VALVES. 2 ea - 2\" check, swing, bronze, 125#",
+        "description": "VALVES: 2 each 2\" swing check valve, bronze, 125#, for Bayou Chemical tie-in.",
         "qty": 2,
         "uom": "EA",
         "source": "body",
@@ -245,7 +245,7 @@
       },
       {
         "raw": "4) 12 ea - 2\" 90 ell",
-        "description": "FITTINGS - fittings are 150# malleable iron, black: 4) 12 each - 2\" 90 elbow",
+        "description": "FITTINGS - fittings are 150# malleable iron, black: 4) 12 each - 2\" 90 elbow, 150# malleable iron, black",
         "qty": 12,
         "uom": "EA",
         "source": "body",
@@ -255,7 +255,7 @@
       },
       {
         "raw": "5) 8 ea - 2\" tee",
-        "description": "FITTINGS - fittings are 150# malleable iron, black: 5) 8 each - 2\" tee",
+        "description": "FITTINGS - fittings are 150# malleable iron, black: 5) 8 each - 2\" tee, 150# malleable iron, black",
         "qty": 8,
         "uom": "EA",
         "source": "body",
@@ -304,7 +304,7 @@
     "line_items": [
       {
         "raw": "1 | 12 | EA | 6\" | 90 LR elbow",
-        "description": "ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 1 | 12 | EA | 6\" | 90 LR elbow",
+        "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 90 ELBOWS. 1 | 12 | EA | 6\" | 90 LR elbow",
         "qty": 12,
         "uom": "EA",
         "source": "Tank14_Piping_RevB.xlsx",
@@ -314,7 +314,7 @@
       },
       {
         "raw": "2 | 6 | EA | 6\" | 45 elbow",
-        "description": "ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 2 | 6 | EA | 6\" | 45 elbow",
+        "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 90 ELBOWS. 2 | 6 | EA | 6\" | 45 elbow",
         "qty": 6,
         "uom": "EA",
         "source": "Tank14_Piping_RevB.xlsx",
@@ -324,7 +324,7 @@
       },
       {
         "raw": "3 | 4 | EA | 8\" | 90 LR elbow",
-        "description": "ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 3 | 4 | EA | 8\" | 90 LR elbow",
+        "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 90 ELBOWS. 3 | 4 | EA | 8\" | 90 LR elbow",
         "qty": 4,
         "uom": "EA",
         "source": "Tank14_Piping_RevB.xlsx",
@@ -334,7 +334,7 @@
       },
       {
         "raw": "4 | 4 | EA | 6\" | Tee, straight",
-        "description": "ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 4 | 4 | EA | 6\" | Tee, straight",
+        "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. TEES & REDUCERS. 4 | 4 | EA | 6\" | Tee, straight",
         "qty": 4,
         "uom": "EA",
         "source": "Tank14_Piping_RevB.xlsx",
@@ -344,7 +344,7 @@
       },
       {
         "raw": "5 | 3 | EA | 8\" x 6\" | Reducer, concentric",
-        "description": "ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 5 | 3 | EA | 8\" x 6\" | Reducer, concentric",
+        "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. TEES & REDUCERS. 5 | 3 | EA | 8\" x 6\" | Reducer, concentric",
         "qty": 3,
         "uom": "EA",
         "source": "Tank14_Piping_RevB.xlsx",
@@ -354,7 +354,7 @@
       },
       {
         "raw": "6 | 2 | EA | 6\" x 4\" | Reducer, concentric, SCH 80",
-        "description": "ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 6 | 2 | EA | 6\" x 4\" | Reducer, concentric, SCH 80",
+        "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW A234 WPB UNLESS NOTED. TEES & REDUCERS. 6 | 2 | EA | 6\" x 4\" | Reducer, concentric, SCH 80",
         "qty": 2,
         "uom": "EA",
         "source": "Tank14_Piping_RevB.xlsx",
@@ -364,7 +364,7 @@
       },
       {
         "raw": "7 | 2 | EA | 8\" | Cap",
-        "description": "ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 7 | 2 | EA | 8\" | Cap",
+        "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. CAPS. 7 | 2 | EA | 8\" | Cap",
         "qty": 2,
         "uom": "EA",
         "source": "Tank14_Piping_RevB.xlsx",
@@ -374,7 +374,7 @@
       },
       {
         "raw": "8 | 2 | EA | 6\" | Cap",
-        "description": "ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 8 | 2 | EA | 6\" | Cap",
+        "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. CAPS. 8 | 2 | EA | 6\" | Cap",
         "qty": 2,
         "uom": "EA",
         "source": "Tank14_Piping_RevB.xlsx",
@@ -393,7 +393,7 @@
     "line_items": [
       {
         "raw": "1 7 EA 1/2\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 1 7 EA 1/2\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 1 7 EA 1/2\" WELD NECK FLANGE, STD BORE",
         "qty": 7,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -403,7 +403,7 @@
       },
       {
         "raw": "2 3 EA 3/4\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 2 3 EA 3/4\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 2 3 EA 3/4\" WELD NECK FLANGE, STD BORE",
         "qty": 3,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -413,7 +413,7 @@
       },
       {
         "raw": "3 8 EA 1\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 3 8 EA 1\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 3 8 EA 1\" WELD NECK FLANGE, STD BORE",
         "qty": 8,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -423,7 +423,7 @@
       },
       {
         "raw": "4 4 EA 1-1/4\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 4 4 EA 1-1/4\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 4 4 EA 1-1/4\" WELD NECK FLANGE, STD BORE",
         "qty": 4,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -433,7 +433,7 @@
       },
       {
         "raw": "5 9 EA 1-1/2\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 5 9 EA 1-1/2\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 5 9 EA 1-1/2\" WELD NECK FLANGE, STD BORE",
         "qty": 9,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -443,7 +443,7 @@
       },
       {
         "raw": "6 5 EA 2\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 6 5 EA 2\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 6 5 EA 2\" WELD NECK FLANGE, STD BORE",
         "qty": 5,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -453,7 +453,7 @@
       },
       {
         "raw": "7 10 EA 2-1/2\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 7 10 EA 2-1/2\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 7 10 EA 2-1/2\" WELD NECK FLANGE, STD BORE",
         "qty": 10,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -463,7 +463,7 @@
       },
       {
         "raw": "8 6 EA 3\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 8 6 EA 3\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 8 6 EA 3\" WELD NECK FLANGE, STD BORE",
         "qty": 6,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -473,7 +473,7 @@
       },
       {
         "raw": "9 2 EA 4\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 9 2 EA 4\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 9 2 EA 4\" WELD NECK FLANGE, STD BORE",
         "qty": 2,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -483,7 +483,7 @@
       },
       {
         "raw": "10 7 EA 6\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 10 7 EA 6\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 10 7 EA 6\" WELD NECK FLANGE, STD BORE",
         "qty": 7,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -493,7 +493,7 @@
       },
       {
         "raw": "11 3 EA 8\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 11 3 EA 8\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 11 3 EA 8\" WELD NECK FLANGE, STD BORE",
         "qty": 3,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -503,7 +503,7 @@
       },
       {
         "raw": "12 8 EA 10\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 12 8 EA 10\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 12 8 EA 10\" WELD NECK FLANGE, STD BORE",
         "qty": 8,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -513,7 +513,7 @@
       },
       {
         "raw": "13 4 EA 12\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 13 4 EA 12\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 13 4 EA 12\" WELD NECK FLANGE, STD BORE",
         "qty": 4,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -523,7 +523,7 @@
       },
       {
         "raw": "14 9 EA 14\" WELD NECK FLANGE, STD BORE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 14 9 EA 14\" WELD NECK FLANGE, STD BORE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 14 9 EA 14\" WELD NECK FLANGE, STD BORE",
         "qty": 9,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -533,7 +533,7 @@
       },
       {
         "raw": "15 5 EA 1/2\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 15 5 EA 1/2\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 15 5 EA 1/2\" SLIP-ON FLANGE",
         "qty": 5,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -543,7 +543,7 @@
       },
       {
         "raw": "16 10 EA 3/4\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 16 10 EA 3/4\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 16 10 EA 3/4\" SLIP-ON FLANGE",
         "qty": 10,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -553,7 +553,7 @@
       },
       {
         "raw": "17 6 EA 1\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 17 6 EA 1\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 17 6 EA 1\" SLIP-ON FLANGE",
         "qty": 6,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -563,7 +563,7 @@
       },
       {
         "raw": "18 2 EA 1-1/4\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 18 2 EA 1-1/4\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 18 2 EA 1-1/4\" SLIP-ON FLANGE",
         "qty": 2,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -573,7 +573,7 @@
       },
       {
         "raw": "19 7 EA 1-1/2\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 19 7 EA 1-1/2\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 19 7 EA 1-1/2\" SLIP-ON FLANGE",
         "qty": 7,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -583,7 +583,7 @@
       },
       {
         "raw": "20 3 EA 2\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 20 3 EA 2\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 20 3 EA 2\" SLIP-ON FLANGE",
         "qty": 3,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -593,7 +593,7 @@
       },
       {
         "raw": "21 8 EA 2-1/2\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 21 8 EA 2-1/2\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 21 8 EA 2-1/2\" SLIP-ON FLANGE",
         "qty": 8,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -603,7 +603,7 @@
       },
       {
         "raw": "22 4 EA 3\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 22 4 EA 3\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 22 4 EA 3\" SLIP-ON FLANGE",
         "qty": 4,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -613,7 +613,7 @@
       },
       {
         "raw": "23 9 EA 4\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 23 9 EA 4\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 23 9 EA 4\" SLIP-ON FLANGE",
         "qty": 9,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -623,7 +623,7 @@
       },
       {
         "raw": "24 5 EA 6\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 24 5 EA 6\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 24 5 EA 6\" SLIP-ON FLANGE",
         "qty": 5,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -633,7 +633,7 @@
       },
       {
         "raw": "25 10 EA 8\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 25 10 EA 8\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 25 10 EA 8\" SLIP-ON FLANGE",
         "qty": 10,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -643,7 +643,7 @@
       },
       {
         "raw": "26 6 EA 10\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 26 6 EA 10\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 26 6 EA 10\" SLIP-ON FLANGE",
         "qty": 6,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -653,7 +653,7 @@
       },
       {
         "raw": "27 2 EA 12\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 27 2 EA 12\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 27 2 EA 12\" SLIP-ON FLANGE",
         "qty": 2,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -663,7 +663,7 @@
       },
       {
         "raw": "28 7 EA 14\" SLIP-ON FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 28 7 EA 14\" SLIP-ON FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 28 7 EA 14\" SLIP-ON FLANGE",
         "qty": 7,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -673,7 +673,7 @@
       },
       {
         "raw": "29 3 EA 1/2\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 29 3 EA 1/2\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 29 3 EA 1/2\" BLIND FLANGE",
         "qty": 3,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -683,7 +683,7 @@
       },
       {
         "raw": "30 8 EA 3/4\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 30 8 EA 3/4\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 30 8 EA 3/4\" BLIND FLANGE",
         "qty": 8,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -693,7 +693,7 @@
       },
       {
         "raw": "31 4 EA 1\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 31 4 EA 1\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 31 4 EA 1\" BLIND FLANGE",
         "qty": 4,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -703,7 +703,7 @@
       },
       {
         "raw": "32 9 EA 1-1/4\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 32 9 EA 1-1/4\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 32 9 EA 1-1/4\" BLIND FLANGE",
         "qty": 9,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -713,7 +713,7 @@
       },
       {
         "raw": "33 5 EA 1-1/2\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 33 5 EA 1-1/2\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 33 5 EA 1-1/2\" BLIND FLANGE",
         "qty": 5,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -723,7 +723,7 @@
       },
       {
         "raw": "34 10 EA 2\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 34 10 EA 2\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 34 10 EA 2\" BLIND FLANGE",
         "qty": 10,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -733,7 +733,7 @@
       },
       {
         "raw": "35 6 EA 2-1/2\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 35 6 EA 2-1/2\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 35 6 EA 2-1/2\" BLIND FLANGE",
         "qty": 6,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -743,7 +743,7 @@
       },
       {
         "raw": "36 2 EA 3\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 36 2 EA 3\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 36 2 EA 3\" BLIND FLANGE",
         "qty": 2,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -753,7 +753,7 @@
       },
       {
         "raw": "37 7 EA 4\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 37 7 EA 4\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 37 7 EA 4\" BLIND FLANGE",
         "qty": 7,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -763,7 +763,7 @@
       },
       {
         "raw": "38 3 EA 6\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 38 3 EA 6\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 38 3 EA 6\" BLIND FLANGE",
         "qty": 3,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -773,7 +773,7 @@
       },
       {
         "raw": "39 8 EA 8\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 39 8 EA 8\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 39 8 EA 8\" BLIND FLANGE",
         "qty": 8,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -783,7 +783,7 @@
       },
       {
         "raw": "40 4 EA 10\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 40 4 EA 10\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 40 4 EA 10\" BLIND FLANGE",
         "qty": 4,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -793,7 +793,7 @@
       },
       {
         "raw": "41 9 EA 12\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 41 9 EA 12\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 41 9 EA 12\" BLIND FLANGE",
         "qty": 9,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -803,7 +803,7 @@
       },
       {
         "raw": "42 5 EA 14\" BLIND FLANGE",
-        "description": "RFQ No.: PF-26-3091 Material: ASTM A105 Rating: 150# RF 42 5 EA 14\" BLIND FLANGE",
+        "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF ITEM 42 5 EA 14\" BLIND FLANGE",
         "qty": 5,
         "uom": "EA",
         "source": "RFQ_PF-26-3091.pdf",
@@ -842,7 +842,7 @@
     "line_items": [
       {
         "raw": "8 - 2\" galv 90 elbow",
-        "description": "8 - 2\" galv 90 elbow from handwritten list in IMG_4172.jpeg",
+        "description": "8 - 2\" galv 90 elbow",
         "qty": 8,
         "uom": null,
         "source": "IMG_4172.jpeg",
@@ -852,7 +852,7 @@
       },
       {
         "raw": "4 - ,, tee",
-        "description": "4 - 2\" galv tee from handwritten list in IMG_4172.jpeg (ditto marks indicate same size and material as above)",
+        "description": "4 - 2\" galv tee",
         "qty": 4,
         "uom": null,
         "source": "IMG_4172.jpeg",
@@ -862,7 +862,7 @@
       },
       {
         "raw": "6 - 1\" x 3\" galv nipple",
-        "description": "6 - 1\" x 3\" galv nipple from handwritten list in IMG_4172.jpeg",
+        "description": "6 - 1\" x 3\" galv nipple",
         "qty": 6,
         "uom": null,
         "source": "IMG_4172.jpeg",
@@ -872,7 +872,7 @@
       },
       {
         "raw": "6 - 1\" x 4\" ,,",
-        "description": "6 - 1\" x 4\" galv nipple from handwritten list in IMG_4172.jpeg (ditto marks indicate same material as above)",
+        "description": "6 - 1\" x 4\" galv nipple",
         "qty": 6,
         "uom": null,
         "source": "IMG_4172.jpeg",
@@ -882,7 +882,7 @@
       },
       {
         "raw": "12 - 2\" galv coupling",
-        "description": "12 - 2\" galv coupling from handwritten list in IMG_4172.jpeg",
+        "description": "12 - 2\" galv coupling",
         "qty": 12,
         "uom": null,
         "source": "IMG_4172.jpeg",
@@ -892,7 +892,7 @@
       },
       {
         "raw": "2 - 2\" galv union",
-        "description": "2 - 2\" galv union from handwritten list in IMG_4172.jpeg",
+        "description": "2 - 2\" galv union",
         "qty": 2,
         "uom": null,
         "source": "IMG_4172.jpeg",
@@ -902,7 +902,7 @@
       },
       {
         "raw": "5 jts - 2\" galv pipe",
-        "description": "5 joints - 2\" galv pipe from handwritten list in IMG_4172.jpeg",
+        "description": "5 joints - 2\" galv pipe",
         "qty": 5,
         "uom": "EA",
         "source": "IMG_4172.jpeg",
@@ -1258,7 +1258,7 @@
     "line_items": [
       {
         "raw": "40 | EA | 1/2\"-13 x 2\" hex cap screw, Gr 5 zinc",
-        "description": "QTY 40, UOM EA, DESCRIPTION 1/2\"-13 x 2\" hex cap screw, Gr 5 zinc",
+        "description": "QTY 40 | UOM EA | DESCRIPTION 1/2\"-13 x 2\" hex cap screw, Gr 5 zinc",
         "qty": 40,
         "uom": "EA",
         "source": "image002.png",
@@ -1268,7 +1268,7 @@
       },
       {
         "raw": "40 | EA | 1/2\"-13 hex nut, zinc",
-        "description": "QTY 40, UOM EA, DESCRIPTION 1/2\"-13 hex nut, zinc",
+        "description": "QTY 40 | UOM EA | DESCRIPTION 1/2\"-13 hex nut, zinc",
         "qty": 40,
         "uom": "EA",
         "source": "image002.png",
@@ -1278,7 +1278,7 @@
       },
       {
         "raw": "200 | FT | 1-5/8\" strut channel, 12 ga, pre-galv",
-        "description": "QTY 200, UOM FT, DESCRIPTION 1-5/8\" strut channel, 12 ga, pre-galv",
+        "description": "QTY 200 | UOM FT | DESCRIPTION 1-5/8\" strut channel, 12 ga, pre-galv",
         "qty": 200,
         "uom": "FT",
         "source": "image002.png",
@@ -1288,7 +1288,7 @@
       },
       {
         "raw": "3 | BX | 1/2\" channel spring nuts, galv",
-        "description": "QTY 3, UOM BX, DESCRIPTION 1/2\" channel spring nuts, galv",
+        "description": "QTY 3 | UOM BX | DESCRIPTION 1/2\" channel spring nuts, galv",
         "qty": 3,
         "uom": "BX",
         "source": "image002.png",
@@ -1298,7 +1298,7 @@
       },
       {
         "raw": "24 | EA | 2\" pipe clamp, galv",
-        "description": "QTY 24, UOM EA, DESCRIPTION 2\" pipe clamp, galv",
+        "description": "QTY 24 | UOM EA | DESCRIPTION 2\" pipe clamp, galv",
         "qty": 24,
         "uom": "EA",
         "source": "image002.png",
@@ -1308,7 +1308,7 @@
       },
       {
         "raw": "12 | EA | 3/4\"-10 all-thread rod, 6 ft",
-        "description": "QTY 12, UOM EA, DESCRIPTION 3/4\"-10 all-thread rod, 6 ft",
+        "description": "QTY 12 | UOM EA | DESCRIPTION 3/4\"-10 all-thread rod, 6 ft",
         "qty": 12,
         "uom": "EA",
         "source": "image002.png",
@@ -1359,7 +1359,7 @@
     "line_items": [
       {
         "raw": "1 210 FT 2\" SCH 80 SMLS A106B pipe, PE, random lengths",
-        "description": "2\" SCH 80 SMLS A106B pipe, PE, random lengths (PO TPS-88213)",
+        "description": "PO Number: TPS-88213. 1 210 FT 2\" SCH 80 SMLS A106B pipe, PE, random lengths",
         "qty": 210,
         "uom": "FT",
         "source": "PO_TPS-88213.pdf",
@@ -1369,7 +1369,7 @@
       },
       {
         "raw": "2 24 EA 2\" 90 deg elbow, LR, BW, SCH 80, A234 WPB",
-        "description": "2\" 90 deg elbow, LR, BW, SCH 80, A234 WPB (PO TPS-88213)",
+        "description": "PO Number: TPS-88213. 2 24 EA 2\" 90 deg elbow, LR, BW, SCH 80, A234 WPB",
         "qty": 24,
         "uom": "EA",
         "source": "PO_TPS-88213.pdf",
@@ -1379,7 +1379,7 @@
       },
       {
         "raw": "3 16 EA 2\" WN flange, 300# RF, A105, SCH 80 bore",
-        "description": "2\" WN flange, 300# RF, A105, SCH 80 bore (PO TPS-88213)",
+        "description": "PO Number: TPS-88213. 3 16 EA 2\" WN flange, 300# RF, A105, SCH 80 bore",
         "qty": 16,
         "uom": "EA",
         "source": "PO_TPS-88213.pdf",
@@ -1389,17 +1389,17 @@
       },
       {
         "raw": "4 16 EA 2\" spiral wound gasket, 316/graphite, 300#, w/ inner ring",
-        "description": "2\" spiral wound gasket, 316/graphite, 300#, w/ inner ring (PO TPS-88213)",
+        "description": "PO Number: TPS-88213. 4 16 EA 2\" spiral wound gasket, 316/graphite, 300#, w/ inner ring",
         "qty": 16,
         "uom": "EA",
         "source": "PO_TPS-88213.pdf",
         "sku": null,
         "match": "not_in_catalog",
-        "match_reason": "2\" spiral wound gasket 300# 316/GRAPHITE: no stocked part with all stated attributes; nearest RL-16710 GSKT SPW 2\" 150# 316/GRAPHITE differs: spec 150#"
+        "match_reason": "2\" spiral wound gasket 300# 316/GRAPHITE other: stated extra not stocked for this item"
       },
       {
         "raw": "5 64 EA Stud bolt B7, 5/8\"-11 x 3-3/4\", w/ 2 heavy hex nuts",
-        "description": "Stud bolt B7, 5/8\"-11 x 3-3/4\", w/ 2 heavy hex nuts (PO TPS-88213)",
+        "description": "PO Number: TPS-88213. 5 64 EA Stud bolt B7, 5/8\"-11 x 3-3/4\", w/ 2 heavy hex nuts",
         "qty": 64,
         "uom": "EA",
         "source": "PO_TPS-88213.pdf",
@@ -1409,7 +1409,7 @@
       },
       {
         "raw": "6 6 EA 2\" gate valve, 300# RF, A216 WCB, bolted bonnet",
-        "description": "2\" gate valve, 300# RF, A216 WCB, bolted bonnet (PO TPS-88213)",
+        "description": "PO Number: TPS-88213. 6 6 EA 2\" gate valve, 300# RF, A216 WCB, bolted bonnet",
         "qty": 6,
         "uom": "EA",
         "source": "PO_TPS-88213.pdf",
@@ -1428,7 +1428,7 @@
     "line_items": [
       {
         "raw": "60 | FT | 1-1/2\" | Pipe, SCH 80, A106B SMLS, PE",
-        "description": "Qty 60 FT, Size 1-1/2\", Pipe, SCH 80, A106B SMLS, PE, from HM-7716_material_list.csv for condensate return job.",
+        "description": "Pipe, SCH 80, A106B SMLS, PE, 1-1/2\", 60 FT, for HM-7716 condensate return job",
         "qty": 60,
         "uom": "FT",
         "source": "HM-7716_material_list.csv",
@@ -1438,7 +1438,7 @@
       },
       {
         "raw": "12 | EA | 1-1/2\" | 90 elbow, SW, 3000#, A105",
-        "description": "Qty 12 EA, Size 1-1/2\", 90 elbow, SW, 3000#, A105, from HM-7716_material_list.csv for condensate return job.",
+        "description": "90 elbow, SW, 3000#, A105, 1-1/2\", 12 EA, for HM-7716 condensate return job",
         "qty": 12,
         "uom": "EA",
         "source": "HM-7716_material_list.csv",
@@ -1448,7 +1448,7 @@
       },
       {
         "raw": "6 | EA | 1-1/2\" | Tee, SW, 3000#, A105",
-        "description": "Qty 6 EA, Size 1-1/2\", Tee, SW, 3000#, A105, from HM-7716_material_list.csv for condensate return job.",
+        "description": "Tee, SW, 3000#, A105, 1-1/2\", 6 EA, for HM-7716 condensate return job",
         "qty": 6,
         "uom": "EA",
         "source": "HM-7716_material_list.csv",
@@ -1458,7 +1458,7 @@
       },
       {
         "raw": "8 | EA | 1-1/2\" | Union, SW, 3000#, A105",
-        "description": "Qty 8 EA, Size 1-1/2\", Union, SW, 3000#, A105, from HM-7716_material_list.csv for condensate return job.",
+        "description": "Union, SW, 3000#, A105, 1-1/2\", 8 EA, for HM-7716 condensate return job",
         "qty": 8,
         "uom": "EA",
         "source": "HM-7716_material_list.csv",
@@ -1468,7 +1468,7 @@
       },
       {
         "raw": "4 | EA | 1-1/2\" | Gate valve, 800#, SW, A105",
-        "description": "Qty 4 EA, Size 1-1/2\", Gate valve, 800#, SW, A105, from HM-7716_material_list.csv for condensate return job.",
+        "description": "Gate valve, 800#, SW, A105, 1-1/2\", 4 EA, for HM-7716 condensate return job",
         "qty": 4,
         "uom": "EA",
         "source": "HM-7716_material_list.csv",
@@ -1478,7 +1478,7 @@
       },
       {
         "raw": "2 | EA | 1-1/2\" | Y-strainer, 800#, SW, A105",
-        "description": "Qty 2 EA, Size 1-1/2\", Y-strainer, 800#, SW, A105, from HM-7716_material_list.csv for condensate return job.",
+        "description": "Y-strainer, 800#, SW, A105, 1-1/2\", 2 EA, for HM-7716 condensate return job",
         "qty": 2,
         "uom": "EA",
         "source": "HM-7716_material_list.csv",
@@ -1493,7 +1493,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "Customer refers to an attached BOM, but no BOM is attached—only a logo image is present, so the requested items cannot be identified.",
+    "review_reason": "Customer refers to an attached BOM, but no BOM is present—only a logo image is attached. No items can be read.",
     "line_items": []
   },
   "E018": {
@@ -1505,7 +1505,7 @@
     "line_items": [
       {
         "raw": "Weld neck flange, 150# RF, A105, STD bore",
-        "description": "Weld neck flange, 150# RF, A105, STD bore, 4\"",
+        "description": "Weld neck flange, 150# RF, A105, STD bore, 4\", Qty 8, for lift station rebuild",
         "qty": 8,
         "uom": null,
         "source": "body",
@@ -1515,7 +1515,7 @@
       },
       {
         "raw": "90 deg elbow, LR, BW, SCH 40, A234 WPB",
-        "description": "90 deg elbow, LR, BW, SCH 40, A234 WPB, 4\"",
+        "description": "90 deg elbow, LR, BW, SCH 40, A234 WPB, 4\", Qty 12, for lift station rebuild",
         "qty": 12,
         "uom": null,
         "source": "body",
@@ -1525,7 +1525,7 @@
       },
       {
         "raw": "Spiral wound gasket, 304/graphite, 150#",
-        "description": "Spiral wound gasket, 304/graphite, 150#, 4\"",
+        "description": "Spiral wound gasket, 304/graphite, 150#, 4\", Qty 8, for lift station rebuild",
         "qty": 8,
         "uom": null,
         "source": "body",
@@ -1535,7 +1535,7 @@
       },
       {
         "raw": "Stud bolt, B7, 4-1/2\" long, w/ 2 heavy hex nuts",
-        "description": "Stud bolt, B7, 4-1/2\" long, w/ 2 heavy hex nuts, 3/4\"",
+        "description": "Stud bolt, B7, 3/4\" x 4-1/2\", with 2 heavy hex nuts, Qty 32, for lift station rebuild",
         "qty": 32,
         "uom": null,
         "source": "body",
@@ -1545,7 +1545,7 @@
       },
       {
         "raw": "Eccentric reducer, BW, SCH 40, A234 WPB",
-        "description": "Eccentric reducer, BW, SCH 40, A234 WPB, 6\" x 4\"",
+        "description": "Eccentric reducer, BW, SCH 40, A234 WPB, 6\" x 4\", Qty 6, for lift station rebuild",
         "qty": 6,
         "uom": null,
         "source": "body",
@@ -1555,7 +1555,7 @@
       },
       {
         "raw": "PTFE thread tape, white, heavy duty",
-        "description": "PTFE thread tape, white, heavy duty, 12 rolls",
+        "description": "PTFE thread tape, white, heavy duty, Qty 12 rolls, for lift station rebuild",
         "qty": 12,
         "uom": "RL",
         "source": "body",
@@ -1624,7 +1624,7 @@
       },
       {
         "raw": "12 | 1\" | Tee",
-        "description": "Socket Weld Fittings – 3000# A105. 12, 1\", Tee.",
+        "description": "Socket Weld Fittings – 3000# A105. 12, 1\", tee.",
         "qty": 12,
         "uom": "EA",
         "source": "TankFarm_Ph2_Materials.docx",
@@ -1634,7 +1634,7 @@
       },
       {
         "raw": "30 | 3/4\" | Coupling, full",
-        "description": "Socket Weld Fittings – 3000# A105. 30, 3/4\", Coupling, full.",
+        "description": "Socket Weld Fittings – 3000# A105. 30, 3/4\", full coupling.",
         "qty": 30,
         "uom": "EA",
         "source": "TankFarm_Ph2_Materials.docx",
@@ -1644,7 +1644,7 @@
       },
       {
         "raw": "16 | 1/2\" | Union",
-        "description": "Socket Weld Fittings – 3000# A105. 16, 1/2\", Union.",
+        "description": "Socket Weld Fittings – 3000# A105. 16, 1/2\", union.",
         "qty": 16,
         "uom": "EA",
         "source": "TankFarm_Ph2_Materials.docx",
@@ -1654,7 +1654,7 @@
       },
       {
         "raw": "20 | 2\" | Half coupling",
-        "description": "Socket Weld Fittings – 3000# A105. 20, 2\", Half coupling.",
+        "description": "Socket Weld Fittings – 3000# A105. 20, 2\", half coupling.",
         "qty": 20,
         "uom": "EA",
         "source": "TankFarm_Ph2_Materials.docx",
@@ -1712,7 +1712,7 @@
     "line_items": [
       {
         "raw": "1 | 420 | FT | 1/2\" | PE",
-        "description": "PIPE - SCH 80 SMLS: 420 FT 1/2\" pipe, plain end",
+        "description": "PIPE - SCH 80 SMLS: 420 FT 1/2\" PE pipe",
         "qty": 420,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1722,7 +1722,7 @@
       },
       {
         "raw": "2 | 300 | FT | 3/4\" | PE",
-        "description": "PIPE - SCH 80 SMLS: 300 FT 3/4\" pipe, plain end",
+        "description": "PIPE - SCH 80 SMLS: 300 FT 3/4\" PE pipe",
         "qty": 300,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1732,7 +1732,7 @@
       },
       {
         "raw": "3 | 600 | FT | 1\" | PE",
-        "description": "PIPE - SCH 80 SMLS: 600 FT 1\" pipe, plain end",
+        "description": "PIPE - SCH 80 SMLS: 600 FT 1\" PE pipe",
         "qty": 600,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1742,7 +1742,7 @@
       },
       {
         "raw": "4 | 240 | FT | 1-1/4\" | PE",
-        "description": "PIPE - SCH 80 SMLS: 240 FT 1-1/4\" pipe, plain end",
+        "description": "PIPE - SCH 80 SMLS: 240 FT 1-1/4\" PE pipe",
         "qty": 240,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1752,7 +1752,7 @@
       },
       {
         "raw": "5 | 360 | FT | 1-1/2\" | PE",
-        "description": "PIPE - SCH 80 SMLS: 360 FT 1-1/2\" pipe, plain end",
+        "description": "PIPE - SCH 80 SMLS: 360 FT 1-1/2\" PE pipe",
         "qty": 360,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1762,7 +1762,7 @@
       },
       {
         "raw": "6 | 500 | FT | 2\" | PE",
-        "description": "PIPE - SCH 80 SMLS: 500 FT 2\" pipe, plain end",
+        "description": "PIPE - SCH 80 SMLS: 500 FT 2\" PE pipe",
         "qty": 500,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1772,7 +1772,7 @@
       },
       {
         "raw": "7 | 180 | FT | 2-1/2\" | PE",
-        "description": "PIPE - SCH 80 SMLS: 180 FT 2-1/2\" pipe, plain end",
+        "description": "PIPE - SCH 80 SMLS: 180 FT 2-1/2\" PE pipe",
         "qty": 180,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1782,7 +1782,7 @@
       },
       {
         "raw": "8 | 320 | FT | 3\" | PE",
-        "description": "PIPE - SCH 80 SMLS: 320 FT 3\" pipe, plain end",
+        "description": "PIPE - SCH 80 SMLS: 320 FT 3\" PE pipe",
         "qty": 320,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1792,7 +1792,7 @@
       },
       {
         "raw": "9 | 140 | FT | 4\" | PE",
-        "description": "PIPE - SCH 80 SMLS: 140 FT 4\" pipe, plain end",
+        "description": "PIPE - SCH 80 SMLS: 140 FT 4\" PE pipe",
         "qty": 140,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1802,7 +1802,7 @@
       },
       {
         "raw": "10 | 80 | FT | 6\" | PE",
-        "description": "PIPE - SCH 80 SMLS: 80 FT 6\" pipe, plain end",
+        "description": "PIPE - SCH 80 SMLS: 80 FT 6\" PE pipe",
         "qty": 80,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1812,7 +1812,7 @@
       },
       {
         "raw": "11 | 120 | FT | 1/2\" | TOE",
-        "description": "PIPE - SCH 80 SMLS: 120 FT 1/2\" pipe, threaded one end",
+        "description": "PIPE - SCH 80 SMLS: 120 FT 1/2\" TOE pipe",
         "qty": 120,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1822,7 +1822,7 @@
       },
       {
         "raw": "12 | 160 | FT | 3/4\" | TOE",
-        "description": "PIPE - SCH 80 SMLS: 160 FT 3/4\" pipe, threaded one end",
+        "description": "PIPE - SCH 80 SMLS: 160 FT 3/4\" TOE pipe",
         "qty": 160,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1832,7 +1832,7 @@
       },
       {
         "raw": "13 | 200 | FT | 1\" | TOE",
-        "description": "PIPE - SCH 80 SMLS: 200 FT 1\" pipe, threaded one end",
+        "description": "PIPE - SCH 80 SMLS: 200 FT 1\" TOE pipe",
         "qty": 200,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1842,7 +1842,7 @@
       },
       {
         "raw": "14 | 100 | FT | 1-1/2\" | TOE",
-        "description": "PIPE - SCH 80 SMLS: 100 FT 1-1/2\" pipe, threaded one end",
+        "description": "PIPE - SCH 80 SMLS: 100 FT 1-1/2\" TOE pipe",
         "qty": 100,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1852,7 +1852,7 @@
       },
       {
         "raw": "15 | 140 | FT | 2\" | TOE",
-        "description": "PIPE - SCH 80 SMLS: 140 FT 2\" pipe, threaded one end",
+        "description": "PIPE - SCH 80 SMLS: 140 FT 2\" TOE pipe",
         "qty": 140,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1862,7 +1862,7 @@
       },
       {
         "raw": "16 | 60 | FT | 3\" | BE",
-        "description": "PIPE - SCH 80 SMLS: 60 FT 3\" pipe, beveled end",
+        "description": "PIPE - SCH 80 SMLS: 60 FT 3\" BE pipe",
         "qty": 60,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1872,7 +1872,7 @@
       },
       {
         "raw": "17 | 40 | FT | 4\" | BE",
-        "description": "PIPE - SCH 80 SMLS: 40 FT 4\" pipe, beveled end",
+        "description": "PIPE - SCH 80 SMLS: 40 FT 4\" BE pipe",
         "qty": 40,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -1882,7 +1882,7 @@
       },
       {
         "raw": "18 | 20 | FT | 6\" | BE",
-        "description": "PIPE - SCH 80 SMLS: 20 FT 6\" pipe, beveled end",
+        "description": "PIPE - SCH 80 SMLS: 20 FT 6\" BE pipe",
         "qty": 20,
         "uom": "FT",
         "source": "SR-4-117_Unit4_BOM.xlsx",
@@ -2217,7 +2217,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "The attached PDF containing the RFQ is password-protected and cannot be opened; items requested cannot be read.; AldenMarine_RFQ_AM-26-0412.pdf: PDF is password-protected / encrypted and cannot be opened",
+    "review_reason": "The attached PDF containing the RFQ is password-protected and cannot be opened, so the requested items cannot be read.; AldenMarine_RFQ_AM-26-0412.pdf: PDF is password-protected / encrypted and cannot be opened",
     "line_items": []
   },
   "E023": {
@@ -2228,8 +2228,8 @@
     "review_reason": null,
     "line_items": [
       {
-        "raw": "HALVORSEN VALVE CO. FORGED STEEL GATE VALVE MODEL: HV-800-FGS SIZE: 2 IN CLASS: 800 LB ENDS: NPT BODY: A105 TRIM: 13CR",
-        "description": "FORGED STEEL GATE VALVE, MODEL: HV-800-FGS, SIZE: 2 IN, CLASS: 800 LB, ENDS: NPT, BODY: A105, TRIM: 13CR, as shown in attached image IMG_4417.jpg",
+        "raw": "MODEL: HV-800-FGS",
+        "description": "Forged steel gate valve, Halvorsen Valve Co., model HV-800-FGS, size 2 in, class 800 lb, NPT ends, body A105, trim 13CR, as shown in attached photo, for dryer line replacement.",
         "qty": 3,
         "uom": "EA",
         "source": "IMG_4417.jpg",
@@ -2248,7 +2248,7 @@
     "line_items": [
       {
         "raw": "10 | 90° elbow | 1/2″",
-        "description": "316 SS – THREADED – 3000# | 10 | 90° elbow | 1/2″",
+        "description": "316 SS – THREADED – 3000#. 10 | 90° elbow | 1/2″",
         "qty": 10,
         "uom": null,
         "source": "body",
@@ -2258,7 +2258,7 @@
       },
       {
         "raw": "6 | 45° elbow | 1/2″",
-        "description": "316 SS – THREADED – 3000# | 6 | 45° elbow | 1/2″",
+        "description": "316 SS – THREADED – 3000#. 6 | 45° elbow | 1/2″",
         "qty": 6,
         "uom": null,
         "source": "body",
@@ -2268,7 +2268,7 @@
       },
       {
         "raw": "8 | Tee | 3/4″",
-        "description": "316 SS – THREADED – 3000# | 8 | Tee | 3/4″",
+        "description": "316 SS – THREADED – 3000#. 8 | Tee | 3/4″",
         "qty": 8,
         "uom": null,
         "source": "body",
@@ -2278,7 +2278,7 @@
       },
       {
         "raw": "12 | Coupling, full | 1/2″",
-        "description": "316 SS – THREADED – 3000# | 12 | Coupling, full | 1/2″",
+        "description": "316 SS – THREADED – 3000#. 12 | Coupling, full | 1/2″",
         "qty": 12,
         "uom": null,
         "source": "body",
@@ -2288,7 +2288,7 @@
       },
       {
         "raw": "4 | Union | 1/2″",
-        "description": "316 SS – THREADED – 3000# | 4 | Union | 1/2″",
+        "description": "316 SS – THREADED – 3000#. 4 | Union | 1/2″",
         "qty": 4,
         "uom": null,
         "source": "body",
@@ -2298,7 +2298,7 @@
       },
       {
         "raw": "6 | Hex head plug | 3/4″",
-        "description": "316 SS – THREADED – 3000# | 6 | Hex head plug | 3/4″",
+        "description": "316 SS – THREADED – 3000#. 6 | Hex head plug | 3/4″",
         "qty": 6,
         "uom": null,
         "source": "body",

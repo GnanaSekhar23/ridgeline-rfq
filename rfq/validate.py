@@ -55,6 +55,24 @@ def normalize_uom(word: str | None) -> str | None:
     return _UOM_LOOKUP.get(w)
 
 
+_QTY_UNIT = re.compile(
+    r"(?<![\d./-])(\d+(?:[.,]\d+)?)\s*"
+    r"(?:(jts?|joints?|lengths?|lgths?|pcs?|pieces?|ea)\b|(ft|feet|foot)\b|('(?!')))", re.I)
+
+
+def uom_from_qty_text(raw: str, qty: float | None) -> str | None:
+    """The unit written right after the line's own quantity ("5 jts", "40 pcs", "120 ft",
+    "60'"). Only the number equal to qty counts, so a length elsewhere in the line ("3/4 x 6 ft
+    rod") or a size ("2'" when qty is 4) is never taken as the unit."""
+    if qty is None:
+        return None
+    for m in _QTY_UNIT.finditer(raw):
+        if float(m.group(1).replace(",", ".")) != float(qty):
+            continue
+        return "EA" if m.group(2) else "FT"
+    return None
+
+
 def _num(x: float | None) -> float | int | None:
     if x is None:
         return None
@@ -169,6 +187,99 @@ def numbering_problem(raws: list[str]) -> str | None:
     return ", ".join(dict.fromkeys(issues)) or None
 
 
+# ---------------------------------------------------------------- image raw: the identifying line
+_CODE = r"(?=[A-Z0-9./-]*\d)(?=[A-Z0-9./-]*[A-Z])[A-Z0-9][A-Z0-9./-]*[A-Z0-9]"  # letters + digits
+_ID_LINE = re.compile(
+    r"\b(?:MODEL|P\s*/\s*N|PN|PART(?:\s*(?:NO|NUMBER|#))?|CAT(?:ALOG)?(?:\s*(?:NO|NUMBER|#))?)\b"
+    r"\.?\s*[:#.]?\s*" + _CODE, re.I)
+_CODE_TOKEN = re.compile(r"(?<![A-Z0-9])" + _CODE + r"(?![A-Z0-9])", re.I)
+_SIZE_TOKEN = re.compile(r"^\d+(?:[./]\d+)?(?:IN|MM|FT|LB|LBS|M|CM)$", re.I)  # 2IN, 50MM: not codes
+_FIELD_START = re.compile(r"\s+(?=(?:P\s*/\s*N|[A-Z][A-Z#]*(?:\s+NO\.?)?)\s*:)", re.I)  # "... SIZE: 2 IN"
+
+
+def _segments(raw: str) -> list[str]:
+    """A reading's lines. A label read as one flat line ("... MODEL: X SIZE: 2 IN") is split
+    before each "FIELD:" so its fields count as lines too, but only when it has at least two
+    such fields and isn't a table row ("a | b | c"), so one scanned row is never cut apart."""
+    lines = [s.strip() for s in raw.splitlines() if s.strip()]
+    if len(lines) == 1 and " | " not in lines[0]:
+        fields = [s.strip() for s in _FIELD_START.split(lines[0]) if s.strip()]
+        if len(fields) >= 3:
+            lines = fields
+    return lines
+
+
+def _has_code(segment: str) -> bool:
+    return any(not _SIZE_TOKEN.match(t) for t in _CODE_TOKEN.findall(segment))
+
+
+def identifying_raw(raw: str) -> str:
+    """For a reading of an image with several lines: the line that identifies the item.
+    A MODEL / P/N / PART / CAT line with a code wins, else the first line with a code-like
+    token; else the reading is left as it is."""
+    segs = _segments(raw)
+    if len(segs) < 2:
+        return raw
+    for s in segs:
+        if _ID_LINE.search(s):
+            return s
+    for s in segs:
+        if _has_code(s):
+            return s
+    return raw
+
+
+def _tokens(s: str) -> set[str]:
+    return set(re.findall(r"[a-z0-9]+", s.lower()))
+
+
+def keep_full_reading(description: str, raw: str) -> str:
+    """Add to the description any line of the full reading it doesn't already cover, so trimming
+    raw to the identifying line loses nothing."""
+    have = _tokens(description)
+    missing = [s for s in _segments(raw) if not _tokens(s) <= have]
+    return f"{description}; label also reads: {' / '.join(missing)}" if missing else description
+
+
+# ---------------------------------------------------------------- overridden defaults
+_CLASSES = {"150", "300", "400", "600", "800", "900", "1500", "2000", "2500", "3000", "6000", "9000"}
+_SCH_RE = re.compile(r"\bsch(?:edule|ed)?\.?\s*(\d{1,3}s?|xxs|xs|std)\b", re.I)
+_CLASS_RE = re.compile(r"\b(\d{3,4})\s*#|\bclass\s*(\d{3,4})\b|\b(\d{3,4})\s*lbs?\b", re.I)
+
+
+def _sch_values(text: str) -> set[str]:
+    return {m.group(1).upper() for m in _SCH_RE.finditer(text)}
+
+
+def _class_values(text: str) -> set[str]:
+    return {v for m in _CLASS_RE.finditer(text) if (v := next(g for g in m.groups() if g)) in _CLASSES}
+
+
+def _tidy(s: str) -> str:
+    s = re.sub(r"\(\s*\)", "", s)
+    s = re.sub(r"\s+([,;.)])", r"\1", s)
+    s = re.sub(r"([,;])(?:\s*[,;])+", r"\1", s)
+    s = re.sub(r"\s{2,}", " ", s)
+    return s.strip(" ,;")
+
+
+def drop_overridden_defaults(description: str, raw: str) -> str:
+    """The line's own schedule / pressure class beats a default carried into the description
+    (e.g. from a banner over the table). Remove only values that conflict with what the line
+    itself states; the line's own value is never removed, and nothing changes without a conflict."""
+    out = description
+    own_sch = _sch_values(raw)
+    if own_sch:
+        out = _SCH_RE.sub(lambda m: m.group(0) if m.group(1).upper() in own_sch else "", out)
+    own_cls = _class_values(raw)
+    if own_cls:
+        def repl(m: re.Match) -> str:
+            v = next(g for g in m.groups() if g)
+            return "" if v in _CLASSES and v not in own_cls else m.group(0)
+        out = _CLASS_RE.sub(repl, out)
+    return out if out == description else _tidy(out)
+
+
 # ---------------------------------------------------------------- assembly
 def _sheet_of(row_id: str) -> tuple[str, str] | None:
     parts = row_id.split("!")
@@ -264,15 +375,23 @@ def build_result(
         if not raw.strip() or not lo.description.strip():
             dropped.append(f"empty line {lo.row_id or lo.image}")
             continue
-        sig = (source, raw, lo.description, qty)
+        description = drop_overridden_defaults(lo.description.strip(), raw)
+        if lo.image and not lo.row_id:
+            short = identifying_raw(raw)
+            if short != raw:
+                description = keep_full_reading(description, raw)
+                raw = short
+        sig = (source, raw, description, qty)
         if sig in seen:
             continue
         seen.add(sig)
-        li = LineItem(raw=raw.strip(), description=lo.description.strip(), qty=_num(qty),
-                      uom=normalize_uom(uom) if uom else None, source=source)
+        uom = normalize_uom(uom) if uom else None
+        if uom is None:
+            uom = uom_from_qty_text(raw, qty)
+        li = LineItem(raw=raw.strip(), description=description, qty=_num(qty), uom=uom, source=source)
         attrs = getattr(lo, "attrs", None)  # present only when the matcher is enabled
         if attrs is not None:
-            m = match_line(attrs, f"{lo.description} {raw}")
+            m = match_line(attrs, f"{description} {raw}")
             li.sku, li.match, li.match_reason, li.candidates = m.sku, m.match, m.reason, m.candidates or None
         items.append(li)
     if dropped:

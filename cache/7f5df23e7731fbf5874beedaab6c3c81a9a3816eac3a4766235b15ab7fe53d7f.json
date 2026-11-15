@@ -1,0 +1,21 @@
+{
+ "key": "7f5df23e7731fbf5874beedaab6c3c81a9a3816eac3a4766235b15ab7fe53d7f",
+ "email_id": "E013",
+ "model": "gpt-4.1",
+ "prompt_version": "p8",
+ "created": "2026-11-15T19:45:39+00:00",
+ "usage": {
+  "input_tokens": 4581,
+  "cached_input_tokens": 2944,
+  "output_tokens": 105
+ },
+ "cost_usd": 0.005586,
+ "response": {
+  "reasoning": "This is an automated delivery failure notification from our own mail server, indicating that an email sent by Ridgeline RFQ Desk to a supplier (sales@ironbridgevalve.example) could not be delivered. No one is asking us for a quote or status; this is a system message. The attached original message is our own outgoing RFQ, not a customer request to us.",
+  "classification": "auto_reply",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

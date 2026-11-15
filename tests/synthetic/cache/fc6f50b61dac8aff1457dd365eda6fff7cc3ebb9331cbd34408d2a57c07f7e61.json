@@ -1,0 +1,21 @@
+{
+ "key": "fc6f50b61dac8aff1457dd365eda6fff7cc3ebb9331cbd34408d2a57c07f7e61",
+ "email_id": "S08",
+ "model": "gpt-4.1",
+ "prompt_version": "p8",
+ "created": "2026-11-15T19:47:59+00:00",
+ "usage": {
+  "input_tokens": 4193,
+  "cached_input_tokens": 2944,
+  "output_tokens": 96
+ },
+ "cost_usd": 0.004738,
+ "response": {
+  "reasoning": "Tim Arceneaux from Pelican Plant Services is sending a purchase order to Ridgeline, referencing our quote Q-26-05120. He is instructing us to process the order and ship to their Sulphur yard. No items are listed in this message; the items are as quoted in Q-26-05120.",
+  "classification": "purchase_order",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

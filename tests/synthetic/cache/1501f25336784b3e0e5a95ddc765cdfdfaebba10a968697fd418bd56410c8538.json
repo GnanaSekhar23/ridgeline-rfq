@@ -1,0 +1,21 @@
+{
+ "key": "1501f25336784b3e0e5a95ddc765cdfdfaebba10a968697fd418bd56410c8538",
+ "email_id": "S02",
+ "model": "gpt-4.1",
+ "prompt_version": "p8",
+ "created": "2026-11-15T19:47:44+00:00",
+ "usage": {
+  "input_tokens": 4194,
+  "cached_input_tokens": 2944,
+  "output_tokens": 97
+ },
+ "cost_usd": 0.004748,
+ "response": {
+  "reasoning": "Ray from Bayou Mechanical is writing to Ridgeline's RFQ desk requesting pricing. He asks for the same items as his last order, but with double the quantity for each item. No list of items is provided in this email.",
+  "classification": "rfq",
+  "needs_review": true,
+  "review_reason": "The items requested are only identified by reference to a previous order, which is not included or specified in this email.",
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

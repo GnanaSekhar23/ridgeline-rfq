@@ -1,0 +1,38 @@
+{
+ "key": "ed8d5c13fd34de6cb0c0159c82eaa0805b192325405ccbb9a335c301f20dbe43",
+ "email_id": "E023",
+ "model": "gpt-4.1",
+ "prompt_version": "p8",
+ "created": "2026-11-15T19:46:47+00:00",
+ "usage": {
+  "input_tokens": 5004,
+  "cached_input_tokens": 0,
+  "output_tokens": 242
+ },
+ "cost_usd": 0.011944,
+ "response": {
+  "reasoning": "A customer (Walt Kessler) is writing to Ridgeline's RFQ desk asking for a quote on 3 valves, specifying they should match the one shown in the attached photo. The image is a nameplate with all relevant specs for the valve.",
+  "classification": "rfq",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": null,
+    "image": "IMG_4417.jpg",
+    "raw": "HALVORSEN VALVE CO. FORGED STEEL GATE VALVE MODEL: HV-800-FGS SIZE: 2 IN CLASS: 800 LB ENDS: NPT BODY: A105 TRIM: 13CR",
+    "description": "Forged steel gate valve, Halvorsen Valve Co., model HV-800-FGS, size 2 in, class 800 lb, NPT ends, body A105, trim 13CR, as shown in attached photo, for dryer line replacement.",
+    "qty": 3.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "gate valve",
+     "size": "2",
+     "spec": "800#",
+     "material": "A105",
+     "ends": "THD",
+     "extra": "13cr"
+    }
+   }
+  ]
+ }
+}

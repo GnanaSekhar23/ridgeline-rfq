@@ -28,7 +28,7 @@ def _ans(kind, lines, **kw):
 
 EMAIL = Email(id="T", headers={}, body="")
 BODY = Doc(source="body", kind="body", lines=[
-    Line("body!B1", "Please quote: 10 of the 1/2 90s and 6 tees same size"),
+    Line("body!B1", "Pricing please: 14 of the 1 inch 45s and 5 unions same size"),
     Line("body!B2", "4 ea 2in gate valve"),
     Line("body!Q1", "8 ea 3in cap"),
 ])
@@ -56,11 +56,11 @@ def test_unit_inside_qty_cell() -> None:
 
 def test_fragment_kept_when_grounded_else_whole_line() -> None:
     r = build_result(EMAIL, DOCS, _ans("rfq", [
-        _ln("body!B1", "10 of the 1/2 90s", qty=10),
-        _ln("body!B1", "6 tees same size", qty=6),
+        _ln("body!B1", "14 of the 1 inch 45s", qty=14),
+        _ln("body!B1", "5 unions same size", qty=5),
         _ln("body!B2", "four gate valves 2 inch", qty=4, uom="EA"),  # not a fragment of the line
     ]))
-    assert [li.raw for li in r.line_items] == ["10 of the 1/2 90s", "6 tees same size", "4 ea 2in gate valve"]
+    assert [li.raw for li in r.line_items] == ["14 of the 1 inch 45s", "5 unions same size", "4 ea 2in gate valve"]
 
 
 def test_unknown_struck_and_quoted_rows_dropped_for_rfq() -> None:
@@ -188,3 +188,101 @@ def test_matcher_runs_only_when_lines_carry_attrs() -> None:
 
 def test_normalize_uom() -> None:
     assert [normalize_uom(x) for x in ("jts", "Feet", "rolls", "PR", "bogus", None)] == ["EA", "FT", "RL", "PR", None, None]
+
+
+# ---------------------------------------------------------------- image raw + overridden defaults
+from rfq.models import ImagePart  # noqa: E402
+from rfq.validate import drop_overridden_defaults, identifying_raw  # noqa: E402
+
+PHOTO = Doc(source="photo.jpg", kind="image", images=[ImagePart("photo.jpg", b"x", 1, 1)])
+
+
+def test_identifying_raw_prefers_a_model_or_part_number_line() -> None:
+    assert identifying_raw("ACME PUMPS\nCENTRIFUGAL PUMP\nP/N: CX-4410\n3 HP 460V") == "P/N: CX-4410"
+    assert identifying_raw("Zephyr Mfg\nCat# ZB-77Q ball valve\nSize 1in") == "Cat# ZB-77Q ball valve"
+    flat = "NORDWAY CO. BUTTERFLY VALVE MODEL: BV-300-X SIZE: 4 IN BODY: CI DISC: SS"
+    assert identifying_raw(flat) == "MODEL: BV-300-X"
+
+
+def test_identifying_raw_falls_back_to_first_code_then_leaves_it() -> None:
+    assert identifying_raw("Brightline Fittings\nKX-210 coupling 2in\nKX-220 coupling 3in") == "KX-210 coupling 2in"
+    assert identifying_raw("blue handle valve\n2IN threaded") == "blue handle valve\n2IN threaded"  # sizes aren't codes
+    for one_row in ("6 - 4in blind flg", "1 | GV-200 gate valve | Note: rush, Ref: job 12"):
+        assert identifying_raw(one_row) == one_row  # one scanned row is never cut apart
+
+
+def test_image_line_raw_trimmed_and_full_reading_kept_in_description() -> None:
+    raw = "NORDWAY CO.\nBUTTERFLY VALVE\nMODEL: BV-300-X\nSIZE: 4 IN"
+    r = build_result(EMAIL, [BODY, PHOTO], _ans("rfq", [
+        _ln(None, raw, desc="butterfly valve, model BV-300-X, 4 in", qty=2, image="photo.jpg")]))
+    li = r.line_items[0]
+    assert li.raw == "MODEL: BV-300-X"
+    assert "NORDWAY" in li.description and "BV-300-X" in li.description
+
+
+def test_row_lines_raw_is_never_trimmed() -> None:
+    doc = Doc(source="body", kind="body", lines=[Line("body!B1", "Model: QX-12\nSize: 2 in")])
+    r = build_result(EMAIL, [doc], _ans("rfq", [_ln("body!B1", "Model: QX-12\nSize: 2 in", qty=1)]))
+    assert r.line_items[0].raw == "Model: QX-12\nSize: 2 in"
+
+
+def test_conflicting_banner_schedule_and_class_removed_own_value_kept() -> None:
+    desc = "ALL NIPPLES SCH 160 TBE A106 UNLESS NOTED. Nipple, 1in x 4in, SCH XS"
+    assert drop_overridden_defaults(desc, "7 | EA | Nipple, 1in x 4in, SCH XS") == \
+        "ALL NIPPLES TBE A106 UNLESS NOTED. Nipple, 1in x 4in, SCH XS"
+    assert drop_overridden_defaults("weld neck flange, 150# RF (default class 150), 300#",
+                                    "2 ea 3in WN flange 300#") == "weld neck flange, RF (default), 300#"
+    # a reducer stating two schedules keeps both
+    assert drop_overridden_defaults("reducer sch 40 x sch 80, sch 10 default",
+                                    "reducer SCH 40 x SCH 80") == "reducer sch 40 x sch 80, default"
+
+
+def test_description_without_a_conflict_is_untouched() -> None:
+    for desc, raw in [
+        ("tee, SCH 40, butt weld", "6 tees same"),       # the line states no schedule itself
+        ("tee, SCH 40, butt weld", "6 tee SCH 40"),      # same value
+        ("flange, class 300 RF", "4 ea 4in flange"),     # the line states no class
+        ("gate valve 800#, SCH 80 nipple", "2 gate valve 800#"),  # class agrees; no own schedule
+    ]:
+        assert drop_overridden_defaults(desc, raw) == desc
+    assert drop_overridden_defaults("50 lb bag of cement, 300 psi", "3 bag cement 150#") == \
+        "50 lb bag of cement, 300 psi"  # 50 lb is a weight, 300 psi is not a class mark
+
+
+def test_table_row_with_banner_default_gets_line_value_only() -> None:
+    doc = Doc(source="bom.xlsx", kind="xlsx", lines=[
+        Line("bom.xlsx!S!R1", "Item | Qty | UOM | Desc", cells=["Item", "Qty", "UOM", "Desc"]),
+        Line("bom.xlsx!S!R2", "1 | 2 | EA | Cap SCH 80", cells=["1", "2", "EA", "Cap SCH 80"]),
+    ])
+    r = build_result(EMAIL, [doc], _ans("rfq", [
+        _ln("bom.xlsx!S!R2", "Cap SCH 80", desc="ALL SCH 40 BW. cap, SCH 80", qty=2)]))
+    assert r.line_items[0].description == "ALL BW. cap, SCH 80"
+
+
+# ---------------------------------------------------------------- unit from the quantity's own words
+from rfq.validate import uom_from_qty_text  # noqa: E402
+
+
+def test_uom_from_qty_text_reads_the_word_after_the_quantity() -> None:
+    assert uom_from_qty_text('7 jts - 3" black pipe', 7) == "EA"
+    assert uom_from_qty_text("need 9 lengths of 1-1/4 conduit", 9) == "EA"
+    assert uom_from_qty_text("15 pcs 3/8 washers", 15) == "EA"
+    assert uom_from_qty_text("3 lgths 2in galv", 3) == "EA"
+    assert uom_from_qty_text("250 feet of 1/2 copper tube", 250) == "FT"
+    assert uom_from_qty_text("80' of 3/4 hose", 80) == "FT"
+    assert uom_from_qty_text("45 ft 1in poly", 45) == "FT"
+
+
+def test_uom_from_qty_text_ignores_lengths_sizes_and_unitless_lines() -> None:
+    assert uom_from_qty_text("4 - 5/8 x 6 ft threaded rod", 4) is None  # 6 ft is a length, not qty
+    assert uom_from_qty_text("2 - 3/4 x 10' sticks", 2) is None            # 10' is a length, not qty
+    assert uom_from_qty_text("11 hex plugs 1in", 11) is None               # no unit stated
+    assert uom_from_qty_text("some 2' nipples", None) is None              # no qty
+
+
+def test_unit_filled_only_when_missing() -> None:
+    doc = Doc(source="body", kind="body", lines=[Line("body!B1", '7 jts - 3" black pipe'),
+                                                 Line("body!B2", "120 ft 1in poly")])
+    r = build_result(EMAIL, [doc], _ans("rfq", [_ln("body!B1", '7 jts - 3" black pipe', qty=7),
+                                                _ln("body!B2", "120 ft 1in poly", qty=120, uom="EA")]))
+    assert [li.uom for li in r.line_items] == ["EA", "EA"]  # filled when null; a uom the model gave is kept

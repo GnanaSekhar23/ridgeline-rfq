@@ -6,7 +6,8 @@
      is exact, except a less specific material ("GALV" ⊆ "MI GALV") and threaded = TBE.
      "other" = stated but not a value we stock -> nothing can match.
   2b. Still several parts: an attribute the model left null may narrow them by a catalog value the
-     customer's text supports (sheet name "SCH 80 SMLS" -> A106B SMLS), only if a part survives.
+     customer's text supports (e.g. a heading or sheet name stating the material), only if a
+     part survives.
   3. 0 parts -> not_in_catalog; 1 -> matched; >1 -> ambiguous (the customer must choose).
 An attribute the model filled in without support in the customer's text is ignored (logged in
 the reason): that can only widen the candidate set (ambiguous), never force a wrong part.
@@ -54,7 +55,7 @@ def _agrees(attr: str, value: str, p: Part) -> bool:
 
 def _narrow_by_text(cands: list[Part], given: dict[str, str], text: str) -> tuple[list[Part], list[str]]:
     """Several parts left: for an attribute the model left null, keep the parts whose value the
-    customer's own text supports (e.g. a sheet name 'SCH 80 SMLS' -> material A106B SMLS).
+    customer's own text supports (e.g. a sheet name or heading that states the material).
     Only narrows when at least one part survives; never adds an attribute the text lacks."""
     notes = []
     for a in ATTRS:

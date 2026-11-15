@@ -1,0 +1,118 @@
+{
+ "key": "efec783e99bb9daa51296c373a906bd9ab70e033ecf42e4121aea169b02d3cf5",
+ "email_id": "E016",
+ "model": "gpt-4.1",
+ "prompt_version": "p8",
+ "created": "2026-11-15T19:45:52+00:00",
+ "usage": {
+  "input_tokens": 4547,
+  "cached_input_tokens": 2944,
+  "output_tokens": 829
+ },
+ "cost_usd": 0.01131,
+ "response": {
+  "reasoning": "Marcus Doyle, one of our reps, is forwarding a request from Priya Raman at Hollis Mechanical to the RFQ desk. Priya is asking us to quote several items for a condensate return job, with a material list attached as a CSV. She needs pricing and lead times for the listed items by Friday.",
+  "classification": "rfq",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": "HM-7716_material_list.csv!R2",
+    "image": null,
+    "raw": "60 | FT | 1-1/2\" | Pipe, SCH 80, A106B SMLS, PE",
+    "description": "Pipe, SCH 80, A106B SMLS, PE, 1-1/2\", 60 FT, for HM-7716 condensate return job",
+    "qty": 60.0,
+    "uom": "FT",
+    "attrs": {
+     "product": "pipe",
+     "size": "1-1/2",
+     "spec": "SCH 80",
+     "material": "A106B SMLS",
+     "ends": "PE",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "HM-7716_material_list.csv!R3",
+    "image": null,
+    "raw": "12 | EA | 1-1/2\" | 90 elbow, SW, 3000#, A105",
+    "description": "90 elbow, SW, 3000#, A105, 1-1/2\", 12 EA, for HM-7716 condensate return job",
+    "qty": 12.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "90 elbow",
+     "size": "1-1/2",
+     "spec": "3000#",
+     "material": "A105",
+     "ends": "SW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "HM-7716_material_list.csv!R4",
+    "image": null,
+    "raw": "6 | EA | 1-1/2\" | Tee, SW, 3000#, A105",
+    "description": "Tee, SW, 3000#, A105, 1-1/2\", 6 EA, for HM-7716 condensate return job",
+    "qty": 6.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "tee",
+     "size": "1-1/2",
+     "spec": "3000#",
+     "material": "A105",
+     "ends": "SW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "HM-7716_material_list.csv!R5",
+    "image": null,
+    "raw": "8 | EA | 1-1/2\" | Union, SW, 3000#, A105",
+    "description": "Union, SW, 3000#, A105, 1-1/2\", 8 EA, for HM-7716 condensate return job",
+    "qty": 8.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "union",
+     "size": "1-1/2",
+     "spec": "3000#",
+     "material": "A105",
+     "ends": "SW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "HM-7716_material_list.csv!R6",
+    "image": null,
+    "raw": "4 | EA | 1-1/2\" | Gate valve, 800#, SW, A105",
+    "description": "Gate valve, 800#, SW, A105, 1-1/2\", 4 EA, for HM-7716 condensate return job",
+    "qty": 4.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "gate valve",
+     "size": "1-1/2",
+     "spec": "800#",
+     "material": "A105",
+     "ends": "SW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "HM-7716_material_list.csv!R7",
+    "image": null,
+    "raw": "2 | EA | 1-1/2\" | Y-strainer, 800#, SW, A105",
+    "description": "Y-strainer, 800#, SW, A105, 1-1/2\", 2 EA, for HM-7716 condensate return job",
+    "qty": 2.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "y-strainer",
+     "size": "1-1/2",
+     "spec": "800#",
+     "material": "A105",
+     "ends": "SW",
+     "extra": null
+    }
+   }
+  ]
+ }
+}

@@ -51,7 +51,7 @@ our rep forwards a customer's email.
 - QUOTED HISTORY (body!Q..): earlier messages. CONTEXT ONLY: they were handled when they arrived. \
 Take lines from it only (a) for rfq_revision, to give the complete order as now intended, and \
 (b) for purchase_order, when the current message commits to items listed there \
-("go ahead with items 1, 2 and 4" -> exactly those items).
+("go ahead with lines A and C" -> exactly those items).
 - ATTACHMENT sections: spreadsheets (one line per row, cells joined by " | "), PDFs, Word \
 documents, CSVs, attached emails. Notes under a heading tell you about hidden sheets, merged \
 cells, comments and anything that could not be read.
@@ -82,11 +82,11 @@ the email: the line's own words plus EVERY heading, note, column header, sheet n
 subject line or earlier line that applies to it (e.g. a section heading "ALL PIPE SCH 40" applies \
 to the rows under it; a document field "Material: X" applies to every row). Do not add context \
 that belongs to a different section. Never invent a spec the email doesn't give.
-- Overrides: a heading or banner often sets a default ("ALL FITTINGS SCH 40 UNLESS NOTED"). \
-When a line states its own value for that attribute ("... SCH 80"), the description uses the \
+- Overrides: a heading or banner often sets a default ("ALL FLANGES 150# RF UNLESS NOTED"). \
+When a line states its own value for that attribute ("..., 300#"), the description uses the \
 line's value and must NOT mention the overridden default anywhere. Compose the spec from the \
-pieces that apply (e.g. 6" x 4" concentric reducer, BW, SCH 80, A234 WPB); never paste \
-the banner text into the description.
+pieces that apply (e.g. 3" slip-on flange, 300#, RF); never paste the banner text into the \
+description.
 - qty: the number as the customer stated it, not converted. A spelled-out number is a number. \
 A vague amount ("a couple", "some", "enough for the job") is null — that is NOT a reason for \
 needs_review; the item is still fully identified. A size, schedule, length, \
@@ -99,7 +99,7 @@ items (from quoted history) plus changes, minus removals; a changed line uses it
 
 ## Several visible sheets in one workbook
 Decide for each such workbook, and record it in sheet_decisions:
-- sections: the sheets are parts of one order (e.g. pipe on one tab, fittings on another) -> use all.
+- sections: the sheets are parts of one order (e.g. one tab per area or system of the job) -> use all.
 - versions: the sheets are revisions of the same list -> use only the newest, judged by sheet \
 names (Rev B > Rev A, "final", "current", "old"), dates, the file name, or what the email says.
 - unclear: you cannot tell -> still return your best lines, and set needs_review with the reason.

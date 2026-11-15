@@ -1,0 +1,159 @@
+{
+ "key": "8b1025cdae1220fdbed1aa9c8134ac2b6a20e4a3414c639d33a444ef963ddbd4",
+ "email_id": "E005",
+ "model": "gpt-4.1",
+ "prompt_version": "p8",
+ "created": "2026-11-15T19:44:24+00:00",
+ "usage": {
+  "input_tokens": 4687,
+  "cached_input_tokens": 2944,
+  "output_tokens": 1329
+ },
+ "cost_usd": 0.01559,
+ "response": {
+  "reasoning": "Priya Raman from Gulf Terminals is writing to Ridgeline's RFQ desk, requesting a quote for items listed in the attached spreadsheet for Tank 14 piping modifications. The attachment contains a clear list of fittings, reducers, tees, and caps with quantities and specifications. All items are to be quoted as per the details in the 'Rev B' sheet, with a general note that all fittings are BW SCH 40 A234 WPB unless otherwise noted.",
+  "classification": "rfq",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [
+   {
+    "file": "Tank14_Piping_RevB.xlsx",
+    "relation": "versions",
+    "sheets_used": [
+     "Rev B"
+    ],
+    "why": "Sheet 'Rev B' is the latest; 'Rev A (old)' is hidden and marked as old."
+   }
+  ],
+  "line_items": [
+   {
+    "row_id": "Tank14_Piping_RevB.xlsx!Rev B!R5",
+    "image": null,
+    "raw": "1 | 12 | EA | 6\" | 90 LR elbow",
+    "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 90 ELBOWS. 1 | 12 | EA | 6\" | 90 LR elbow",
+    "qty": 12.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "90 elbow",
+     "size": "6",
+     "spec": "SCH 40",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": "lr"
+    }
+   },
+   {
+    "row_id": "Tank14_Piping_RevB.xlsx!Rev B!R6",
+    "image": null,
+    "raw": "2 | 6 | EA | 6\" | 45 elbow",
+    "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 90 ELBOWS. 2 | 6 | EA | 6\" | 45 elbow",
+    "qty": 6.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "45 elbow",
+     "size": "6",
+     "spec": "SCH 40",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "Tank14_Piping_RevB.xlsx!Rev B!R7",
+    "image": null,
+    "raw": "3 | 4 | EA | 8\" | 90 LR elbow",
+    "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. 90 ELBOWS. 3 | 4 | EA | 8\" | 90 LR elbow",
+    "qty": 4.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "90 elbow",
+     "size": "8",
+     "spec": "SCH 40",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": "lr"
+    }
+   },
+   {
+    "row_id": "Tank14_Piping_RevB.xlsx!Rev B!R9",
+    "image": null,
+    "raw": "4 | 4 | EA | 6\" | Tee, straight",
+    "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. TEES & REDUCERS. 4 | 4 | EA | 6\" | Tee, straight",
+    "qty": 4.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "tee",
+     "size": "6",
+     "spec": "SCH 40",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "Tank14_Piping_RevB.xlsx!Rev B!R10",
+    "image": null,
+    "raw": "5 | 3 | EA | 8\" x 6\" | Reducer, concentric",
+    "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. TEES & REDUCERS. 5 | 3 | EA | 8\" x 6\" | Reducer, concentric",
+    "qty": 3.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "concentric reducer",
+     "size": "8 x 6",
+     "spec": "SCH 40",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "Tank14_Piping_RevB.xlsx!Rev B!R11",
+    "image": null,
+    "raw": "6 | 2 | EA | 6\" x 4\" | Reducer, concentric, SCH 80",
+    "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. TEES & REDUCERS. 6 | 2 | EA | 6\" x 4\" | Reducer, concentric, SCH 80",
+    "qty": 2.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "concentric reducer",
+     "size": "6 x 4",
+     "spec": "SCH 80",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "Tank14_Piping_RevB.xlsx!Rev B!R13",
+    "image": null,
+    "raw": "7 | 2 | EA | 8\" | Cap",
+    "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. CAPS. 7 | 2 | EA | 8\" | Cap",
+    "qty": 2.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "cap",
+     "size": "8",
+     "spec": "SCH 40",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "Tank14_Piping_RevB.xlsx!Rev B!R14",
+    "image": null,
+    "raw": "8 | 2 | EA | 6\" | Cap",
+    "description": "Gulf Terminals - Tank 14 Piping Modifications - Bid 26-0412. ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED. CAPS. 8 | 2 | EA | 6\" | Cap",
+    "qty": 2.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "cap",
+     "size": "6",
+     "spec": "SCH 40",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": null
+    }
+   }
+  ]
+ }
+}
