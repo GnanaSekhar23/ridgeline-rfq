@@ -1,17 +1,17 @@
 {
- "key": "c599082748ad88d3981b23196c57e2fd484dd95bc26f677c580f8ca39d1e07f7",
+ "key": "a2b20573b3c0be93eba46a82f7ff620b6e1b9d6bc126be4703c06fb602fdc99a",
  "email_id": "E024",
  "model": "gpt-4.1",
- "prompt_version": "p2",
- "created": "2026-11-15T15:05:52+00:00",
+ "prompt_version": "p3",
+ "created": "2026-11-15T15:20:48+00:00",
  "usage": {
-  "input_tokens": 2441,
+  "input_tokens": 2676,
   "cached_input_tokens": 1920,
-  "output_tokens": 433
+  "output_tokens": 426
  },
- "cost_usd": 0.005466,
+ "cost_usd": 0.00588,
  "response": {
-  "reasoning": "A customer (Ben Szymanski from Oak Hollow Brewing) is writing to Ridgeline's RFQ inbox requesting a quote for several stainless steel threaded fittings for a glycol line. The request is clearly listed in the body of the email as a table. All items are specified with material, pressure rating, and size.",
+  "reasoning": "A customer, Ben Szymanski from Oak Hollow Brewing Co., is writing to Ridgeline's RFQ inbox requesting a quote for several stainless steel threaded fittings for a glycol line. The items are listed in a table in the body of the email. He specifies material, connection type, and pressure class for all items.",
   "classification": "rfq",
   "needs_review": false,
   "review_reason": null,
@@ -21,7 +21,7 @@
     "row_id": "body!B5",
     "image": null,
     "raw": "10 | 90° elbow | 1/2″",
-    "description": "316 SS – THREADED – 3000# 90° elbow 1/2″",
+    "description": "316 SS, threaded, 3000#, 90° elbow, 1/2″",
     "qty": 10.0,
     "uom": null
    },
@@ -29,7 +29,7 @@
     "row_id": "body!B6",
     "image": null,
     "raw": "6 | 45° elbow | 1/2″",
-    "description": "316 SS – THREADED – 3000# 45° elbow 1/2″",
+    "description": "316 SS, threaded, 3000#, 45° elbow, 1/2″",
     "qty": 6.0,
     "uom": null
    },
@@ -37,7 +37,7 @@
     "row_id": "body!B7",
     "image": null,
     "raw": "8 | Tee | 3/4″",
-    "description": "316 SS – THREADED – 3000# Tee 3/4″",
+    "description": "316 SS, threaded, 3000#, tee, 3/4″",
     "qty": 8.0,
     "uom": null
    },
@@ -45,7 +45,7 @@
     "row_id": "body!B8",
     "image": null,
     "raw": "12 | Coupling, full | 1/2″",
-    "description": "316 SS – THREADED – 3000# Coupling, full 1/2″",
+    "description": "316 SS, threaded, 3000#, full coupling, 1/2″",
     "qty": 12.0,
     "uom": null
    },
@@ -53,7 +53,7 @@
     "row_id": "body!B9",
     "image": null,
     "raw": "4 | Union | 1/2″",
-    "description": "316 SS – THREADED – 3000# Union 1/2″",
+    "description": "316 SS, threaded, 3000#, union, 1/2″",
     "qty": 4.0,
     "uom": null
    },
@@ -61,7 +61,7 @@
     "row_id": "body!B10",
     "image": null,
     "raw": "6 | Hex head plug | 3/4″",
-    "description": "316 SS – THREADED – 3000# Hex head plug 3/4″",
+    "description": "316 SS, threaded, 3000#, hex head plug, 3/4″",
     "qty": 6.0,
     "uom": null
    }

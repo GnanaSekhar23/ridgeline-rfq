@@ -1,20 +1,20 @@
 {
- "key": "3c2245862bd207908d1dfc391d35eea3ec627d050e1291b0bb03f140734f4ef9",
+ "key": "2f4f0a837277b921e0673fb10af05a97c405fd114e3e29f7b17b2e9005cd8e2e",
  "email_id": "E002",
  "model": "gpt-4.1",
- "prompt_version": "p2",
- "created": "2026-11-15T15:03:33+00:00",
+ "prompt_version": "p3",
+ "created": "2026-11-15T15:18:43+00:00",
  "usage": {
-  "input_tokens": 2323,
-  "cached_input_tokens": 1920,
-  "output_tokens": 350
+  "input_tokens": 2558,
+  "cached_input_tokens": 0,
+  "output_tokens": 305
  },
- "cost_usd": 0.004566,
+ "cost_usd": 0.007556,
  "response": {
-  "reasoning": "A customer, Danny Ruiz, is writing to Ridgeline's RFQ desk requesting pricing and availability for several 316 stainless steel threaded fittings. He specifies quantities and sizes for elbows, tees, caps, couplings, and close nipples. He also mentions a delivery deadline but does not provide part numbers or detailed specs beyond size and type.",
+  "reasoning": "A customer (Danny Ruiz) is writing to Ridgeline's RFQ inbox requesting pricing and availability for several 316 stainless steel threaded fittings. He specifies quantities and sizes for most items, with one item having a vague quantity. He also mentions a delivery deadline.",
   "classification": "rfq",
-  "needs_review": true,
-  "review_reason": "The quantity for 'caps' is vague ('a couple'), and the material (316 SS) and thread type are implied but not explicitly stated for each item.",
+  "needs_review": false,
+  "review_reason": null,
   "sheet_decisions": [],
   "line_items": [
    {

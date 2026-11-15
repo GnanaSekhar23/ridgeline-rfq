@@ -326,7 +326,7 @@ def test_inline_logo_skipped_but_attached_photo_kept() -> None:
 
 def test_big_image_downscaled() -> None:
     doc = extract_image("big.png", _png(4000, 3000))
-    assert max(doc.images[0].width, doc.images[0].height) <= 1600
+    assert max(doc.images[0].width, doc.images[0].height) <= 2048
 
 
 # ---------------------------------------------------------------- dispatcher

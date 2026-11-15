@@ -1,17 +1,17 @@
 {
- "key": "3e8056dc33b0e5b7438c32a9dd8bc38fb37e20cffe3a7f114c87c71f005f2214",
+ "key": "93d6b1c91aae0cade00c0cc6fa22579387d81712d2a3d6e4d9cf835d12bcd38e",
  "email_id": "E009",
  "model": "gpt-4.1",
- "prompt_version": "p2",
- "created": "2026-11-15T15:04:40+00:00",
+ "prompt_version": "p3",
+ "created": "2026-11-15T15:19:39+00:00",
  "usage": {
-  "input_tokens": 3892,
+  "input_tokens": 4127,
   "cached_input_tokens": 1792,
-  "output_tokens": 2385
+  "output_tokens": 2557
  },
- "cost_usd": 0.024176,
+ "cost_usd": 0.026022,
  "response": {
-  "reasoning": "A customer, Rae Okonkwo from Sable Creek Manufacturing, is writing to Ridgeline's RFQ desk requesting pricing for a list of items. The request is provided as a scanned RFQ form attached as images. The customer needs prices by Tuesday.",
+  "reasoning": "A customer, Rae Okonkwo from Sable Creek Manufacturing, is writing to Ridgeline's RFQ desk requesting pricing for a list of items attached as a scanned RFQ form. The request is for firm prices and lead times by Tuesday. The items are clearly listed in the attached images.",
   "classification": "rfq",
   "needs_review": false,
   "review_reason": null,
@@ -60,9 +60,9 @@
    {
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "6 | 6 | EA | 6\" | WN 150# RF",
-    "description": "FLANGES: 6 EA 6\" WN 150# RF",
-    "qty": 6.0,
+    "raw": "6 | 4 | EA | 6\" | WN 150# RF",
+    "description": "FLANGES: 4 EA 6\" WN 150# RF",
+    "qty": 4.0,
     "uom": "EA"
    },
    {
@@ -84,31 +84,39 @@
    {
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "9 | 4 | EA | 6\" | SO 150# RF",
-    "description": "FLANGES: 4 EA 6\" SO 150# RF",
+    "raw": "9 | 4 | EA | 2\" | SO 150# RF",
+    "description": "FLANGES: 4 EA 2\" SO 150# RF",
     "qty": 4.0,
     "uom": "EA"
    },
    {
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "10 | 2 | EA | 8\" | SO 150# RF",
-    "description": "FLANGES: 2 EA 8\" SO 150# RF",
+    "raw": "10 | 4 | EA | 3\" | SO 150# RF",
+    "description": "FLANGES: 4 EA 3\" SO 150# RF",
+    "qty": 4.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": null,
+    "image": "Scan_RFQ_SC-4418.pdf page 1",
+    "raw": "11 | 4 | EA | 4\" | SO 150# RF",
+    "description": "FLANGES: 4 EA 4\" SO 150# RF",
+    "qty": 4.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": null,
+    "image": "Scan_RFQ_SC-4418.pdf page 1",
+    "raw": "12 | 2 | EA | 6\" | SO 150# RF",
+    "description": "FLANGES: 2 EA 6\" SO 150# RF",
     "qty": 2.0,
     "uom": "EA"
    },
    {
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "11 | 2 | EA | 10\" | SO 150# RF",
-    "description": "FLANGES: 2 EA 10\" SO 150# RF",
-    "qty": 2.0,
-    "uom": "EA"
-   },
-   {
-    "row_id": null,
-    "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "12 | 2 | EA | 4\" | BL 150# RF",
+    "raw": "13 | 2 | EA | 4\" | BL 150# RF",
     "description": "FLANGES: 2 EA 4\" BL 150# RF",
     "qty": 2.0,
     "uom": "EA"
@@ -116,16 +124,8 @@
    {
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "13 | 2 | EA | 6\" | BL 150# RF",
+    "raw": "14 | 2 | EA | 6\" | BL 150# RF",
     "description": "FLANGES: 2 EA 6\" BL 150# RF",
-    "qty": 2.0,
-    "uom": "EA"
-   },
-   {
-    "row_id": null,
-    "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "14 | 2 | EA | 8\" | BL 150# RF",
-    "description": "FLANGES: 2 EA 8\" BL 150# RF",
     "qty": 2.0,
     "uom": "EA"
    },
@@ -156,23 +156,31 @@
    {
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "18 | 16 | EA | 4\" | Spiral wound, 304/graphite, 150#",
-    "description": "GASKETS: 16 EA 4\" Spiral wound, 304/graphite, 150#",
+    "raw": "18 | 16 | EA | 3\" | Spiral wound, 304/graphite, 150#",
+    "description": "GASKETS: 16 EA 3\" Spiral wound, 304/graphite, 150#",
     "qty": 16.0,
     "uom": "EA"
    },
    {
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "19 | 16 | EA | 6\" | Spiral wound, 304/graphite, 150#",
-    "description": "GASKETS: 16 EA 6\" Spiral wound, 304/graphite, 150#",
-    "qty": 16.0,
+    "raw": "19 | 12 | EA | 4\" | Spiral wound, 304/graphite, 150#",
+    "description": "GASKETS: 12 EA 4\" Spiral wound, 304/graphite, 150#",
+    "qty": 12.0,
     "uom": "EA"
    },
    {
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "20 | 4 | EA | 8\" | Spiral wound, 304/graphite, 150#",
+    "raw": "20 | 8 | EA | 6\" | Spiral wound, 304/graphite, 150#",
+    "description": "GASKETS: 8 EA 6\" Spiral wound, 304/graphite, 150#",
+    "qty": 8.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": null,
+    "image": "Scan_RFQ_SC-4418.pdf page 1",
+    "raw": "21 | 4 | EA | 8\" | Spiral wound, 304/graphite, 150#",
     "description": "GASKETS: 4 EA 8\" Spiral wound, 304/graphite, 150#",
     "qty": 4.0,
     "uom": "EA"
@@ -180,48 +188,56 @@
    {
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 1",
-    "raw": "21 | 8 | EA | 10\" | Spiral wound, 304/graphite, 150#",
-    "description": "GASKETS: 8 EA 10\" Spiral wound, 304/graphite, 150#",
-    "qty": 8.0,
+    "raw": "22 | 2 | EA | 10\" | Spiral wound, 304/graphite, 150#",
+    "description": "GASKETS: 2 EA 10\" Spiral wound, 304/graphite, 150#",
+    "qty": 2.0,
     "uom": "EA"
    },
    {
     "row_id": null,
-    "image": "Scan_RFQ_SC-4418.pdf page 2",
+    "image": "Scan_RFQ_SC-4418.pdf page 1",
     "raw": "23 | 32 | EA | 1/2\" x 3\" | B7 w/ 2 heavy hex nuts",
-    "description": "STUD BOLTS: 32 EA 1/2\" x 3\" B7 w/ 2 heavy hex nuts",
+    "description": "STUD BOLTS: 32 EA 1/2\" x 3\" B7 with 2 heavy hex nuts",
     "qty": 32.0,
     "uom": "EA"
    },
    {
     "row_id": null,
-    "image": "Scan_RFQ_SC-4418.pdf page 2",
+    "image": "Scan_RFQ_SC-4418.pdf page 1",
     "raw": "24 | 24 | EA | 5/8\" x 3-1/4\" | B7 w/ 2 heavy hex nuts",
-    "description": "STUD BOLTS: 24 EA 5/8\" x 3-1/4\" B7 w/ 2 heavy hex nuts",
+    "description": "STUD BOLTS: 24 EA 5/8\" x 3-1/4\" B7 with 2 heavy hex nuts",
     "qty": 24.0,
     "uom": "EA"
    },
    {
     "row_id": null,
-    "image": "Scan_RFQ_SC-4418.pdf page 2",
+    "image": "Scan_RFQ_SC-4418.pdf page 1",
     "raw": "25 | 24 | EA | 5/8\" x 3-1/2\" | B7 w/ 2 heavy hex nuts",
-    "description": "STUD BOLTS: 24 EA 5/8\" x 3-1/2\" B7 w/ 2 heavy hex nuts",
+    "description": "STUD BOLTS: 24 EA 5/8\" x 3-1/2\" B7 with 2 heavy hex nuts",
     "qty": 24.0,
     "uom": "EA"
    },
    {
     "row_id": null,
-    "image": "Scan_RFQ_SC-4418.pdf page 2",
+    "image": "Scan_RFQ_SC-4418.pdf page 1",
     "raw": "26 | 24 | EA | 3/4\" x 4-1/4\" | B7 w/ 2 heavy hex nuts",
-    "description": "STUD BOLTS: 24 EA 3/4\" x 4-1/4\" B7 w/ 2 heavy hex nuts",
+    "description": "STUD BOLTS: 24 EA 3/4\" x 4-1/4\" B7 with 2 heavy hex nuts",
     "qty": 24.0,
     "uom": "EA"
    },
    {
     "row_id": null,
-    "image": "Scan_RFQ_SC-4418.pdf page 2",
-    "raw": "27 | 32 | EA | 3/4\" x 4-1/2\" | B7 w/ 2 heavy hex nuts",
-    "description": "STUD BOLTS: 32 EA 3/4\" x 4-1/2\" B7 w/ 2 heavy hex nuts",
+    "image": "Scan_RFQ_SC-4418.pdf page 1",
+    "raw": "27 | 24 | EA | 3/4\" x 4-1/2\" | B7 w/ 2 heavy hex nuts",
+    "description": "STUD BOLTS: 24 EA 3/4\" x 4-1/2\" B7 with 2 heavy hex nuts",
+    "qty": 24.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": null,
+    "image": "Scan_RFQ_SC-4418.pdf page 1",
+    "raw": "28 | 32 | EA | 3/4\" x 4-1/2\" | B7 w/ 2 heavy hex nuts",
+    "description": "STUD BOLTS: 32 EA 3/4\" x 4-1/2\" B7 with 2 heavy hex nuts",
     "qty": 32.0,
     "uom": "EA"
    },
@@ -229,7 +245,7 @@
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 2",
     "raw": "29 | 16 | EA | 7/8\" x 5\" | B7 w/ 2 heavy hex nuts",
-    "description": "STUD BOLTS: 16 EA 7/8\" x 5\" B7 w/ 2 heavy hex nuts",
+    "description": "STUD BOLTS: 16 EA 7/8\" x 5\" B7 with 2 heavy hex nuts",
     "qty": 16.0,
     "uom": "EA"
    },
@@ -237,7 +253,7 @@
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 2",
     "raw": "30 | 16 | EA | 7/8\" x 5-1/4\" | B7 w/ 2 heavy hex nuts",
-    "description": "STUD BOLTS: 16 EA 7/8\" x 5-1/4\" B7 w/ 2 heavy hex nuts",
+    "description": "STUD BOLTS: 16 EA 7/8\" x 5-1/4\" B7 with 2 heavy hex nuts",
     "qty": 16.0,
     "uom": "EA"
    },
@@ -245,7 +261,7 @@
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 2",
     "raw": "31 | 16 | EA | 1\" x 5-3/4\" | B7 w/ 2 heavy hex nuts",
-    "description": "STUD BOLTS: 16 EA 1\" x 5-3/4\" B7 w/ 2 heavy hex nuts",
+    "description": "STUD BOLTS: 16 EA 1\" x 5-3/4\" B7 with 2 heavy hex nuts",
     "qty": 16.0,
     "uom": "EA"
    },
@@ -253,7 +269,7 @@
     "row_id": null,
     "image": "Scan_RFQ_SC-4418.pdf page 2",
     "raw": "32 | 8 | EA | 1\" x 6\" | B7 w/ 2 heavy hex nuts",
-    "description": "STUD BOLTS: 8 EA 1\" x 6\" B7 w/ 2 heavy hex nuts",
+    "description": "STUD BOLTS: 8 EA 1\" x 6\" B7 with 2 heavy hex nuts",
     "qty": 8.0,
     "uom": "EA"
    }

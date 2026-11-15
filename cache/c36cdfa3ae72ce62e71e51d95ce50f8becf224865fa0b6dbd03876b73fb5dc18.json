@@ -1,17 +1,17 @@
 {
- "key": "c872545457f69f4cab04e0cae2c12f5c51ba387d0cf57416ed67106c129aacbf",
+ "key": "c36cdfa3ae72ce62e71e51d95ce50f8becf224865fa0b6dbd03876b73fb5dc18",
  "email_id": "E001",
  "model": "gpt-4.1",
- "prompt_version": "p2",
- "created": "2026-11-15T15:03:30+00:00",
+ "prompt_version": "p3",
+ "created": "2026-11-15T15:18:40+00:00",
  "usage": {
-  "input_tokens": 2600,
+  "input_tokens": 2835,
   "cached_input_tokens": 0,
-  "output_tokens": 397
+  "output_tokens": 400
  },
- "cost_usd": 0.008376,
+ "cost_usd": 0.00887,
  "response": {
-  "reasoning": "A customer, Walt Pruitt from Pruitt Mechanical Contractors, is writing to Ridgeline's RFQ desk requesting a quote for several pipe and fitting items to be delivered to their Mobile yard. He specifies a reference number and requests pricing and lead time by Wednesday. The items are listed directly in the email body.",
+  "reasoning": "A customer, Walt Pruitt from Pruitt Mechanical Contractors, is writing to Ridgeline's RFQ inbox requesting a quote for several pipe and fitting items to be delivered to their Mobile yard. He specifies a reference number and requests pricing and lead time by Wednesday. The items are listed directly in the email body.",
   "classification": "rfq",
   "needs_review": false,
   "review_reason": null,
@@ -21,7 +21,7 @@
     "row_id": "body!B3",
     "image": null,
     "raw": "12 jts - 2\" SCH 40 A53B ERW black pipe, PE",
-    "description": "12 jts - 2\" SCH 40 A53B ERW black pipe, PE",
+    "description": "2\" SCH 40 A53B ERW black pipe, plain end, 12 joints",
     "qty": 12.0,
     "uom": "EA"
    },
@@ -29,7 +29,7 @@
     "row_id": "body!B4",
     "image": null,
     "raw": "(30) 2\" 3000# forged threaded 90 elbow, A105",
-    "description": "(30) 2\" 3000# forged threaded 90 elbow, A105",
+    "description": "2\" 3000# forged threaded 90 elbow, A105, 30 each",
     "qty": 30.0,
     "uom": "EA"
    },
@@ -37,7 +37,7 @@
     "row_id": "body!B5",
     "image": null,
     "raw": "(30) 2\" 3000# forged threaded coupling, A105",
-    "description": "(30) 2\" 3000# forged threaded coupling, A105",
+    "description": "2\" 3000# forged threaded coupling, A105, 30 each",
     "qty": 30.0,
     "uom": "EA"
    },
@@ -45,7 +45,7 @@
     "row_id": "body!B6",
     "image": null,
     "raw": "200 ft - 3/4\" SCH 40 galvanized pipe, TBE",
-    "description": "200 ft - 3/4\" SCH 40 galvanized pipe, TBE",
+    "description": "3/4\" SCH 40 galvanized pipe, threaded both ends, 200 feet",
     "qty": 200.0,
     "uom": "FT"
    },
@@ -53,7 +53,7 @@
     "row_id": "body!B7",
     "image": null,
     "raw": "4\" 150# RF slip-on flange, A105 x 6",
-    "description": "4\" 150# RF slip-on flange, A105 x 6",
+    "description": "4\" 150# raised face slip-on flange, A105, 6 each",
     "qty": 6.0,
     "uom": "EA"
    }

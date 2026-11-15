@@ -1,17 +1,17 @@
 {
- "key": "33913206bd38a93cd2e5c183590eb8d071f68c042c49d9459e9b917953d69298",
+ "key": "71f27fee5142a355be2fb7cabf5dfa5193f50a27097d6b9ddfb0ef7a274f7cf3",
  "email_id": "E015",
  "model": "gpt-4.1",
- "prompt_version": "p2",
- "created": "2026-11-15T15:04:55+00:00",
+ "prompt_version": "p3",
+ "created": "2026-11-15T15:19:54+00:00",
  "usage": {
-  "input_tokens": 2980,
+  "input_tokens": 3215,
   "cached_input_tokens": 1920,
-  "output_tokens": 642
+  "output_tokens": 608
  },
- "cost_usd": 0.008216,
+ "cost_usd": 0.008414,
  "response": {
-  "reasoning": "A customer, Renee Castillo from Tidewater Process Systems, is sending a purchase order to Ridgeline Industrial Supply, referencing a previous quote. The attached PDF lists the specific items they are ordering. This is a purchase order committing to buy the listed items.",
+  "reasoning": "A customer, Renee Castillo from Tidewater Process Systems, is sending a purchase order to Ridgeline Industrial Supply, referencing a previous quote. The attached PO lists specific items to be supplied. This is a purchase order committing to buy the listed items.",
   "classification": "purchase_order",
   "needs_review": false,
   "review_reason": null,
@@ -21,7 +21,7 @@
     "row_id": "PO_TPS-88213.pdf!P1L10",
     "image": null,
     "raw": "1 210 FT 2\" SCH 80 SMLS A106B pipe, PE, random lengths",
-    "description": "PO Number: TPS-88213 ITEM 1: 210 FT 2\" SCH 80 SMLS A106B pipe, PE, random lengths",
+    "description": "2\" SCH 80 seamless A106B pipe, plain ends, random lengths, as listed on PO TPS-88213",
     "qty": 210.0,
     "uom": "FT"
    },
@@ -29,7 +29,7 @@
     "row_id": "PO_TPS-88213.pdf!P1L11",
     "image": null,
     "raw": "2 24 EA 2\" 90 deg elbow, LR, BW, SCH 80, A234 WPB",
-    "description": "PO Number: TPS-88213 ITEM 2: 24 EA 2\" 90 deg elbow, LR, BW, SCH 80, A234 WPB",
+    "description": "2\" 90 degree elbow, long radius, butt weld, SCH 80, A234 WPB, as listed on PO TPS-88213",
     "qty": 24.0,
     "uom": "EA"
    },
@@ -37,7 +37,7 @@
     "row_id": "PO_TPS-88213.pdf!P1L12",
     "image": null,
     "raw": "3 16 EA 2\" WN flange, 300# RF, A105, SCH 80 bore",
-    "description": "PO Number: TPS-88213 ITEM 3: 16 EA 2\" WN flange, 300# RF, A105, SCH 80 bore",
+    "description": "2\" weld neck flange, 300# raised face, A105, SCH 80 bore, as listed on PO TPS-88213",
     "qty": 16.0,
     "uom": "EA"
    },
@@ -45,7 +45,7 @@
     "row_id": "PO_TPS-88213.pdf!P1L13",
     "image": null,
     "raw": "4 16 EA 2\" spiral wound gasket, 316/graphite, 300#, w/ inner ring",
-    "description": "PO Number: TPS-88213 ITEM 4: 16 EA 2\" spiral wound gasket, 316/graphite, 300#, w/ inner ring",
+    "description": "2\" spiral wound gasket, 316/graphite, 300#, with inner ring, as listed on PO TPS-88213",
     "qty": 16.0,
     "uom": "EA"
    },
@@ -53,7 +53,7 @@
     "row_id": "PO_TPS-88213.pdf!P1L14",
     "image": null,
     "raw": "5 64 EA Stud bolt B7, 5/8\"-11 x 3-3/4\", w/ 2 heavy hex nuts",
-    "description": "PO Number: TPS-88213 ITEM 5: 64 EA Stud bolt B7, 5/8\"-11 x 3-3/4\", w/ 2 heavy hex nuts",
+    "description": "Stud bolt B7, 5/8\"-11 x 3-3/4\", with 2 heavy hex nuts, as listed on PO TPS-88213",
     "qty": 64.0,
     "uom": "EA"
    },
@@ -61,7 +61,7 @@
     "row_id": "PO_TPS-88213.pdf!P1L15",
     "image": null,
     "raw": "6 6 EA 2\" gate valve, 300# RF, A216 WCB, bolted bonnet",
-    "description": "PO Number: TPS-88213 ITEM 6: 6 EA 2\" gate valve, 300# RF, A216 WCB, bolted bonnet",
+    "description": "2\" gate valve, 300# raised face, A216 WCB, bolted bonnet, as listed on PO TPS-88213",
     "qty": 6.0,
     "uom": "EA"
    }

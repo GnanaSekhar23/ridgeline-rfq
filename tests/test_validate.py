@@ -125,5 +125,41 @@ def test_no_answer_is_flagged_request() -> None:
     assert r.classification == "rfq" and r.needs_review and "model unavailable" in r.review_reason
 
 
+def test_numbering_problem_detects_skips_and_repeats() -> None:
+    from rfq.validate import numbering_problem
+
+    ok = [f"{i} | 4 | EA | 2in | flange" for i in range(1, 8)]
+    assert numbering_problem(ok) is None
+    skip = [r for r in ok if not r.startswith("4 |")]
+    assert "4 missing" in numbering_problem(skip)
+    rep = ok[:3] + [ok[2]] + ok[3:]
+    assert "3 repeated" in numbering_problem(rep)
+    # two sections that each restart at 1 are fine
+    assert numbering_problem(ok[:4] + ok[:3]) is None
+    # leading quantities, not item numbers: no check
+    assert numbering_problem(["8 - 2in elbow", "4 - tee", "6 - nipple", "12 - coupling", "2 - union"]) is None
+    # too few numbered lines to judge
+    assert numbering_problem(["1 | tee", "3 | cap"]) is None
+
+
+def test_scan_numbering_gap_forces_review() -> None:
+    from rfq.models import ImagePart
+
+    scan = Doc(source="scan.pdf", kind="pdf", images=[ImagePart("scan.pdf page 1", b"x", 1, 1)])
+    lines = [_ln(None, f"{i} | 2 | EA | 4in | WN flange", qty=2, image="scan.pdf page 1") for i in (1, 2, 3, 5, 6)]
+    r = build_result(EMAIL, [BODY, scan], _ans("rfq", lines))
+    assert r.needs_review and "scanned rows may be misread" in r.review_reason and "4 missing" in r.review_reason
+    assert len(r.line_items) == 5  # lines are still returned
+
+
+def test_prompt_carries_the_general_rules() -> None:
+    from rfq.prompt import SYSTEM
+
+    for phrase in ("SHORTEST text", "left to right", "must NOT mention the overridden default",
+                   "NOT a reason for needs_review"):
+        assert phrase in SYSTEM
+    assert '\\"' not in SYSTEM  # no stray backslashes in examples
+
+
 def test_normalize_uom() -> None:
     assert [normalize_uom(x) for x in ("jts", "Feet", "rolls", "PR", "bogus", None)] == ["EA", "FT", "RL", "PR", None, None]

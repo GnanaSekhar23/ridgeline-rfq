@@ -135,6 +135,39 @@ def grounded_fragment(model_raw: str, line_text: str) -> bool:
     return a in b or fuzz.partial_ratio(a, b) >= 90
 
 
+# ---------------------------------------------------------------- scanned-row numbering check
+_ITEM_NO = re.compile(r"^\s*(?:item\s*)?#?\s*(\d{1,4})\s*(?:[|.):\-]|\s)", re.I)
+
+
+def numbering_problem(raws: list[str]) -> str | None:
+    """Item numbers read from an image should run 1, 2, 3 ... A skip or repeat means a row was
+    probably dropped, doubled or read from the wrong line. Only applies when the leading numbers
+    really are an item sequence (not, say, quantities at the start of each line). Numbering that
+    restarts at 1 (a new section) is fine."""
+    nums = [int(m.group(1)) for r in raws if (m := _ITEM_NO.match(r))]
+    if len(nums) < 3 or len(nums) < 0.8 * len(raws):
+        return None
+    steps = [b - a for a, b in zip(nums, nums[1:])]
+    if sum(1 for s in steps if s == 1) < 0.6 * len(steps):
+        return None  # leading numbers don't form a sequence: not item numbers
+    issues: list[str] = []
+    segment: list[int] = []
+    for n in nums + [1]:  # sentinel restart flushes the last segment
+        if segment and n == 1:
+            seen = set()
+            for a, b in zip(segment, segment[1:]):
+                if b == a or b in seen:
+                    issues.append(f"{b} repeated")
+                elif b > a + 1:
+                    issues.append(f"{a + 1}-{b - 1} missing" if b > a + 2 else f"{a + 1} missing")
+                elif b < a:
+                    issues.append(f"{b} after {a}")
+                seen.add(a)
+            segment = []
+        segment.append(n)
+    return ", ".join(dict.fromkeys(issues)) or None
+
+
 # ---------------------------------------------------------------- assembly
 def _sheet_of(row_id: str) -> tuple[str, str] | None:
     parts = row_id.split("!")
@@ -186,6 +219,7 @@ def build_result(
     items: list[LineItem] = []
     seen: set[tuple] = set()
     dropped: list[str] = []
+    image_raws: dict[str, list[str]] = {}  # source -> raws read from its images, in answer order
     if len(ans.line_items) >= MAX_LINE_ITEMS:
         reasons.append(f"list reached the {MAX_LINE_ITEMS}-item limit of one model answer; it may be longer")
     for lo in ans.line_items:
@@ -222,6 +256,7 @@ def build_result(
                 dropped.append(f"unknown image {lo.image!r}")
                 continue
             raw, qty, uom = lo.raw, lo.qty, lo.uom
+            image_raws.setdefault(source, []).append(raw)
         else:
             dropped.append("line with neither row id nor image")
             continue
@@ -236,6 +271,10 @@ def build_result(
                               uom=normalize_uom(uom) if uom else None, source=source))
     if dropped:
         log.info("%s: dropped %d model line(s): %s", email.id, len(dropped), "; ".join(dropped[:10]))
+    for src, raws in image_raws.items():
+        issue = numbering_problem(raws)
+        if issue:
+            reasons.append(f"{src}: scanned rows may be misread (item numbers: {issue})")
 
     if not items and not reasons:
         reasons.append("classified as a request but no line items could be extracted")

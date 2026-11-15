@@ -1,0 +1,46 @@
+{
+ "key": "b991b38ec8e4dccc1174ef0204e5f513089bcda0554ff20aa1932e86e16eae12",
+ "email_id": "E020",
+ "model": "gpt-4.1",
+ "prompt_version": "p3",
+ "created": "2026-11-15T15:20:13+00:00",
+ "usage": {
+  "input_tokens": 2938,
+  "cached_input_tokens": 1920,
+  "output_tokens": 328
+ },
+ "cost_usd": 0.00562,
+ "response": {
+  "reasoning": "A customer (Janelle Okoye from Brannock Industrial) is replying to our quote Q-26-04418, instructing us to proceed with items 1, 2, and 4 from the quoted list. She states a purchase order will follow and asks us to hold on the other items for now.",
+  "classification": "purchase_order",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": "body!Q4",
+    "image": null,
+    "raw": "1. 8 EA - 3\" 150# RF weld neck flange, A105, STD bore",
+    "description": "Item 1 from quote Q-26-04418: 3\" 150# RF weld neck flange, A105, STD bore",
+    "qty": 8.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "body!Q5",
+    "image": null,
+    "raw": "2. 120 FT - 3\" SCH 40 A53B ERW pipe, PE",
+    "description": "Item 2 from quote Q-26-04418: 3\" SCH 40 A53B ERW pipe, PE",
+    "qty": 120.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "body!Q7",
+    "image": null,
+    "raw": "4. 16 EA - 3\" 90 deg LR elbow, BW, SCH 40, A234 WPB",
+    "description": "Item 4 from quote Q-26-04418: 3\" 90 deg LR elbow, BW, SCH 40, A234 WPB",
+    "qty": 16.0,
+    "uom": "EA"
+   }
+  ]
+ }
+}

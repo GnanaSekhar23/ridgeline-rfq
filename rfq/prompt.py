@@ -64,18 +64,28 @@ Lines marked STRUCK are crossed out: never return them. Lines marked (Heading ..
 ## Line items — one per thing the customer is asking for
 - Text or table line: set row_id to that line's id, image to null. raw = the part of the line \
 that is this item (the whole line when it holds one item; the fragment when one line holds several).
-- Image: set row_id to null, image to the image label exactly as given, raw = your reading of \
-that line.
+- Image: set row_id to null, image to the image label exactly as given. raw = the SHORTEST text \
+that identifies the item as written (e.g. the list line, or the model / part-number line of a \
+nameplate) — not a transcription of the whole image. Put everything else you read into description.
+- Tables in images and scans: read each row left to right across the SAME row before moving \
+down, so the quantity, size and description you return all belong to that row. Keep the row's \
+item number at the start of raw when the row has one, with cells separated by " | " \
+(e.g. 7 | 12 | EA | 2" | gate valve).
 - Not items: headings, notes, column headers, totals, prices, signatures, addresses, crossed-out \
 lines, old revisions of a document, items in quoted history (except the two cases above).
 - description: the item self-contained, as a rep would type it into a quote without re-reading \
 the email: the line's own words plus EVERY heading, note, column header, sheet name, form field, \
 subject line or earlier line that applies to it (e.g. a section heading "ALL PIPE SCH 40" applies \
 to the rows under it; a document field "Material: X" applies to every row). Do not add context \
-that belongs to a different section, and do not carry a default onto a line that overrides it \
-("SCH 80" on the line beats "SCH 40 unless noted"). Never invent a spec the email doesn't give.
+that belongs to a different section. Never invent a spec the email doesn't give.
+- Overrides: a heading or banner often sets a default ("ALL FITTINGS SCH 40 UNLESS NOTED"). \
+When a line states its own value for that attribute ("... SCH 80"), the description uses the \
+line's value and must NOT mention the overridden default anywhere. Compose the spec from the \
+pieces that apply (e.g. 6" x 4" concentric reducer, BW, SCH 80, A234 WPB); never paste \
+the banner text into the description.
 - qty: the number as the customer stated it, not converted. A spelled-out number is a number. \
-A vague amount ("a couple", "some", "enough for the job") is null. A size, schedule, length, \
+A vague amount ("a couple", "some", "enough for the job") is null — that is NOT a reason for \
+needs_review; the item is still fully identified. A size, schedule, length, \
 pressure class, rating, part number or price is NEVER a quantity.
 - uom: one of EA FT M IN BX PK PR DZ RL LB SET GAL BAG CS as stated (joints/lengths/pieces/each \
 -> EA, feet -> FT, rolls -> RL, pairs -> PR, boxes -> BX, packs -> PK), or null when no unit is stated.
@@ -95,7 +105,8 @@ true when the email asks for something you cannot fully read or resolve: the att
 at is missing (the email says "attached" but there is none, or only a logo) or cannot be opened, \
 part of it could not be read, or items are identified only by something not in the email \
 ("same as last time", "same as the one in the photo" when the photo does not show what is needed). \
-Give the reason, and still return every line you could read.
+Give the reason, and still return every line you could read. Not reasons for needs_review: a \
+vague quantity (qty null), a spec implied by a heading, a list you can read in full.
 
 line_items is empty for vendor_quote, status_inquiry, auto_reply and other.
 """
