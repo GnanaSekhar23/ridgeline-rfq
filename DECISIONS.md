@@ -1,87 +1,117 @@
 # DECISIONS
 
-**Dev result** (`reports/eval.md`): 24/24 classification, 210/210 lines (0 hallucinated, 0 silent
-losses), qty/uom/source/context 100%, links 2/2, review 2/2. Matcher: 210/210, 0 confident wrong,
-16/16 not-in-catalog. Cost: 23 calls, $0.37 for the dev inbox (~$0.016/email, gpt-4.1).
-Time spent: **~11 hours** (Sat evening + Sun), plus ~1 hour reading the package beforehand.
+On the 24 dev emails the parser gets every email type right (24/24) and finds all 210 line items
+with the right quantity, unit, source and specs. The optional catalog matcher picks the right
+part for 210/210 lines and never picks a wrong one. A full run of the dev inbox costs about $0.37
+with gpt-4.1, around 1.6 cents per email. I spent about 11 hours on this.
 
 ## Something in the data that surprised me
-The hardest email was not the messiest one. The threads, forwards and hidden spreadsheet sheet
-(E005 hides its old "Rev A (old)" revision behind the current one) were handled once the text
-was laid out well. The hard one was a clean scanned table (E009): the model read every item
-correctly but took quantities from the neighbouring row, 20/32 right. Rendering at 200 DPI changed
-nothing, and the token count showed why: the API downscales high-detail images to 768 px on the
-short side, so extra DPI is thrown away before the model sees it. Cutting scanned pages into
-overlapping horizontal strips gives each row more pixels: 32/32, for ~$0.013 more per scanned page.
-It only applies to pages with no text layer, so normal emails cost the same.
 
-## Something in the brief / README I disagree with, and what I did
-`needs_review` is only allowed on requests, but "an email we could not read" is not known to be a
-non-request. If parsing or the model fails, we don't know what the email was, so I return it as
-`rfq` + `needs_review` with the reason, never as `other`. A wrongly flagged non-request costs a rep a
-minute; a silently dropped request costs a customer. This can add a phantom request on a bad day,
-and I accept that trade.
-Second, a single run per prompt version is a noisy eval: one dev line flipped between right and
-wrong on unrelated prompt edits. I gate prompt changes on "no dev metric gets worse", and with more
-time I would run each version 3× and compare averages.
+I expected the messy emails to be the hard part: long threads, forwards, an Excel file that
+hides an old revision on a hidden sheet. Once each file was turned into clean, numbered lines,
+those were fine. The hardest one was a clean scanned table (E009). The model read every item
+correctly but kept taking the quantity from the row above or below, so only 20 of 32 quantities
+were right. Making the scan sharper (200 DPI) did nothing. When I checked the token counts I saw
+why: OpenAI shrinks large images to 768 pixels before the model sees them, so the extra detail
+was thrown away. Cutting each scanned page into overlapping horizontal strips gave every row more
+pixels, and all 32 quantities came out right. It costs about one extra cent per scanned page, and
+only pages that are pure images get cut up, so normal emails cost the same.
 
-## Predicted held-out numbers, and the two kinds of email I expect to get wrong
-Dev is 100% after several rounds of fixes chosen by reading dev errors, so I don't expect that on
-held-out. My 9 synthetic emails (situations dev doesn't show) give 9/9 on the core checks, 8/9 on
-the stricter ones. Prediction: **classification ~92–96%, line recall ~88–93%, qty ~90%, silent
-losses 0–1, matcher confident-wrong 0–2.** The two kinds I expect to get wrong:
-1. **Scans, photos and handwriting.** There is no row to point at, so the model transcribes, and
-   code can't check raw/qty against a source. Misread quantities and long or short `raw` text
-   are where my numbers will drop.
-2. **Specs carried onto loosely related items.** "Six tees … same, and a couple of caps" puts the
-   tees' SCH 40 / butt weld onto the caps (synthetic S09, a strict xfail test). A prompt rule fixed
-   it but cost dev accuracy elsewhere, so it is tracked rather than shipped.
+## Something in the brief I disagree with, and what I did
+
+The README treats `needs_review` as a simple yes/no. At 3,000 emails a day that isn't enough. If
+a rep only sees "needs review", they have to open every flagged email to find out why, and they
+can't read everything. A flag is only useful if it tells the rep what to do.
+
+So every flag in my output carries a specific reason the rep can act on without digging, for
+example "AldenMarine_RFQ.pdf: PDF is password-protected", "BOM mentioned but no attachment",
+"refers to quote Q-26-05120; its items are not in this email", or "only the first 20 pages were
+read". Problems on our side are kept apart from problems in the email. If the model call times
+out or the provider is down, the email is flagged and also logged as retryable, so
+`--retry-failed` can process it again without a rep touching it; it only needs a person if it
+keeps failing. And a flag is never used as a catch-all:
+a vague quantity like "a couple" gets `qty: null`, not a review flag, because the rep can quote
+the rest and confirm that one number.
+
+In production I'd go one step further and give each flag a type (missing attachment, unreadable
+file, reference to an old order, partly read, system error) so reps can sort and route them, for
+example sending all system errors to one queue and "refers to an old order" to the rep who owns
+that customer.
+
+## My predicted held-out numbers, and two kinds of email I expect to get wrong
+
+Dev is at 100%, but I fixed things by looking at dev mistakes, so I don't expect that on emails
+I haven't seen. I also wrote 9 made-up emails for situations dev doesn't cover (out-of-office,
+"same as our last order", a struck-through row, a Word file with a photo of a list, and so on),
+and 8 of 9 pass every check. My guess for the held-out inbox: email type right 92-96% of the
+time, 88-93% of lines found, quantities right on about 90%, 0-1 silent losses, and 0-2 wrong
+catalog parts.
+
+The two kinds I expect to get wrong:
+
+1. **Scans, phone photos and handwriting.** For text and spreadsheets, the model only points at
+   a row and my code copies the real text and quantity, so it can't make numbers up. For a
+   picture there's nothing to copy from, so I rely on the model's reading. That's where
+   quantities will be wrong.
+2. **Specs applied to the wrong item.** If a customer writes "six tees, SCH 40 butt weld, same
+   again, and a couple of caps", the model also gives the caps SCH 40 butt weld. A prompt rule
+   fixed this but broke other dev emails, so I left it out. It's a known failing test (S09).
 
 ## How this runs for real
-- **3,000 emails/day by webhook.** Webhook → queue (SQS) → stateless workers running the same
-  `process_email`; cache and results move to shared storage (S3/Redis + Postgres). ~2 emails a
-  minute, ~$50/day at today's per-email cost. *Designed, not built.*
-- **Provider down for two hours.** Retries with backoff only on 429/5xx/timeouts; then the email is
-  flagged `needs_review`, logged as `retryable` in `failures.jsonl`, and nothing bad is cached. Reps
-  see it flagged meanwhile; `rfq parse --retry-failed latest` re-calls only those emails.
-  *Built and tested* (outage, partial outage, recovery). Not built: a second provider.
-- **A 300-page PDF.** Read the first 20 text pages / 6 scanned pages, mark it truncated, and flag
-  the email with the reason, so nothing is cut silently. *Built.* Real fix: page-chunked calls
-  merged in code.
-- **The same email delivered twice.** Same Message-ID or same content means it is detected as a
-  duplicate, and a replay hits the cache: no second call, identical output. *Built.*
 
-## Where the model decides and where code decides
-- **The model:** classification; which lines are items; the self-contained description; reading
-  images; the catalog attributes of each line.
-- **Code:**
-  - MIME and every file format (hidden sheets, merged notes, strikethrough, encrypted PDFs).
-  - Duplicates and thread links.
-  - **raw/qty/uom for every text or table line.** The model returns a row ID and code copies the
-    real cells ("the model points, code copies"), so a quantity can't be invented.
-  - Dropping unknown, struck or out-of-place rows.
-  - Every `needs_review` safety net.
-  - **The SKU decision.** The model never picks a part.
+- **3,000 emails a day by webhook.** I'd put each email on a queue and have a few workers run the
+  same per-email code, with the cache and results in shared storage instead of local files.
+  That's only about 2 emails a minute and roughly $50 a day. *I designed this but didn't build it.*
+- **The model provider is down for two hours.** Each call retries a few times, but only for
+  errors worth retrying (rate limits, server errors, timeouts). After that the email is flagged
+  for review and logged as "retryable", and nothing broken is saved to the cache. When the
+  provider is back, `rfq parse ... --retry-failed latest` re-runs only those emails. *Built and
+  tested.*
+- **A customer sends a 300-page PDF.** I read the first 20 text pages (or 6 scanned pages), mark
+  the file as cut short, and flag the email with that reason, so nothing is dropped silently.
+  *Built.* The proper fix is to read it in chunks and merge the results.
+- **The same email is delivered twice.** It's detected as a duplicate and answered from the
+  cache: no second model call, same output. *Built.*
+
+## Where the model decides and where my code decides
+
+The model decides what kind of email it is, which lines are items, how to describe each item
+fully (carrying specs from headings, notes and sheet names), and what it reads in pictures.
+
+My code does everything that can be checked. It opens every file type (skipping hidden sheets,
+noticing struck-through rows, catching password-protected PDFs). It finds duplicates and reply
+threads. Most importantly, for text and table lines the model only gives a row ID, and the code
+copies the real text, quantity and unit from that row. Code also picks the catalog part from the
+model's description of the item; the model never chooses a SKU.
 
 ## How I measured it
-- `eval/eval.py` mirrors the README's grading, with whole-token phrase matching (so "sch40" can't
-  match inside "sch400"). Every change was compared with `--baseline` against the last run.
-- 143 unit tests on invented files, plus a fake model client.
-- 9 synthetic emails replayed from cache.
-- An audit of `rfq/` for dev-specific strings.
-- Offline replay is byte-identical, and a fresh clone with no key makes 0 calls.
 
-## What I rejected
-- **A 4-shape Pydantic union sent to the model.** Strict output writes fields in schema order, so
-  the model chose a type before reading. The first real run scored 7/24 with 15 silent losses. I
-  replaced it with one flat schema (reasoning, then type, then lines); code enforces the type rules.
-- **Prompt versions p5/p6.** They fixed synthetic cases but regressed dev, so I reverted them.
-- **Prompt examples copied from dev emails.** I replaced them with invented ones; scores didn't move.
-- **React for the review page.** Polish counts for nothing here, and it would need a build step.
+- **An eval script** that scores my output the way the README describes grading. I compared every
+  change against the previous run to see what got better and what got worse.
+- **143 unit tests** on small made-up files, with a fake model so they run free.
+- **The 9 made-up emails**, replayed from saved answers.
+- **A check for dev-specific code**, and **a fresh clone with no API key**, which makes zero model
+  calls and gives identical output.
 
-## What I know is broken / what's next
-- **Broken:** S09 (spec carry-over above). One answer is capped at 100 lines, so a longer BOM gets
-  flagged and is incomplete. Post-processing rules (image `raw` trimming, overridden-default
-  removal, matcher normalisations) were motivated by dev errors, so their held-out value is unproven.
-- **Next:** chunk long lists and PDFs; repeat-run evals; use `app/overrides.json` (rep decisions) as
-  a live accuracy measure; a second provider behind the same schema.
+## What I tried and dropped
+
+- **Four different answer shapes for the model** (one per kind of email). The model had to pick
+  a shape before reading the email, and my first real run got only 7 of 24 types right. I
+  switched to one simple shape where the model writes its reasoning first, then the type, then
+  the lines.
+- **Two prompt versions (p5, p6)** that fixed my made-up cases but made dev worse. I rolled them
+  back.
+- **Prompt examples copied from dev emails.** I found them in an audit and swapped in invented
+  ones; the scores didn't change.
+- **React for the review page.** The brief values clarity, not polish, and React adds a build step.
+
+## What I know is broken, and what's next
+
+The spec carry-over problem above (S09). One model answer holds at most 100 lines, so a longer
+list gets flagged and is incomplete. Some small clean-up rules (shortening the text read from a
+label photo, removing a default spec a line overrides, a few matcher rules) came from dev
+mistakes, so I don't know yet how much they help on new emails.
+
+Next I'd split long lists and PDFs into chunks, run each prompt version several times, use the
+rep decisions saved by the review app as a live accuracy measure, and add a second model provider
+as a fallback.
