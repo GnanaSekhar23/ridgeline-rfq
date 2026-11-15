@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RFQ review</title>
+<style>
+  :root {
+    --bg: #f4f5f7; --panel: #fff; --line: #dfe2e6; --text: #1f2328; --muted: #656d76;
+    --green: #1a7f37; --green-bg: #dafbe1; --orange: #9a5b00; --orange-bg: #fff1d6;
+    --red: #c4222e; --red-bg: #ffe3e5; --blue: #0b5cad; --blue-bg: #ddeeff;
+    --purple: #6639ba; --purple-bg: #ece2ff; --teal: #0f6f6f; --teal-bg: #d8f3f1;
+    --grey: #57606a; --grey-bg: #eaeef2; --accent: #0b5cad;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.5 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+         color: var(--text); background: var(--bg); }
+  a { color: var(--accent); }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
+       margin: 0 0 10px; }
+  pre { white-space: pre-wrap; word-break: break-word; font: 13px/1.45 Consolas, "Cascadia Mono", monospace;
+        background: #f6f8fa; border: 1px solid var(--line); border-radius: 6px; padding: 10px;
+        margin: 6px 0 0; max-height: 360px; overflow: auto; }
+
+  /* layout */
+  .app { display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 100vh; }
+  aside { background: var(--panel); border-right: 1px solid var(--line); position: sticky; top: 0;
+          height: 100vh; overflow: auto; }
+  aside header { padding: 16px; border-bottom: 1px solid var(--line); }
+  aside header b { font-size: 17px; }
+  aside header .muted { font-size: 13px; }
+  main { padding: 20px 24px 40px; min-width: 0; }
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 20px;
+          align-items: start; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+           padding: 16px; margin-bottom: 20px; }
+  #picker { display: none; width: 100%; font: inherit; padding: 6px; margin-bottom: 16px; }
+
+  /* sidebar list */
+  .list { list-style: none; margin: 0; padding: 6px 0; }
+  .list a { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; padding: 8px 16px;
+            text-decoration: none; color: var(--text); border-left: 3px solid transparent; }
+  .list a:hover { background: #f6f8fa; }
+  .list a.active { background: var(--blue-bg); border-left-color: var(--accent); }
+  .list .eid { font-weight: 600; min-width: 3.2em; }
+  .list .count { margin-left: auto; color: var(--muted); font-size: 12px; }
+
+  /* badges and tags */
+  .badge { display: inline-block; font-size: 12px; line-height: 1.6; padding: 0 7px; border-radius: 10px;
+           background: var(--grey-bg); color: var(--grey); white-space: nowrap; }
+  .t-rfq { background: var(--blue-bg); color: var(--blue); }
+  .t-rfq_revision { background: var(--purple-bg); color: var(--purple); }
+  .t-purchase_order { background: var(--green-bg); color: var(--green); }
+  .t-vendor_quote { background: var(--teal-bg); color: var(--teal); }
+  .t-status_inquiry { background: var(--orange-bg); color: var(--orange); }
+  .review { background: var(--red); color: #fff; font-weight: 600; }
+  .m-matched { background: var(--green-bg); color: var(--green); }
+  .m-ambiguous { background: var(--orange-bg); color: var(--orange); }
+  .m-not_in_catalog { background: var(--red-bg); color: var(--red); }
+
+  /* summary card */
+  .summary { display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: baseline; }
+  .summary .title { font-size: 20px; font-weight: 600; margin-right: 4px; }
+  .summary .badge { font-size: 14px; padding: 2px 10px; }
+  .field { display: flex; flex-direction: column; }
+  .field span:first-child { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .reason { flex-basis: 100%; background: var(--red-bg); color: var(--red); border-radius: 6px; padding: 8px 12px; }
+  .ok { flex-basis: 100%; color: var(--green); }
+
+  /* email side */
+  .headers { border-collapse: collapse; width: 100%; font-size: 14px; }
+  .headers th { text-align: left; color: var(--muted); font-weight: 500; padding: 3px 12px 3px 0;
+                vertical-align: top; width: 6.5em; }
+  .headers td { padding: 3px 0; word-break: break-word; }
+  details { margin-top: 10px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .atts { list-style: none; padding: 0; margin: 0; }
+  .atts li { padding: 4px 0; border-bottom: 1px solid var(--line); }
+  .atts li:last-child { border-bottom: 0; }
+  .notes { color: var(--orange); background: var(--orange-bg); border-color: #f0d9a8; }
+  .imgs { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+  .imgs figure { margin: 0; }
+  .imgs img { max-width: 100%; border: 1px solid var(--line); border-radius: 4px; }
+  .imgs figcaption { font-size: 12px; color: var(--muted); }
+
+  /* lines table */
+  .lines { border-collapse: collapse; width: 100%; font-size: 14px; }
+  .lines th { text-align: left; font-size: 12px; color: var(--muted); font-weight: 600;
+              border-bottom: 2px solid var(--line); padding: 6px 8px; }
+  .lines td { border-bottom: 1px solid var(--line); padding: 8px; vertical-align: top; }
+  .lines tr.decided td { background: #f3fbf5; }
+  .lines tr.decided td:first-child { box-shadow: inset 3px 0 0 var(--green); }
+  .raw { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13px; word-break: break-word; }
+  .desc { color: var(--muted); margin-top: 2px; }
+  .num { white-space: nowrap; font-weight: 600; }
+  .sku { font-family: Consolas, "Cascadia Mono", monospace; font-weight: 600; }
+  .small { font-size: 12px; color: var(--muted); }
+  .cands { margin: 4px 0 0; padding-left: 16px; font-size: 13px; }
+  .decision { width: 150px; }
+  .decision .row { display: flex; gap: 4px; margin-bottom: 4px; }
+  .decision input { width: 100%; min-width: 0; font: 13px Consolas, monospace; padding: 2px 4px;
+                    border: 1px solid var(--line); border-radius: 4px; }
+  button { font: inherit; font-size: 12px; padding: 2px 8px; border: 1px solid var(--line);
+           border-radius: 4px; background: #f6f8fa; cursor: pointer; white-space: nowrap; }
+  button:hover { background: #eaeef2; }
+  .done { font-size: 12px; font-weight: 600; color: var(--green); margin-top: 4px; }
+  .err { font-size: 12px; color: var(--red); margin-top: 4px; }
+  .muted { color: var(--muted); }
+
+  @media (max-width: 1200px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 760px) {
+    .app { grid-template-columns: minmax(0, 1fr); }
+    aside { display: none; }
+    #picker { display: block; }
+    main { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <header><b>RFQ review</b><div class="muted" id="totals"></div></header>
+    <ul class="list" id="list"></ul>
+  </aside>
+  <main>
+    <label><span hidden>Email</span><select id="picker"></select></label>
+    <div id="status" class="muted"></div>
+    <div id="view"></div>
+  </main>
+</div>
+
+<script>
+// All email / model text goes in via textContent, never innerHTML, so nothing in an email runs.
+const $ = (tag, attrs = {}, ...kids) => {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") el.className = v; else if (k.startsWith("on")) el[k] = v; else el.setAttribute(k, v);
+  }
+  for (const kid of kids) el.append(kid instanceof Node ? kid : document.createTextNode(kid ?? ""));
+  return el;
+};
+const view = document.getElementById("view");
+const list = document.getElementById("list");
+const picker = document.getElementById("picker");
+const statusEl = document.getElementById("status");
+const LABEL = { rfq: "RFQ", rfq_revision: "revision", purchase_order: "PO", vendor_quote: "vendor quote",
+                status_inquiry: "status", auto_reply: "auto-reply", other: "other" };
+const MATCH = { matched: "matched", ambiguous: "ambiguous", not_in_catalog: "not in catalog" };
+
+async function getJSON(url, opts) {
+  const r = await fetch(url, opts);
+  const body = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(body.detail || r.statusText);
+  return body;
+}
+
+const typeBadge = (c) => $("span", { class: "badge t-" + (c || "none") }, c ? (LABEL[c] || c) : "not parsed");
+const matchTag = (m) => m ? $("span", { class: "badge m-" + m }, MATCH[m] || m) : $("span", { class: "small" }, "no matcher");
+const emailLink = (id) => $("a", { href: "#" + encodeURIComponent(id) }, id);
+const panel = (title, ...kids) => $("section", { class: "panel" }, title ? $("h2", {}, title) : "", ...kids);
+const field = (label, value) => $("div", { class: "field" }, $("span", {}, label), $("span", {}, value));
+
+function textBlock(label, text, open) {
+  if (!text) return $("div", { class: "small", style: "margin-top:10px" }, `${label}: none`);
+  return $("details", open ? { open: "" } : {}, $("summary", {}, label), $("pre", {}, text));
+}
+
+function summaryCard(d) {
+  const r = d.result;
+  if (!r) return panel("", $("div", { class: "summary" }, $("span", { class: "title" }, d.id),
+                             $("span", { class: "reason" }, "Not in parsed.json")));
+  return panel("", $("div", { class: "summary" },
+    $("span", { class: "title" }, d.id), typeBadge(r.classification),
+    r.needs_review ? $("span", { class: "badge review" }, "review") : "",
+    field("Lines", String(d.lines.length)),
+    field("Revises", r.revises ? emailLink(r.revises) : "—"),
+    field("Duplicate of", r.duplicate_of ? emailLink(r.duplicate_of) : "—"),
+    r.needs_review ? $("div", { class: "reason" }, $("b", {}, "Needs review: "), r.review_reason || "(no reason given)")
+                   : $("div", { class: "ok" }, "No review needed")));
+}
+
+function emailColumn(d) {
+  const h = d.headers;
+  return $("div", {},
+    panel("Email",
+      $("table", { class: "headers" }, ...["from", "to", "cc", "date", "subject", "in_reply_to"]
+        .filter(k => h[k]).map(k => $("tr", {}, $("th", {}, k.replace("_", "-")), $("td", {}, h[k])))),
+      textBlock("Current message", d.body, true),
+      textBlock("Forwarded", d.forwarded, false),
+      textBlock("Quoted history (context only)", d.quoted, false)),
+    panel(`Attachments (${d.attachments.length})`,
+      d.attachments.length ? $("ul", { class: "atts" }, ...d.attachments.map(a =>
+        $("li", {}, $("b", {}, a.name), " ",
+          $("span", { class: "small" }, `${a.mime} · ${a.size.toLocaleString()} bytes${a.inline ? " · inline" : ""}`))))
+        : $("div", { class: "muted" }, "none"),
+      d.read_notes.length ? $("pre", { class: "notes" }, d.read_notes.join("\n")) : "",
+      d.images.length ? $("div", { class: "imgs" }, ...d.images.map(im =>
+        $("figure", {}, $("img", { src: im.url, alt: im.label, loading: "lazy" }),
+          $("figcaption", {}, im.label)))) : ""));
+}
+
+function decisionText(ov) {
+  const what = ov.match === "matched" ? ov.sku : (MATCH[ov.match] || ov.match || "no match");
+  return `✓ ${ov.action === "accept" ? "Accepted" : "Overridden"}: ${what}`;
+}
+
+function lineRow(d, li) {
+  const tr = $("tr", { class: li.override ? "decided" : "" });
+  const state = $("div", { class: "done" }, li.override ? decisionText(li.override) : "");
+  const skuInput = $("input", { type: "text", placeholder: "SKU", "aria-label": "SKU" });
+  const save = async (payload) => {
+    try {
+      const rec = await getJSON("/api/overrides", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: d.id, line: li.index, ...payload }),
+      });
+      tr.className = "decided";
+      state.className = "done";
+      state.textContent = decisionText(rec);
+      state.title = rec.part ? rec.part.description : "";
+    } catch (e) { state.className = "err"; state.textContent = e.message; }
+  };
+  const cands = (li.candidate_parts || []).filter(Boolean);
+  tr.append(
+    $("td", { class: "small" }, String(li.index + 1)),
+    $("td", {}, $("div", { class: "raw" }, li.raw), $("div", { class: "desc" }, li.description),
+      $("div", { class: "small" }, li.source)),
+    $("td", { class: "num" }, li.qty == null ? "—" : String(li.qty), " ", $("span", { class: "small" }, li.uom || "")),
+    $("td", {}, matchTag(li.match),
+      li.sku ? $("div", {}, $("span", { class: "sku" }, li.sku)) : "",
+      li.part ? $("div", { class: "small" }, li.part.description) : "",
+      cands.length ? $("ul", { class: "cands" }, ...cands.map(p =>
+        $("li", {}, $("span", { class: "sku" }, p.sku), " ", $("span", { class: "small" }, p.description)))) : "",
+      li.match_reason ? $("div", { class: "small", style: "margin-top:4px" }, li.match_reason) : ""),
+    $("td", { class: "decision" },
+      $("div", { class: "row" }, $("button", { onclick: () => save({ action: "accept" }) }, "Accept"),
+        $("button", { onclick: () => save({ action: "override", not_in_catalog: true }) }, "Not in catalog")),
+      $("div", { class: "row" }, skuInput,
+        $("button", { onclick: () => save({ action: "override", sku: skuInput.value }) }, "Use")),
+      state));
+  return tr;
+}
+
+function linesColumn(d) {
+  return panel(`Lines (${d.lines.length})`, d.lines.length
+    ? $("table", { class: "lines" },
+        $("tr", {}, ...["#", "Line", "Qty", "Match", "Decision"].map(t => $("th", {}, t))),
+        ...d.lines.map(li => lineRow(d, li)))
+    : $("div", { class: "muted" }, "No line items."));
+}
+
+async function show(id) {
+  for (const a of list.querySelectorAll("a")) a.classList.toggle("active", a.dataset.id === id);
+  picker.value = id;
+  statusEl.textContent = "Loading…";
+  try {
+    const d = await getJSON(`/api/emails/${encodeURIComponent(id)}`);
+    view.replaceChildren(summaryCard(d), $("div", { class: "cols" }, emailColumn(d), linesColumn(d)));
+    statusEl.textContent = "";
+  } catch (e) { view.replaceChildren(); statusEl.textContent = "Error: " + e.message; }
+}
+
+const current = () => decodeURIComponent(location.hash.slice(1));
+
+(async () => {
+  const emails = await getJSON("/api/emails");
+  const flagged = emails.filter(e => e.needs_review).length;
+  document.getElementById("totals").textContent = `${emails.length} emails · ${flagged} need review`;
+  for (const e of emails) {
+    list.append($("li", {}, $("a", { href: "#" + encodeURIComponent(e.id), "data-id": e.id },
+      $("span", { class: "eid" }, e.id), typeBadge(e.classification),
+      e.needs_review ? $("span", { class: "badge review" }, "review") : "",
+      $("span", { class: "count" }, e.lines ? `${e.lines} lines` : ""))));
+    picker.append($("option", { value: e.id },
+      `${e.id} · ${LABEL[e.classification] || "?"}${e.needs_review ? " · REVIEW" : ""}`));
+  }
+  picker.onchange = () => { location.hash = encodeURIComponent(picker.value); };
+  window.onhashchange = () => show(current());
+  if (current()) show(current()); else if (emails.length) location.hash = encodeURIComponent(emails[0].id);
+})();
+</script>
+</body>
+</html>
