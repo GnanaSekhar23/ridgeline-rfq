@@ -58,6 +58,8 @@ class Outcome:
     error: str | None = None
     retryable: bool = False
     prompt_truncated: bool = False
+    # every raw response / exception this run, for diagnosis (saved to runs/ when rejected)
+    raw_responses: list[dict] = field(default_factory=list)
 
 
 def _transient(e: BaseException) -> bool:
@@ -105,8 +107,8 @@ class Extractor:
         return self._client
 
     # ------------------------------------------------------------------ public
-    def run(self, email: Email, docs: list[Doc]) -> Outcome:
-        messages, truncated = build_messages(email, docs)
+    def run(self, email: Email, docs: list[Doc], problems: list[str] | None = None) -> Outcome:
+        messages, truncated = build_messages(email, docs, problems)
         key = cache_key(self.model, PROMPT_VERSION, self._schema, messages_fingerprint(messages))
         out = Outcome(extraction=None, key=key, prompt_truncated=truncated)
 
@@ -160,14 +162,27 @@ class Extractor:
         for attempt in retrying:
             with attempt:
                 out.live_calls += 1
-                resp = client.chat.completions.create(
-                    model=self.model,
-                    messages=messages,
-                    response_format=self._schema,
-                    temperature=TEMPERATURE,
-                    max_completion_tokens=MAX_OUTPUT_TOKENS,
-                )
-                out.usage.add(_usage(resp))
+                try:
+                    resp = client.chat.completions.create(
+                        model=self.model,
+                        messages=messages,
+                        response_format=self._schema,
+                        temperature=TEMPERATURE,
+                        max_completion_tokens=MAX_OUTPUT_TOKENS,
+                    )
+                except Exception as e:
+                    out.raw_responses.append({"call": out.live_calls, "exception": f"{type(e).__name__}: {str(e)[:500]}"})
+                    raise
+                u = _usage(resp)
+                out.usage.add(u)
+                choice = resp.choices[0]
+                out.raw_responses.append({
+                    "call": out.live_calls,
+                    "finish_reason": choice.finish_reason,
+                    "refusal": getattr(choice.message, "refusal", None),
+                    "usage": u.__dict__,
+                    "content": choice.message.content,
+                })
                 return resp
         raise RuntimeError("unreachable")
 
@@ -185,6 +200,10 @@ class Extractor:
         if extraction is None:
             out.error = f"model output rejected: {problem}"
             out.retryable = False
+        for r in out.raw_responses:
+            r.setdefault("verdict", None)
+        if out.raw_responses:
+            out.raw_responses[-1]["verdict"] = "accepted" if extraction is not None else problem
 
 
 def _auth_or_quota(e: BaseException) -> bool:

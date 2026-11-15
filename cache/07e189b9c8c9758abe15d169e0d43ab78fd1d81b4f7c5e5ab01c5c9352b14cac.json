@@ -1,0 +1,21 @@
+{
+ "key": "07e189b9c8c9758abe15d169e0d43ab78fd1d81b4f7c5e5ab01c5c9352b14cac",
+ "email_id": "E017",
+ "model": "gpt-4.1",
+ "prompt_version": "p2",
+ "created": "2026-11-15T15:05:01+00:00",
+ "usage": {
+  "input_tokens": 2395,
+  "cached_input_tokens": 1920,
+  "output_tokens": 122
+ },
+ "cost_usd": 0.002886,
+ "response": {
+  "reasoning": "A customer (Dwayne Okafor from Cobalt Ridge Fabrication) is writing to Ridgeline's RFQ inbox requesting pricing for a bill of materials (BOM) for Job 2291. The message states that the BOM is attached, but there is no actual BOM attachment—only a logo image. The customer wants pricing by Thursday.",
+  "classification": "rfq",
+  "needs_review": true,
+  "review_reason": "The BOM attachment referenced in the email is missing; only a logo image is present, so the requested items cannot be read.",
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

@@ -18,11 +18,16 @@ RUNS_DIR = Path(os.environ.get("RFQ_RUNS_DIR") or ROOT / "runs")
 REPORTS_DIR = Path(os.environ.get("RFQ_REPORTS_DIR") or ROOT / "reports")
 
 MODEL = os.environ.get("RFQ_MODEL", "gpt-4.1")
-PROMPT_VERSION = "p1"  # bump on any prompt/schema change -> new cache keys
+PROMPT_VERSION = "p2"  # bump on any prompt/schema change -> new cache keys
 TEMPERATURE = 0.0
 REQUEST_TIMEOUT_S = 120
 MAX_RETRIES = 3  # transient errors only (429, 5xx, timeout, connection)
-MAX_OUTPUT_TOKENS = 16000
+# Runaway protection. Largest dev email has ~50 items; at ~90 output tokens per item (JSON keys +
+# a self-contained description) that is ~4.5k tokens + ~300 for reasoning. Cap the list at 100
+# items (2x the largest dev list) and the output at 100 * 90 + 1000 = 10k tokens. A runaway
+# now costs at most ~$0.08 instead of ~$0.13; a list at the cap is flagged for review.
+MAX_LINE_ITEMS = 100
+MAX_OUTPUT_TOKENS = 10_000
 IMAGE_DETAIL = "high"  # scans and photos of lists need full resolution
 MAX_PROMPT_CHARS = 200_000  # rendered text budget per email (~50k tokens); beyond -> truncated + review
 

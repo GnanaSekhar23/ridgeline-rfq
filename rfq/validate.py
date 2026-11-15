@@ -3,6 +3,9 @@
 Step-6 scope: resolve row ids against the real extracted lines (raw from the source text,
 qty/uom from table cells under a Qty/UOM header), drop unknown / struck / not-allowed quoted
 rows, map image lines to their source file, apply the multi-sheet rule, assemble needs_review.
+Code rules over the model's answer: a non-request keeps no lines and no review flag; a request
+with read problems, a truncated prompt, an unclear multi-sheet workbook, a list at the item cap,
+or no lines at all is forced to needs_review.
 Step 7 adds deeper checks (grounding of descriptions, qty-is-not-a-size, coverage).
 """
 
@@ -14,8 +17,8 @@ from dataclasses import dataclass, field
 
 from rapidfuzz import fuzz
 
+from rfq.config import MAX_LINE_ITEMS, REQUEST_KINDS
 from rfq.models import Doc, Email, Line, LineItem, Result
-from rfq.schema import NoItems, Revision
 
 log = logging.getLogger(__name__)
 
@@ -153,11 +156,17 @@ def build_result(
         reason = "; ".join([model_error or "no model answer"] + problems)
         return Result(classification="rfq", needs_review=True, review_reason=reason)
 
-    ans = extraction.result
-    if isinstance(ans, NoItems):
-        return Result(classification=ans.kind)
+    ans = extraction
+    kind = ans.classification
+    if kind not in REQUEST_KINDS:
+        # Non-requests carry no lines and no review flag (README). The model may say otherwise;
+        # code has the last word, and we log what we threw away so it can be checked.
+        if ans.line_items:
+            log.warning("%s: %s answer had %d line(s); dropped", email.id, kind, len(ans.line_items))
+        if ans.needs_review:
+            log.info("%s: needs_review on a %s dropped (%s)", email.id, kind, ans.review_reason)
+        return Result(classification=kind)
 
-    kind = ans.kind
     idx = SourceIndex.build(docs)
     image_docs = [d.source for d in docs if d.images]
     reasons: list[str] = []
@@ -177,7 +186,9 @@ def build_result(
     items: list[LineItem] = []
     seen: set[tuple] = set()
     dropped: list[str] = []
-    for lo in ans.lines:
+    if len(ans.line_items) >= MAX_LINE_ITEMS:
+        reasons.append(f"list reached the {MAX_LINE_ITEMS}-item limit of one model answer; it may be longer")
+    for lo in ans.line_items:
         if lo.row_id:
             row = idx.rows.get(lo.row_id)
             if row is None:
@@ -232,6 +243,6 @@ def build_result(
     if reasons:
         result.needs_review = True
         result.review_reason = "; ".join(dict.fromkeys(reasons))[:1000]
-    if isinstance(ans, Revision):
+    if kind == "rfq_revision":
         result.revises = parent
     return result

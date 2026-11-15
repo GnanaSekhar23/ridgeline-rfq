@@ -1,0 +1,432 @@
+{
+ "key": "8acd44d09cbaedb704003b00bfc52176afad47e5069ee742f26d52f690a39b89",
+ "email_id": "E021",
+ "model": "gpt-4.1",
+ "prompt_version": "p2",
+ "created": "2026-11-15T15:05:43+00:00",
+ "usage": {
+  "input_tokens": 4515,
+  "cached_input_tokens": 1920,
+  "output_tokens": 4158
+ },
+ "cost_usd": 0.039414,
+ "response": {
+  "reasoning": "Ana Pereira from Summit Refit Services is writing to Ridgeline's RFQ desk, requesting a quote for all items listed in the attached full BOM for the Unit 4 piping package. The BOM is provided in an Excel file with two sheets: one for pipe and one for fittings. Quantities are specified as firm and all lines are to be quoted.",
+  "classification": "rfq",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [
+   {
+    "file": "SR-4-117_Unit4_BOM.xlsx",
+    "relation": "sections",
+    "sheets_used": [
+     "PIPE - SCH 80 SMLS",
+     "FITTINGS - SW 3000#"
+    ],
+    "why": "The sheets are for different categories (pipe and fittings) as described in the email and sheet names."
+   }
+  ],
+  "line_items": [
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R2",
+    "image": null,
+    "raw": "1 | 420 | FT | 1/2\" | PE",
+    "description": "PIPE - SCH 80 SMLS: 1/2\" PE pipe, Line 1",
+    "qty": 420.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R3",
+    "image": null,
+    "raw": "2 | 300 | FT | 3/4\" | PE",
+    "description": "PIPE - SCH 80 SMLS: 3/4\" PE pipe, Line 2",
+    "qty": 300.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R4",
+    "image": null,
+    "raw": "3 | 600 | FT | 1\" | PE",
+    "description": "PIPE - SCH 80 SMLS: 1\" PE pipe, Line 3",
+    "qty": 600.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R5",
+    "image": null,
+    "raw": "4 | 240 | FT | 1-1/4\" | PE",
+    "description": "PIPE - SCH 80 SMLS: 1-1/4\" PE pipe, Line 4",
+    "qty": 240.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R6",
+    "image": null,
+    "raw": "5 | 360 | FT | 1-1/2\" | PE",
+    "description": "PIPE - SCH 80 SMLS: 1-1/2\" PE pipe, Line 5",
+    "qty": 360.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R7",
+    "image": null,
+    "raw": "6 | 500 | FT | 2\" | PE",
+    "description": "PIPE - SCH 80 SMLS: 2\" PE pipe, Line 6",
+    "qty": 500.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R8",
+    "image": null,
+    "raw": "7 | 180 | FT | 2-1/2\" | PE",
+    "description": "PIPE - SCH 80 SMLS: 2-1/2\" PE pipe, Line 7",
+    "qty": 180.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R9",
+    "image": null,
+    "raw": "8 | 320 | FT | 3\" | PE",
+    "description": "PIPE - SCH 80 SMLS: 3\" PE pipe, Line 8",
+    "qty": 320.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R10",
+    "image": null,
+    "raw": "9 | 140 | FT | 4\" | PE",
+    "description": "PIPE - SCH 80 SMLS: 4\" PE pipe, Line 9",
+    "qty": 140.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R11",
+    "image": null,
+    "raw": "10 | 80 | FT | 6\" | PE",
+    "description": "PIPE - SCH 80 SMLS: 6\" PE pipe, Line 10",
+    "qty": 80.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R12",
+    "image": null,
+    "raw": "11 | 120 | FT | 1/2\" | TOE",
+    "description": "PIPE - SCH 80 SMLS: 1/2\" TOE pipe, Line 11",
+    "qty": 120.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R13",
+    "image": null,
+    "raw": "12 | 160 | FT | 3/4\" | TOE",
+    "description": "PIPE - SCH 80 SMLS: 3/4\" TOE pipe, Line 12",
+    "qty": 160.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R14",
+    "image": null,
+    "raw": "13 | 200 | FT | 1\" | TOE",
+    "description": "PIPE - SCH 80 SMLS: 1\" TOE pipe, Line 13",
+    "qty": 200.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R15",
+    "image": null,
+    "raw": "14 | 100 | FT | 1-1/2\" | TOE",
+    "description": "PIPE - SCH 80 SMLS: 1-1/2\" TOE pipe, Line 14",
+    "qty": 100.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R16",
+    "image": null,
+    "raw": "15 | 140 | FT | 2\" | TOE",
+    "description": "PIPE - SCH 80 SMLS: 2\" TOE pipe, Line 15",
+    "qty": 140.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R17",
+    "image": null,
+    "raw": "16 | 60 | FT | 3\" | BE",
+    "description": "PIPE - SCH 80 SMLS: 3\" BE pipe, Line 16",
+    "qty": 60.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R18",
+    "image": null,
+    "raw": "17 | 40 | FT | 4\" | BE",
+    "description": "PIPE - SCH 80 SMLS: 4\" BE pipe, Line 17",
+    "qty": 40.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!PIPE - SCH 80 SMLS!R19",
+    "image": null,
+    "raw": "18 | 20 | FT | 6\" | BE",
+    "description": "PIPE - SCH 80 SMLS: 6\" BE pipe, Line 18",
+    "qty": 20.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R2",
+    "image": null,
+    "raw": "1 | 9 | EA | 1/2\" | 90 Elbow",
+    "description": "FITTINGS - SW 3000#: 1/2\" 90 Elbow, Line 1",
+    "qty": 9.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R3",
+    "image": null,
+    "raw": "2 | 16 | EA | 3/4\" | 90 Elbow",
+    "description": "FITTINGS - SW 3000#: 3/4\" 90 Elbow, Line 2",
+    "qty": 16.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R4",
+    "image": null,
+    "raw": "3 | 23 | EA | 1\" | 90 Elbow",
+    "description": "FITTINGS - SW 3000#: 1\" 90 Elbow, Line 3",
+    "qty": 23.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R5",
+    "image": null,
+    "raw": "4 | 30 | EA | 1-1/4\" | 90 Elbow",
+    "description": "FITTINGS - SW 3000#: 1-1/4\" 90 Elbow, Line 4",
+    "qty": 30.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R6",
+    "image": null,
+    "raw": "5 | 6 | EA | 1-1/2\" | 90 Elbow",
+    "description": "FITTINGS - SW 3000#: 1-1/2\" 90 Elbow, Line 5",
+    "qty": 6.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R7",
+    "image": null,
+    "raw": "6 | 13 | EA | 2\" | 90 Elbow",
+    "description": "FITTINGS - SW 3000#: 2\" 90 Elbow, Line 6",
+    "qty": 13.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R8",
+    "image": null,
+    "raw": "7 | 20 | EA | 1/2\" | 45 Elbow",
+    "description": "FITTINGS - SW 3000#: 1/2\" 45 Elbow, Line 7",
+    "qty": 20.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R9",
+    "image": null,
+    "raw": "8 | 27 | EA | 3/4\" | 45 Elbow",
+    "description": "FITTINGS - SW 3000#: 3/4\" 45 Elbow, Line 8",
+    "qty": 27.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R10",
+    "image": null,
+    "raw": "9 | 34 | EA | 1\" | 45 Elbow",
+    "description": "FITTINGS - SW 3000#: 1\" 45 Elbow, Line 9",
+    "qty": 34.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R11",
+    "image": null,
+    "raw": "10 | 10 | EA | 1-1/4\" | 45 Elbow",
+    "description": "FITTINGS - SW 3000#: 1-1/4\" 45 Elbow, Line 10",
+    "qty": 10.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R12",
+    "image": null,
+    "raw": "11 | 17 | EA | 1-1/2\" | 45 Elbow",
+    "description": "FITTINGS - SW 3000#: 1-1/2\" 45 Elbow, Line 11",
+    "qty": 17.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R13",
+    "image": null,
+    "raw": "12 | 24 | EA | 2\" | 45 Elbow",
+    "description": "FITTINGS - SW 3000#: 2\" 45 Elbow, Line 12",
+    "qty": 24.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R14",
+    "image": null,
+    "raw": "13 | 31 | EA | 1/2\" | Tee",
+    "description": "FITTINGS - SW 3000#: 1/2\" Tee, Line 13",
+    "qty": 31.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R15",
+    "image": null,
+    "raw": "14 | 7 | EA | 3/4\" | Tee",
+    "description": "FITTINGS - SW 3000#: 3/4\" Tee, Line 14",
+    "qty": 7.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R16",
+    "image": null,
+    "raw": "15 | 14 | EA | 1\" | Tee",
+    "description": "FITTINGS - SW 3000#: 1\" Tee, Line 15",
+    "qty": 14.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R17",
+    "image": null,
+    "raw": "16 | 21 | EA | 1-1/4\" | Tee",
+    "description": "FITTINGS - SW 3000#: 1-1/4\" Tee, Line 16",
+    "qty": 21.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R18",
+    "image": null,
+    "raw": "17 | 28 | EA | 1-1/2\" | Tee",
+    "description": "FITTINGS - SW 3000#: 1-1/2\" Tee, Line 17",
+    "qty": 28.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R19",
+    "image": null,
+    "raw": "18 | 35 | EA | 2\" | Tee",
+    "description": "FITTINGS - SW 3000#: 2\" Tee, Line 18",
+    "qty": 35.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R20",
+    "image": null,
+    "raw": "19 | 11 | EA | 1/2\" | Coupling",
+    "description": "FITTINGS - SW 3000#: 1/2\" Coupling, Line 19",
+    "qty": 11.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R21",
+    "image": null,
+    "raw": "20 | 18 | EA | 3/4\" | Coupling",
+    "description": "FITTINGS - SW 3000#: 3/4\" Coupling, Line 20",
+    "qty": 18.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R22",
+    "image": null,
+    "raw": "21 | 25 | EA | 1\" | Coupling",
+    "description": "FITTINGS - SW 3000#: 1\" Coupling, Line 21",
+    "qty": 25.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R23",
+    "image": null,
+    "raw": "22 | 32 | EA | 1-1/4\" | Coupling",
+    "description": "FITTINGS - SW 3000#: 1-1/4\" Coupling, Line 22",
+    "qty": 32.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R24",
+    "image": null,
+    "raw": "23 | 8 | EA | 1-1/2\" | Coupling",
+    "description": "FITTINGS - SW 3000#: 1-1/2\" Coupling, Line 23",
+    "qty": 8.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R25",
+    "image": null,
+    "raw": "24 | 15 | EA | 2\" | Coupling",
+    "description": "FITTINGS - SW 3000#: 2\" Coupling, Line 24",
+    "qty": 15.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R26",
+    "image": null,
+    "raw": "25 | 22 | EA | 1/2\" | Cap",
+    "description": "FITTINGS - SW 3000#: 1/2\" Cap, Line 25",
+    "qty": 22.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R27",
+    "image": null,
+    "raw": "26 | 29 | EA | 3/4\" | Cap",
+    "description": "FITTINGS - SW 3000#: 3/4\" Cap, Line 26",
+    "qty": 29.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R28",
+    "image": null,
+    "raw": "27 | 36 | EA | 1\" | Cap",
+    "description": "FITTINGS - SW 3000#: 1\" Cap, Line 27",
+    "qty": 36.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R29",
+    "image": null,
+    "raw": "28 | 12 | EA | 1-1/4\" | Cap",
+    "description": "FITTINGS - SW 3000#: 1-1/4\" Cap, Line 28",
+    "qty": 12.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R30",
+    "image": null,
+    "raw": "29 | 19 | EA | 1-1/2\" | Cap",
+    "description": "FITTINGS - SW 3000#: 1-1/2\" Cap, Line 29",
+    "qty": 19.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R31",
+    "image": null,
+    "raw": "30 | 26 | EA | 2\" | Cap",
+    "description": "FITTINGS - SW 3000#: 2\" Cap, Line 30",
+    "qty": 26.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R32",
+    "image": null,
+    "raw": "31 | 33 | EA | 1/2\" | Union",
+    "description": "FITTINGS - SW 3000#: 1/2\" Union, Line 31",
+    "qty": 33.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "SR-4-117_Unit4_BOM.xlsx!FITTINGS - SW 3000#!R33",
+    "image": null,
+    "raw": "32 | 9 | EA | 3/4\" | Union",
+    "description": "FITTINGS - SW 3000#: 3/4\" Union, Line 32",
+    "qty": 9.0,
+    "uom": "EA"
+   }
+  ]
+ }
+}

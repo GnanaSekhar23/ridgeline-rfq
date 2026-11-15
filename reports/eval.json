@@ -1,32 +1,32 @@
 {
  "headline": {
-  "silent_losses": 19,
-  "hallucinated_lines": 0,
-  "lost_requests": 20,
+  "silent_losses": 0,
+  "hallucinated_lines": 1,
+  "lost_requests": 0,
   "phantom_requests": 0,
-  "classification": "4.2% (1/24)",
-  "line_recall": "0.0% (0/210)",
-  "line_precision": "n/a",
-  "qty": "n/a",
-  "uom": "n/a",
-  "source": "n/a",
-  "context_carried": "n/a",
-  "links": "50.0% (1/2)",
-  "review_precision": "n/a",
-  "review_recall": "0.0% (0/2)"
+  "classification": "100.0% (24/24)",
+  "line_recall": "98.6% (207/210)",
+  "line_precision": "99.5% (207/208)",
+  "qty": "94.7% (196/207)",
+  "uom": "100.0% (207/207)",
+  "source": "100.0% (207/207)",
+  "context_carried": "99.5% (206/207)",
+  "links": "100.0% (2/2)",
+  "review_precision": "66.7% (2/3)",
+  "review_recall": "100.0% (2/2)"
  },
  "per_email": {
   "E001": {
    "lines": {
-    "E001-1": "missed",
-    "E001-2": "missed",
-    "E001-3": "missed",
-    "E001-4": "missed",
-    "E001-5": "missed"
+    "E001-5": "ok",
+    "E001-4": "ok",
+    "E001-3": "ok",
+    "E001-2": "ok",
+    "E001-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -40,15 +40,15 @@
   },
   "E002": {
    "lines": {
-    "E002-1": "missed",
-    "E002-2": "missed",
-    "E002-3": "missed",
-    "E002-4": "missed",
-    "E002-5": "missed"
+    "E002-5": "ok",
+    "E002-4": "ok",
+    "E002-3": "ok",
+    "E002-2": "ok",
+    "E002-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -57,23 +57,23 @@
    ],
    "needs_review": [
     false,
-    false
+    true
    ]
   },
   "E003": {
    "lines": {
-    "E003-1": "missed",
-    "E003-2": "missed",
-    "E003-3": "missed",
-    "E003-4": "missed",
-    "E003-5": "missed",
-    "E003-6": "missed",
-    "E003-7": "missed",
-    "E003-8": "missed"
+    "E003-8": "ok",
+    "E003-7": "ok",
+    "E003-6": "ok",
+    "E003-5": "ok",
+    "E003-4": "ok",
+    "E003-3": "ok",
+    "E003-2": "ok",
+    "E003-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -87,22 +87,22 @@
   },
   "E004": {
    "lines": {
-    "E004-1": "missed",
-    "E004-2": "missed",
-    "E004-3": "missed",
-    "E004-4": "missed",
-    "E004-5": "missed",
-    "E004-6": "missed",
-    "E004-7": "missed",
-    "E004-8": "missed"
+    "E004-8": "ok",
+    "E004-7": "ok",
+    "E004-6": "ok",
+    "E004-5": "ok",
+    "E004-4": "ok",
+    "E004-3": "ok",
+    "E004-2": "ok",
+    "E004-1": "ok"
    },
    "class": [
     "rfq_revision",
-    "other"
+    "rfq_revision"
    ],
    "hallucinated": 0,
    "links": [
-    null,
+    "E003",
     null
    ],
    "needs_review": [
@@ -112,18 +112,18 @@
   },
   "E005": {
    "lines": {
-    "E005-1": "missed",
-    "E005-2": "missed",
-    "E005-3": "missed",
-    "E005-4": "missed",
-    "E005-5": "missed",
-    "E005-6": "missed",
-    "E005-7": "missed",
-    "E005-8": "missed"
+    "E005-8": "ok",
+    "E005-7": "ok",
+    "E005-6": "must-not ['sch 40']",
+    "E005-5": "ok",
+    "E005-4": "ok",
+    "E005-3": "ok",
+    "E005-2": "ok",
+    "E005-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -137,54 +137,54 @@
   },
   "E006": {
    "lines": {
-    "E006-1": "missed",
-    "E006-2": "missed",
-    "E006-3": "missed",
-    "E006-4": "missed",
-    "E006-5": "missed",
-    "E006-6": "missed",
-    "E006-7": "missed",
-    "E006-8": "missed",
-    "E006-9": "missed",
-    "E006-10": "missed",
-    "E006-11": "missed",
-    "E006-12": "missed",
-    "E006-13": "missed",
-    "E006-14": "missed",
-    "E006-15": "missed",
-    "E006-16": "missed",
-    "E006-17": "missed",
-    "E006-18": "missed",
-    "E006-19": "missed",
-    "E006-20": "missed",
-    "E006-21": "missed",
-    "E006-22": "missed",
-    "E006-23": "missed",
-    "E006-24": "missed",
-    "E006-25": "missed",
-    "E006-26": "missed",
-    "E006-27": "missed",
-    "E006-28": "missed",
-    "E006-29": "missed",
-    "E006-30": "missed",
-    "E006-31": "missed",
-    "E006-32": "missed",
-    "E006-33": "missed",
-    "E006-34": "missed",
-    "E006-35": "missed",
-    "E006-36": "missed",
-    "E006-37": "missed",
-    "E006-38": "missed",
-    "E006-39": "missed",
-    "E006-40": "missed",
-    "E006-41": "missed",
-    "E006-42": "missed",
-    "E006-43": "missed",
-    "E006-44": "missed"
+    "E006-44": "ok",
+    "E006-43": "ok",
+    "E006-42": "ok",
+    "E006-41": "ok",
+    "E006-40": "ok",
+    "E006-39": "ok",
+    "E006-38": "ok",
+    "E006-37": "ok",
+    "E006-36": "ok",
+    "E006-35": "ok",
+    "E006-34": "ok",
+    "E006-33": "ok",
+    "E006-32": "ok",
+    "E006-31": "ok",
+    "E006-30": "ok",
+    "E006-29": "ok",
+    "E006-28": "ok",
+    "E006-27": "ok",
+    "E006-26": "ok",
+    "E006-25": "ok",
+    "E006-24": "ok",
+    "E006-23": "ok",
+    "E006-22": "ok",
+    "E006-21": "ok",
+    "E006-20": "ok",
+    "E006-19": "ok",
+    "E006-18": "ok",
+    "E006-17": "ok",
+    "E006-16": "ok",
+    "E006-15": "ok",
+    "E006-14": "ok",
+    "E006-13": "ok",
+    "E006-12": "ok",
+    "E006-11": "ok",
+    "E006-10": "ok",
+    "E006-9": "ok",
+    "E006-8": "ok",
+    "E006-7": "ok",
+    "E006-6": "ok",
+    "E006-5": "ok",
+    "E006-4": "ok",
+    "E006-3": "ok",
+    "E006-2": "ok",
+    "E006-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -198,17 +198,17 @@
   },
   "E007": {
    "lines": {
-    "E007-1": "missed",
-    "E007-2": "missed",
-    "E007-3": "missed",
-    "E007-4": "missed",
-    "E007-5": "missed",
-    "E007-6": "missed",
-    "E007-7": "missed"
+    "E007-7": "ok",
+    "E007-6": "ok",
+    "E007-5": "ok",
+    "E007-4": "ok",
+    "E007-3": "ok",
+    "E007-2": "ok",
+    "E007-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -224,7 +224,7 @@
    "lines": {},
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -238,42 +238,42 @@
   },
   "E009": {
    "lines": {
-    "E009-1": "missed",
-    "E009-2": "missed",
-    "E009-3": "missed",
-    "E009-4": "missed",
-    "E009-5": "missed",
-    "E009-6": "missed",
-    "E009-7": "missed",
-    "E009-8": "missed",
-    "E009-9": "missed",
-    "E009-10": "missed",
-    "E009-11": "missed",
-    "E009-12": "missed",
-    "E009-13": "missed",
-    "E009-14": "missed",
-    "E009-15": "missed",
-    "E009-16": "missed",
-    "E009-17": "missed",
-    "E009-18": "missed",
-    "E009-19": "missed",
     "E009-20": "missed",
-    "E009-21": "missed",
-    "E009-22": "missed",
-    "E009-23": "missed",
-    "E009-24": "missed",
-    "E009-25": "missed",
     "E009-26": "missed",
-    "E009-27": "missed",
-    "E009-28": "missed",
-    "E009-29": "missed",
-    "E009-30": "missed",
-    "E009-31": "missed",
-    "E009-32": "missed"
+    "E009-32": "ok",
+    "E009-31": "ok",
+    "E009-30": "ok",
+    "E009-29": "ok",
+    "E009-24": "ok",
+    "E009-23": "ok",
+    "E009-17": "ok",
+    "E009-16": "ok",
+    "E009-15": "ok",
+    "E009-6": "ok",
+    "E009-1": "ok",
+    "E009-28": "ok",
+    "E009-27": "ok",
+    "E009-19": "ok",
+    "E009-21": "ok",
+    "E009-2": "qty 6 != 4",
+    "E009-25": "qty 24 != 16",
+    "E009-14": "ok",
+    "E009-13": "ok",
+    "E009-12": "ok",
+    "E009-3": "qty 2 != 10",
+    "E009-7": "qty 2 != 4",
+    "E009-4": "qty 6 != 8",
+    "E009-22": "qty 8 != 2",
+    "E009-10": "qty 2 != 6",
+    "E009-9": "ok",
+    "E009-18": "qty 16 != 12",
+    "E009-5": "qty 6 != 12",
+    "E009-11": "qty 2 != 4",
+    "E009-8": "qty 6 != 4"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -287,16 +287,16 @@
   },
   "E010": {
    "lines": {
-    "E010-1": "missed",
-    "E010-2": "missed",
-    "E010-3": "missed",
-    "E010-4": "missed",
-    "E010-5": "missed",
-    "E010-6": "missed"
+    "E010-6": "ok",
+    "E010-5": "ok",
+    "E010-4": "ok",
+    "E010-3": "ok",
+    "E010-2": "ok",
+    "E010-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -312,7 +312,7 @@
    "lines": {},
    "class": [
     "vendor_quote",
-    "other"
+    "vendor_quote"
    ],
    "hallucinated": 0,
    "links": [
@@ -328,7 +328,7 @@
    "lines": {},
    "class": [
     "status_inquiry",
-    "other"
+    "status_inquiry"
    ],
    "hallucinated": 0,
    "links": [
@@ -344,7 +344,7 @@
    "lines": {},
    "class": [
     "auto_reply",
-    "other"
+    "auto_reply"
    ],
    "hallucinated": 0,
    "links": [
@@ -374,16 +374,16 @@
   },
   "E015": {
    "lines": {
-    "E015-1": "missed",
-    "E015-2": "missed",
-    "E015-3": "missed",
-    "E015-4": "missed",
-    "E015-5": "missed",
-    "E015-6": "missed"
+    "E015-4": "ok",
+    "E015-5": "ok",
+    "E015-1": "ok",
+    "E015-2": "ok",
+    "E015-3": "ok",
+    "E015-6": "ok"
    },
    "class": [
     "purchase_order",
-    "other"
+    "purchase_order"
    ],
    "hallucinated": 0,
    "links": [
@@ -397,16 +397,16 @@
   },
   "E016": {
    "lines": {
-    "E016-1": "missed",
-    "E016-2": "missed",
-    "E016-3": "missed",
-    "E016-4": "missed",
-    "E016-5": "missed",
-    "E016-6": "missed"
+    "E016-6": "ok",
+    "E016-5": "ok",
+    "E016-4": "ok",
+    "E016-3": "ok",
+    "E016-2": "ok",
+    "E016-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -422,7 +422,7 @@
    "lines": {},
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -431,21 +431,21 @@
    ],
    "needs_review": [
     true,
-    false
+    true
    ]
   },
   "E018": {
    "lines": {
-    "E018-1": "missed",
-    "E018-2": "missed",
-    "E018-3": "missed",
-    "E018-4": "missed",
-    "E018-5": "missed",
-    "E018-6": "missed"
+    "E018-1": "ok",
+    "E018-3": "ok",
+    "E018-2": "ok",
+    "E018-4": "ok",
+    "E018-5": "ok",
+    "E018-6": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -459,19 +459,19 @@
   },
   "E019": {
    "lines": {
-    "E019-1": "missed",
-    "E019-2": "missed",
-    "E019-3": "missed",
-    "E019-4": "missed",
-    "E019-5": "missed",
-    "E019-6": "missed",
-    "E019-7": "missed",
-    "E019-8": "missed",
-    "E019-9": "missed"
+    "E019-9": "ok",
+    "E019-8": "ok",
+    "E019-7": "ok",
+    "E019-6": "ok",
+    "E019-5": "ok",
+    "E019-4": "ok",
+    "E019-3": "ok",
+    "E019-2": "ok",
+    "E019-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -485,13 +485,13 @@
   },
   "E020": {
    "lines": {
-    "E020-1": "missed",
-    "E020-2": "missed",
-    "E020-3": "missed"
+    "E020-3": "ok",
+    "E020-2": "ok",
+    "E020-1": "ok"
    },
    "class": [
     "purchase_order",
-    "other"
+    "purchase_order"
    ],
    "hallucinated": 0,
    "links": [
@@ -505,60 +505,60 @@
   },
   "E021": {
    "lines": {
-    "E021-1": "missed",
-    "E021-2": "missed",
-    "E021-3": "missed",
-    "E021-4": "missed",
-    "E021-5": "missed",
-    "E021-6": "missed",
-    "E021-7": "missed",
-    "E021-8": "missed",
-    "E021-9": "missed",
-    "E021-10": "missed",
-    "E021-11": "missed",
-    "E021-12": "missed",
-    "E021-13": "missed",
-    "E021-14": "missed",
-    "E021-15": "missed",
-    "E021-16": "missed",
-    "E021-17": "missed",
-    "E021-18": "missed",
-    "E021-19": "missed",
-    "E021-20": "missed",
-    "E021-21": "missed",
-    "E021-22": "missed",
-    "E021-23": "missed",
-    "E021-24": "missed",
-    "E021-25": "missed",
-    "E021-26": "missed",
-    "E021-27": "missed",
-    "E021-28": "missed",
-    "E021-29": "missed",
-    "E021-30": "missed",
-    "E021-31": "missed",
-    "E021-32": "missed",
-    "E021-33": "missed",
-    "E021-34": "missed",
-    "E021-35": "missed",
-    "E021-36": "missed",
-    "E021-37": "missed",
-    "E021-38": "missed",
-    "E021-39": "missed",
-    "E021-40": "missed",
-    "E021-41": "missed",
-    "E021-42": "missed",
-    "E021-43": "missed",
-    "E021-44": "missed",
-    "E021-45": "missed",
-    "E021-46": "missed",
-    "E021-47": "missed",
-    "E021-48": "missed",
-    "E021-49": "missed",
-    "E021-50": "missed"
+    "E021-50": "ok",
+    "E021-49": "ok",
+    "E021-48": "ok",
+    "E021-47": "ok",
+    "E021-46": "ok",
+    "E021-45": "ok",
+    "E021-44": "ok",
+    "E021-43": "ok",
+    "E021-42": "ok",
+    "E021-41": "ok",
+    "E021-40": "ok",
+    "E021-39": "ok",
+    "E021-38": "ok",
+    "E021-37": "ok",
+    "E021-36": "ok",
+    "E021-35": "ok",
+    "E021-34": "ok",
+    "E021-33": "ok",
+    "E021-32": "ok",
+    "E021-31": "ok",
+    "E021-30": "ok",
+    "E021-29": "ok",
+    "E021-28": "ok",
+    "E021-27": "ok",
+    "E021-26": "ok",
+    "E021-25": "ok",
+    "E021-24": "ok",
+    "E021-23": "ok",
+    "E021-22": "ok",
+    "E021-21": "ok",
+    "E021-20": "ok",
+    "E021-19": "ok",
+    "E021-18": "ok",
+    "E021-17": "ok",
+    "E021-16": "ok",
+    "E021-15": "ok",
+    "E021-14": "ok",
+    "E021-13": "ok",
+    "E021-12": "ok",
+    "E021-11": "ok",
+    "E021-10": "ok",
+    "E021-9": "ok",
+    "E021-8": "ok",
+    "E021-7": "ok",
+    "E021-6": "ok",
+    "E021-5": "ok",
+    "E021-4": "ok",
+    "E021-3": "ok",
+    "E021-2": "ok",
+    "E021-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -574,7 +574,7 @@
    "lines": {},
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [
@@ -583,7 +583,7 @@
    ],
    "needs_review": [
     true,
-    false
+    true
    ]
   },
   "E023": {
@@ -592,9 +592,9 @@
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
-   "hallucinated": 0,
+   "hallucinated": 1,
    "links": [
     null,
     null
@@ -606,16 +606,16 @@
   },
   "E024": {
    "lines": {
-    "E024-1": "missed",
-    "E024-2": "missed",
-    "E024-3": "missed",
-    "E024-4": "missed",
-    "E024-5": "missed",
-    "E024-6": "missed"
+    "E024-6": "ok",
+    "E024-5": "ok",
+    "E024-4": "ok",
+    "E024-3": "ok",
+    "E024-2": "ok",
+    "E024-1": "ok"
    },
    "class": [
     "rfq",
-    "other"
+    "rfq"
    ],
    "hallucinated": 0,
    "links": [

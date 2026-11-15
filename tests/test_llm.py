@@ -15,9 +15,9 @@ from rfq.models import Doc, Email, ImagePart, Line
 from rfq.prompt import build_messages
 from rfq.schema import response_format
 
-GOOD = {"result": {"kind": "rfq", "lines": [
-    {"row_id": "body!B1", "image": None, "raw": "4 ea 2in tee", "description": "2in tee", "qty": 4, "uom": "EA"}],
-    "sheet_decisions": [], "needs_review": False, "review_reason": None, "rationale": "asks for prices"}}
+GOOD = {"reasoning": "A customer asks us to price one item.", "classification": "rfq",
+        "needs_review": False, "review_reason": None, "sheet_decisions": [], "line_items": [
+            {"row_id": "body!B1", "image": None, "raw": "4 ea 2in tee", "description": "2in tee", "qty": 4, "uom": "EA"}]}
 
 
 def _resp(content: str, finish: str = "stop", refusal=None, tokens=(1000, 200)):
@@ -80,7 +80,7 @@ def test_request_uses_strict_schema_and_temperature_zero(tmp_path: Path) -> None
 
 
 def test_invalid_then_repaired(tmp_path: Path) -> None:
-    ex, client = _ex(tmp_path, [_resp('{"result": {"kind": "rfq"}}'), _resp(json.dumps(GOOD))])
+    ex, client = _ex(tmp_path, [_resp('{"classification": "rfq"}'), _resp(json.dumps(GOOD))])
     out = ex.run(*_email())
     assert out.extraction and out.live_calls == 2
     assert "corrected JSON" in client.requests[1]["messages"][-1]["content"]
@@ -138,6 +138,57 @@ def test_images_go_as_vision_parts() -> None:
     parts = messages[1]["content"]
     assert any(p["type"] == "image_url" and p["image_url"]["url"].startswith("data:image/png;base64,") for p in parts)
     assert any(p["type"] == "text" and p["text"] == "IMAGE label: IMG_1.jpg" for p in parts)
+
+
+def test_schema_field_order_reasoning_first_and_line_cap() -> None:
+    from rfq.config import MAX_LINE_ITEMS
+
+    s = response_format()["json_schema"]["schema"]
+    assert list(s["properties"]) == ["reasoning", "classification", "needs_review", "review_reason",
+                                     "sheet_decisions", "line_items"]
+    assert s["properties"]["line_items"]["maxItems"] == MAX_LINE_ITEMS
+    assert "oneOf" not in json.dumps(s) and "anyOf" not in json.dumps(s["properties"]["classification"])
+
+
+def test_read_problems_are_in_the_prompt() -> None:
+    e, docs = _email()
+    messages, _ = build_messages(e, docs, ["rfq.pdf: PDF is password-protected"])
+    text = messages[1]["content"][0]["text"]
+    assert "=== READ PROBLEMS ===" in text and "rfq.pdf: PDF is password-protected" in text
+
+
+def test_rejected_output_saved_to_run_folder(tmp_path: Path) -> None:
+    from rfq.costlog import RunLog
+
+    ex, _ = _ex(tmp_path, [_resp('{"reasoning": "x"', finish="length")])
+    log = RunLog("gpt-4.1", runs_dir=tmp_path / "runs", reports_dir=tmp_path / "reports")
+    e, docs = _email()
+    log.record(e.id, ex.run(e, docs))
+    saved = json.loads((log.dir / "emails" / "T1" / "response.json").read_text(encoding="utf-8"))
+    assert "too long" in saved["error"]
+    assert saved["responses"][0]["content"] == '{"reasoning": "x"'
+    assert saved["responses"][0]["finish_reason"] == "length"
+
+
+def test_exception_saved_to_run_folder(tmp_path: Path) -> None:
+    from rfq.costlog import RunLog
+
+    ex, _ = _ex(tmp_path, [_transient()] * 4)
+    log = RunLog("gpt-4.1", runs_dir=tmp_path / "runs", reports_dir=tmp_path / "reports")
+    e, docs = _email()
+    log.record(e.id, ex.run(e, docs))
+    saved = json.loads((log.dir / "emails" / "T1" / "response.json").read_text(encoding="utf-8"))
+    assert len(saved["responses"]) == 4 and "APITimeoutError" in saved["responses"][0]["exception"]
+
+
+def test_successful_output_not_saved_to_run_folder(tmp_path: Path) -> None:
+    from rfq.costlog import RunLog
+
+    ex, _ = _ex(tmp_path, [_resp(json.dumps(GOOD))])
+    log = RunLog("gpt-4.1", runs_dir=tmp_path / "runs", reports_dir=tmp_path / "reports")
+    e, docs = _email()
+    log.record(e.id, ex.run(e, docs))
+    assert not (log.dir / "emails").exists()
 
 
 def test_key_is_never_written_to_cache_or_logs(tmp_path: Path, monkeypatch) -> None:

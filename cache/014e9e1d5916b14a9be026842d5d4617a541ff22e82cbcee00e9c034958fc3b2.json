@@ -1,0 +1,70 @@
+{
+ "key": "014e9e1d5916b14a9be026842d5d4617a541ff22e82cbcee00e9c034958fc3b2",
+ "email_id": "E016",
+ "model": "gpt-4.1",
+ "prompt_version": "p2",
+ "created": "2026-11-15T15:04:59+00:00",
+ "usage": {
+  "input_tokens": 2649,
+  "cached_input_tokens": 1920,
+  "output_tokens": 634
+ },
+ "cost_usd": 0.00749,
+ "response": {
+  "reasoning": "Marcus Doyle, one of our reps, is forwarding a request from Priya Raman at Hollis Mechanical to the RFQ desk. Priya is asking us to price and provide lead times for a list of materials for their condensate return job, with the list provided in an attached CSV. This is a customer RFQ for several pipe and fitting items.",
+  "classification": "rfq",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": "HM-7716_material_list.csv!R2",
+    "image": null,
+    "raw": "60 | FT | 1-1/2\" | Pipe, SCH 80, A106B SMLS, PE",
+    "description": "Qty: 60 | UOM: FT | Size: 1-1/2\" | Description: Pipe, SCH 80, A106B SMLS, PE",
+    "qty": 60.0,
+    "uom": "FT"
+   },
+   {
+    "row_id": "HM-7716_material_list.csv!R3",
+    "image": null,
+    "raw": "12 | EA | 1-1/2\" | 90 elbow, SW, 3000#, A105",
+    "description": "Qty: 12 | UOM: EA | Size: 1-1/2\" | Description: 90 elbow, SW, 3000#, A105",
+    "qty": 12.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "HM-7716_material_list.csv!R4",
+    "image": null,
+    "raw": "6 | EA | 1-1/2\" | Tee, SW, 3000#, A105",
+    "description": "Qty: 6 | UOM: EA | Size: 1-1/2\" | Description: Tee, SW, 3000#, A105",
+    "qty": 6.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "HM-7716_material_list.csv!R5",
+    "image": null,
+    "raw": "8 | EA | 1-1/2\" | Union, SW, 3000#, A105",
+    "description": "Qty: 8 | UOM: EA | Size: 1-1/2\" | Description: Union, SW, 3000#, A105",
+    "qty": 8.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "HM-7716_material_list.csv!R6",
+    "image": null,
+    "raw": "4 | EA | 1-1/2\" | Gate valve, 800#, SW, A105",
+    "description": "Qty: 4 | UOM: EA | Size: 1-1/2\" | Description: Gate valve, 800#, SW, A105",
+    "qty": 4.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": "HM-7716_material_list.csv!R7",
+    "image": null,
+    "raw": "2 | EA | 1-1/2\" | Y-strainer, 800#, SW, A105",
+    "description": "Qty: 2 | UOM: EA | Size: 1-1/2\" | Description: Y-strainer, 800#, SW, A105",
+    "qty": 2.0,
+    "uom": "EA"
+   }
+  ]
+ }
+}

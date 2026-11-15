@@ -2,6 +2,7 @@
 
 runs/<run_id>/calls.jsonl     one line per email: cache hit?, tokens, $, latency, error
 runs/<run_id>/failures.jsonl  emails that could not get a model answer, with `retryable`
+runs/<run_id>/emails/<id>/response.json  raw model output of every rejected / failed call
 runs/latest/                  copy of the most recent run (committed)
 reports/cost.md               totals and per-email table
 Never contains the API key or request content.
@@ -52,6 +53,13 @@ class RunLog:
             if outcome.error:
                 self._append("failures.jsonl", {"email": email_id, "error": outcome.error,
                                                 "retryable": outcome.retryable})
+                if outcome.raw_responses:  # keep what the model actually said, for diagnosis
+                    d = self.dir / "emails" / email_id
+                    d.mkdir(parents=True, exist_ok=True)
+                    (d / "response.json").write_text(json.dumps(
+                        {"email": email_id, "error": outcome.error, "cache_key": outcome.key,
+                         "responses": outcome.raw_responses}, indent=1, ensure_ascii=False) + "\n",
+                        encoding="utf-8")
         self.rows.append(row)
         self._append("calls.jsonl", row)
 

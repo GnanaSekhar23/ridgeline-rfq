@@ -12,9 +12,10 @@ def _ln(row_id, raw, desc="d", qty=None, uom=None, image=None):
 
 
 def _ans(kind, lines, **kw):
-    body = {"kind": kind, "lines": lines, "sheet_decisions": kw.get("sheets", []),
-            "needs_review": kw.get("review", False), "review_reason": kw.get("reason"), "rationale": "r"}
-    return Extraction.model_validate({"result": body})
+    return Extraction.model_validate({
+        "reasoning": "r", "classification": kind, "needs_review": kw.get("review", False),
+        "review_reason": kw.get("reason"), "sheet_decisions": kw.get("sheets", []), "line_items": lines,
+    })
 
 
 EMAIL = Email(id="T", headers={}, body="")
@@ -88,10 +89,27 @@ def test_image_lines_keep_model_raw_and_map_source() -> None:
     assert (r.line_items[0].raw, r.line_items[0].source) == ("6 - 4in blind flg", "scan.pdf")
 
 
-def test_no_items_kinds_have_no_lines_and_no_review() -> None:
-    ans = Extraction.model_validate({"result": {"kind": "vendor_quote", "rationale": "supplier pricing"}})
-    r = build_result(EMAIL, DOCS, ans, problems=["x.pdf: broken"])
-    assert r.classification == "vendor_quote" and r.line_items == [] and not r.needs_review
+def test_non_request_lines_and_review_flag_are_dropped(caplog) -> None:
+    for kind in ("vendor_quote", "status_inquiry", "auto_reply", "other"):
+        ans = _ans(kind, [_ln("body!B2", "4 ea 2in gate valve", qty=4)], review=True, reason="x")
+        with caplog.at_level("INFO"):
+            r = build_result(EMAIL, DOCS, ans, problems=["x.pdf: broken"])
+        assert r.classification == kind and r.line_items == [] and not r.needs_review and r.review_reason is None
+    assert "dropped" in caplog.text
+
+
+def test_read_problems_force_review_on_a_request() -> None:
+    r = build_result(EMAIL, DOCS, _ans("rfq", [_ln("body!B2", "4 ea 2in gate valve", qty=4)]),
+                     problems=["rfq.pdf: PDF is password-protected"])
+    assert r.needs_review and "password-protected" in r.review_reason and r.line_items
+
+
+def test_list_at_the_item_cap_is_flagged(monkeypatch) -> None:
+    import rfq.validate as v
+
+    monkeypatch.setattr(v, "MAX_LINE_ITEMS", 2)
+    r = build_result(EMAIL, DOCS, _ans("rfq", [_ln("body!B2", "4 ea 2in gate valve"), _ln("bom.xlsx!Rev B!R3", "tee")]))
+    assert r.needs_review and "limit" in r.review_reason
 
 
 def test_review_reasons_merge_and_silent_loss_guard() -> None:

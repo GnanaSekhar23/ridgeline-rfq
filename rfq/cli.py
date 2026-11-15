@@ -44,7 +44,7 @@ def cmd_parse(args: argparse.Namespace) -> int:
 def cmd_estimate(args: argparse.Namespace) -> int:
     """Price a run before making it: render every prompt, count tokens approximately."""
     from rfq.estimate import estimate_email
-    from rfq.extractors import extract_all
+    from rfq.extractors import extract_all, read_problems
     from rfq.mime import parse_message
     from rfq.pipeline import link_inbox
     from rfq.prompt import build_messages
@@ -59,7 +59,7 @@ def cmd_estimate(args: argparse.Namespace) -> int:
         if e.id in dups:
             continue
         docs = extract_all(e)
-        est = estimate_email(e.id, args.model, build_messages(e, docs)[0], docs)
+        est = estimate_email(e.id, args.model, build_messages(e, docs, read_problems(docs))[0], docs)
         tot_in += est.input_tokens
         tot_out += est.output_tokens
         tot += est.cost_usd

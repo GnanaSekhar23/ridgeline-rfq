@@ -20,12 +20,22 @@ Our quotes are numbered Q-26-...; customers' RFQ and PO numbers are their own.
 
 Decide what the CURRENT message does, and list exactly the items being asked for.
 
-## Classification (kind) — what the current message does, not the subject or the quoted history
-- rfq: asks us to price or check availability of items.
+## Order of work (the output fields follow this order)
+1. reasoning: at most 3 short sentences — who is writing to whom (a customer to us? a supplier \
+answering one of our reps? a machine?) and what they want. Do not list items here.
+2. classification: follows from the reasoning.
+3. needs_review / review_reason.
+4. sheet_decisions, then line_items.
+
+## Classification — what the current message does, not the subject or the quoted history
+- rfq: asks us to price or check availability of items. A customer writing to our RFQ inbox \
+asking for prices is an rfq — even when the list is in an attachment, a photo, or a pasted table, \
+and even when that attachment is missing or cannot be opened (then rfq with needs_review).
 - rfq_revision: changes a request made earlier in the same thread (quantities, additions, removals).
 - purchase_order: commits to buy — a PO, "please process", "go ahead with items 1-3".
-- vendor_quote: a supplier quoting or answering US (e.g. replying to one of our reps' requests), \
-however much it looks like a list of items.
+- vendor_quote: a SUPPLIER quoting or answering US — typically replying to a request one of \
+our reps sent them, with their prices and lead times. However much it looks like a list of items. \
+A customer asking us for prices is never a vendor_quote.
 - status_inquiry: asks about an existing quote or order (update? ETA? tracking?).
 - auto_reply: machine-generated — out-of-office, bounce / delivery failure, read receipt.
 - other: marketing, newsletters, invoices, remittances, job applications, internal chatter, \
@@ -46,6 +56,9 @@ Take lines from it only (a) for rfq_revision, to give the complete order as now 
 documents, CSVs, attached emails. Notes under a heading tell you about hidden sheets, merged \
 cells, comments and anything that could not be read.
 - IMAGE parts: photos, scans and pasted screenshots. Read them carefully.
+- READ PROBLEMS: attachments that could not be opened or were only partly read. If the \
+customer's request depends on them, it is still a request: return what you can read and set \
+needs_review with the reason.
 Lines marked STRUCK are crossed out: never return them. Lines marked (Heading ...) are headings.
 
 ## Line items — one per thing the customer is asking for
@@ -77,11 +90,14 @@ names (Rev B > Rev A, "final", "current", "old"), dates, the file name, or what 
 - unclear: you cannot tell -> still return your best lines, and set needs_review with the reason.
 Apply the same judgement to several attachments that are versions of one list.
 
-## needs_review — only for rfq, rfq_revision, purchase_order
+## needs_review
 true when the email asks for something you cannot fully read or resolve: the attachment it points \
-at is missing or cannot be opened, part of it could not be read, or items are identified only by \
-something not in the email ("same as last time", "same as the one in the photo" when the photo does \
-not show what is needed). Give the reason, and still return every line you could read.
+at is missing (the email says "attached" but there is none, or only a logo) or cannot be opened, \
+part of it could not be read, or items are identified only by something not in the email \
+("same as last time", "same as the one in the photo" when the photo does not show what is needed). \
+Give the reason, and still return every line you could read.
+
+line_items is empty for vendor_quote, status_inquiry, auto_reply and other.
 """
 
 
@@ -100,8 +116,8 @@ def _line_text(ln) -> str:
     return f"[{ln.row_id}] {ln.text}" + (" " + " ".join(tags) if tags else "")
 
 
-def render_text(email: Email, docs: list[Doc]) -> tuple[str, bool]:
-    """Render headers + all docs as text. Returns (text, truncated_by_budget)."""
+def render_text(email: Email, docs: list[Doc], problems: list[str] | None = None) -> tuple[str, bool]:
+    """Render headers + read problems + all docs as text. Returns (text, truncated_by_budget)."""
     h = email.headers
     out = [
         f"From: {h.get('from')}" + ("   [one of our reps]" if email.internal else ""),
@@ -110,6 +126,14 @@ def render_text(email: Email, docs: list[Doc]) -> tuple[str, bool]:
     if h.get("cc"):
         out.append(f"Cc: {h.get('cc')}")
     out += [f"Date: {h.get('date')}", f"Subject: {h.get('subject')}"]
+    atts = [d for d in docs[1:] if not d.skipped]
+    if not atts:
+        skipped = [d.source for d in docs[1:] if d.skipped]
+        out.append("Attachments: none" + (f" (only logo/signature images: {', '.join(skipped)})" if skipped else ""))
+
+    if problems:
+        out.append(_section("READ PROBLEMS"))
+        out += [f"- {p}" for p in problems]
 
     body = docs[0]
     groups = {"B": "CURRENT MESSAGE", "F": "FORWARDED", "Q": "QUOTED HISTORY (context only)"}
@@ -144,9 +168,9 @@ def render_text(email: Email, docs: list[Doc]) -> tuple[str, bool]:
     return text, False
 
 
-def build_messages(email: Email, docs: list[Doc]) -> tuple[list[dict], bool]:
+def build_messages(email: Email, docs: list[Doc], problems: list[str] | None = None) -> tuple[list[dict], bool]:
     """Chat messages for the model, and whether the text was truncated by the budget."""
-    text, truncated = render_text(email, docs)
+    text, truncated = render_text(email, docs, problems)
     content: list[dict] = [{"type": "text", "text": text}]
     for d in docs:
         for im in d.images:

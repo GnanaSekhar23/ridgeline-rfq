@@ -1,0 +1,62 @@
+{
+ "key": "3c2245862bd207908d1dfc391d35eea3ec627d050e1291b0bb03f140734f4ef9",
+ "email_id": "E002",
+ "model": "gpt-4.1",
+ "prompt_version": "p2",
+ "created": "2026-11-15T15:03:33+00:00",
+ "usage": {
+  "input_tokens": 2323,
+  "cached_input_tokens": 1920,
+  "output_tokens": 350
+ },
+ "cost_usd": 0.004566,
+ "response": {
+  "reasoning": "A customer, Danny Ruiz, is writing to Ridgeline's RFQ desk requesting pricing and availability for several 316 stainless steel threaded fittings. He specifies quantities and sizes for elbows, tees, caps, couplings, and close nipples. He also mentions a delivery deadline but does not provide part numbers or detailed specs beyond size and type.",
+  "classification": "rfq",
+  "needs_review": true,
+  "review_reason": "The quantity for 'caps' is vague ('a couple'), and the material (316 SS) and thread type are implied but not explicitly stated for each item.",
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": "body!B2",
+    "image": null,
+    "raw": "10 of the 1/2 90s",
+    "description": "316 SS threaded 1/2\" 90 degree elbow fitting",
+    "qty": 10.0,
+    "uom": null
+   },
+   {
+    "row_id": "body!B2",
+    "image": null,
+    "raw": "6 tees same size",
+    "description": "316 SS threaded 1/2\" tee fitting",
+    "qty": 6.0,
+    "uom": null
+   },
+   {
+    "row_id": "body!B2",
+    "image": null,
+    "raw": "a couple caps",
+    "description": "316 SS threaded 1/2\" cap fitting",
+    "qty": null,
+    "uom": null
+   },
+   {
+    "row_id": "body!B2",
+    "image": null,
+    "raw": "12 of the 3/4 couplings",
+    "description": "316 SS threaded 3/4\" coupling fitting",
+    "qty": 12.0,
+    "uom": null
+   },
+   {
+    "row_id": "body!B2",
+    "image": null,
+    "raw": "20 of the 3/4 close nipples",
+    "description": "316 SS threaded 3/4\" close nipple",
+    "qty": 20.0,
+    "uom": null
+   }
+  ]
+ }
+}

@@ -34,12 +34,13 @@ class Context:
 def process_email(email: Email, parent: str | None = None, ctx: Context | None = None) -> Result:
     ctx = ctx or Context(extractor=Extractor())
     docs = extract_all(email)
-    outcome = ctx.extractor.run(email, docs)
+    problems = read_problems(docs)
+    outcome = ctx.extractor.run(email, docs, problems)
     if ctx.runlog:
         ctx.runlog.record(email.id, outcome, n_images=sum(len(d.images) for d in docs))
     return build_result(
         email, docs, outcome.extraction,
-        parent=parent, problems=read_problems(docs),
+        parent=parent, problems=problems,
         model_error=outcome.error, prompt_truncated=outcome.prompt_truncated,
     )
 
