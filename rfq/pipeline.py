@@ -8,11 +8,12 @@
 
 from __future__ import annotations
 
+import json
 import logging
 from dataclasses import dataclass
 from pathlib import Path
 
-from rfq.config import MODEL
+from rfq.config import MODEL, RUNS_DIR
 from rfq.costlog import RunLog
 from rfq.dedupe import find_duplicates
 from rfq.extractors import extract_all, read_problems
@@ -108,9 +109,46 @@ def process_inbox(emails_dir: Path, ctx: Context | None = None) -> dict[str, dic
     return {p.stem: results[p.stem].to_json() for p in paths}
 
 
-def run_inbox(emails_dir: Path, model: str = MODEL) -> tuple[dict[str, dict], RunLog]:
-    """CLI entry: process with a run log and write the cost report."""
-    runlog = RunLog(model=model)
-    out = process_inbox(emails_dir, Context(extractor=Extractor(model=model), runlog=runlog))
+def resolve_run_dir(run: str | Path) -> Path:
+    """A run id under runs/ ("20261115T...", "latest") or a path to a run folder."""
+    p = Path(run)
+    if (p / "calls.jsonl").exists():
+        return p
+    q = RUNS_DIR / str(run)
+    if (q / "calls.jsonl").exists():
+        return q
+    raise FileNotFoundError(f"no run log found at {p} or {q}")
+
+
+def load_failures(run_dir: Path) -> tuple[set[str], set[str]]:
+    """(retryable, not retryable) email ids from a run's failures.jsonl."""
+    retryable: set[str] = set()
+    final: set[str] = set()
+    f = run_dir / "failures.jsonl"
+    if f.exists():
+        for line in f.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                row = json.loads(line)
+                (retryable if row.get("retryable") else final).add(row["email"])
+    return retryable, final - retryable
+
+
+def run_inbox(emails_dir: Path, model: str = MODEL, retry_failed: Path | None = None,
+              extractor: Extractor | None = None, runlog: RunLog | None = None
+              ) -> tuple[dict[str, dict], RunLog]:
+    """CLI entry: process with a run log and write the cost report.
+
+    retry_failed: a previous run folder. Only its retryable failures may call the model; every
+    other email is answered from the cache (its earlier successful answer), so the output is the
+    complete inbox again, with the failures recovered where the provider now answers.
+    """
+    extractor = extractor or Extractor(model=model)
+    if retry_failed is not None:
+        retryable, final = load_failures(retry_failed)
+        extractor.live_ids = retryable
+        log.warning("retrying %d retryable failure(s) from %s; %d non-retryable left as they were",
+                    len(retryable), retry_failed.name, len(final))
+    runlog = runlog or RunLog(model=model)
+    out = process_inbox(emails_dir, Context(extractor=extractor, runlog=runlog))
     runlog.finish()
     return out, runlog

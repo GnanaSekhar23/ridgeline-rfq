@@ -21,15 +21,22 @@ def _write_json_atomic(path: Path, data: dict) -> None:
 def cmd_parse(args: argparse.Namespace) -> int:
     import os
 
-    from rfq.pipeline import run_inbox
+    from rfq.pipeline import resolve_run_dir, run_inbox
 
     emails_dir = Path(args.emails)
     if not emails_dir.is_dir():
         print(f"--emails: not a directory: {emails_dir}", file=sys.stderr)
         return 1
+    retry_dir = None
+    if args.retry_failed:
+        try:
+            retry_dir = resolve_run_dir(args.retry_failed)
+        except FileNotFoundError as e:
+            print(f"--retry-failed: {e}", file=sys.stderr)
+            return 2
     if args.offline:
         os.environ["RFQ_OFFLINE"] = "1"
-    results, runlog = run_inbox(emails_dir, model=args.model)
+    results, runlog = run_inbox(emails_dir, model=args.model, retry_failed=retry_dir)
     _write_json_atomic(Path(args.out), results)
     rows = runlog.rows
     calls = sum(r.get("live_calls", 0) for r in rows)
@@ -123,6 +130,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--out", required=True, help="output JSON path")
     p.add_argument("--model", default=MODEL, help=f"OpenAI model (default {MODEL})")
     p.add_argument("--offline", action="store_true", help="never call the model; cache only")
+    p.add_argument("--retry-failed", metavar="RUN",
+                   help="re-call the model only for the retryable failures of RUN (a run id under "
+                        "runs/, 'latest', or a run folder); everything else from cache")
     p.set_defaults(func=cmd_parse)
     es = sub.add_parser("estimate", help="estimate tokens and cost of a run (no model calls)")
     es.add_argument("--emails", required=True, help="directory of .eml files")

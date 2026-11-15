@@ -89,12 +89,15 @@ def offline() -> bool:
 
 class Extractor:
     def __init__(self, model: str = MODEL, cache: Cache | None = None, client=None,
-                 wait_max_s: float = 20.0) -> None:
+                 wait_max_s: float = 20.0, live_ids: set[str] | None = None) -> None:
         self.model = model
         self.cache = cache or Cache()
         self._client = client
         self._schema = response_format()
         self._wait_max = wait_max_s
+        # None = any email may call the model. A set = only these may (parse --retry-failed);
+        # every other email is answered from the cache only.
+        self.live_ids = live_ids
 
     def _get_client(self):
         if self._client is not None:
@@ -123,6 +126,10 @@ class Extractor:
             except (ValidationError, KeyError, TypeError):
                 pass  # stale/corrupt entry: treat as a miss
 
+        if self.live_ids is not None and email.id not in self.live_ids:
+            out.error = "no cached response, and this email was not a retryable failure in the run being retried"
+            out.retryable = False
+            return out
         client = self._get_client()
         if client is None:
             out.error = "model unavailable (no API key or offline) and no cached response"
@@ -156,7 +163,7 @@ class Extractor:
         retrying = Retrying(
             retry=retry_if_exception(_transient),
             stop=stop_after_attempt(MAX_RETRIES + 1),
-            wait=wait_exponential(multiplier=1, min=1, max=self._wait_max),
+            wait=wait_exponential(multiplier=1, min=min(1.0, self._wait_max), max=self._wait_max),
             reraise=True,
         )
         for attempt in retrying:

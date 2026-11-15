@@ -48,10 +48,21 @@ def _email() -> tuple[Email, list[Doc]]:
     return e, [Doc(source="body", kind="body", lines=[Line("body!B1", "4 ea 2in tee")])]
 
 
+_URL = "https://api.openai.com/v1/chat/completions"
+
+
 def _transient() -> Exception:
-    req = openai._base_client.httpx.Request("POST", "https://api.openai.com/v1/chat/completions") \
-        if hasattr(openai._base_client, "httpx") else None
-    return openai.APITimeoutError(request=req)
+    """A request timeout, as the SDK raises it."""
+    return openai.APITimeoutError(request=openai._base_client.httpx2.Request("POST", _URL))
+
+
+def status_error(code: int) -> Exception:
+    """A real SDK status error (500 -> InternalServerError, 429 -> RateLimitError, ...)."""
+    httpx2 = openai._base_client.httpx2
+    resp = httpx2.Response(code, request=httpx2.Request("POST", _URL), json={"error": {"message": "x"}})
+    cls = {500: openai.InternalServerError, 502: openai.InternalServerError, 503: openai.InternalServerError,
+           429: openai.RateLimitError, 400: openai.BadRequestError, 401: openai.AuthenticationError}[code]
+    return cls(f"HTTP {code}", response=resp, body=None)
 
 
 def _ex(tmp_path: Path, script) -> tuple[Extractor, FakeClient]:
@@ -97,6 +108,36 @@ def test_transient_errors_are_retried(tmp_path: Path) -> None:
     ex, _ = _ex(tmp_path, [_transient(), _transient(), _resp(json.dumps(GOOD))])
     out = ex.run(*_email())
     assert out.extraction and out.live_calls == 3
+
+
+def test_server_error_500_is_retried(tmp_path: Path) -> None:
+    ex, _ = _ex(tmp_path, [status_error(500), _resp(json.dumps(GOOD))])
+    out = ex.run(*_email())
+    assert out.extraction and out.live_calls == 2 and out.error is None
+
+
+def test_rate_limit_429_is_retried_with_backoff(tmp_path: Path) -> None:
+    ex, _ = _ex(tmp_path, [status_error(429), status_error(429), status_error(429), _resp(json.dumps(GOOD))])
+    out = ex.run(*_email())
+    assert out.extraction and out.live_calls == 4  # 3 retries allowed after the first try
+
+
+def test_rate_limit_429_exhausted_is_retryable(tmp_path: Path) -> None:
+    ex, _ = _ex(tmp_path, [status_error(429)] * 4)
+    out = ex.run(*_email())
+    assert out.extraction is None and out.retryable and "RateLimitError" in out.error and out.live_calls == 4
+
+
+def test_bad_request_400_is_not_retried_and_not_retryable(tmp_path: Path) -> None:
+    ex, _ = _ex(tmp_path, [status_error(400)])
+    out = ex.run(*_email())
+    assert out.extraction is None and out.live_calls == 1 and not out.retryable
+
+
+def test_auth_error_401_not_retried_now_but_retryable_later(tmp_path: Path) -> None:
+    ex, _ = _ex(tmp_path, [status_error(401)])
+    out = ex.run(*_email())
+    assert out.live_calls == 1 and out.retryable  # fix the key, then --retry-failed
 
 
 def test_transient_errors_exhausted_is_retryable_failure(tmp_path: Path) -> None:
