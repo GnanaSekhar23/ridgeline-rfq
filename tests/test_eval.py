@@ -16,6 +16,23 @@ def test_spelling_equivalences() -> None:
     assert not mentions("carbon steel tee", "stainless")
 
 
+def test_phrases_match_on_token_boundaries() -> None:
+    # "sch40" must not match inside "sch400" (any spacing / punctuation)
+    assert not mentions("2in sch400 pipe", "sch 40")
+    assert not mentions("2in Sch 400 pipe", "sch40")
+    assert mentions("2in Sch-40 pipe", "sch40")
+    assert mentions("2in sch40 pipe", "schedule 40")
+    # "red" must not match inside other words
+    assert not mentions("reduced pressure backflow", "red")
+    assert not mentions("required by friday", "red")
+    assert not mentions("shredded gasket", "red")
+    assert mentions("4x2 RED tee", "reducer|reducing")
+    assert mentions("conc reducer 4x3", "red")
+    # punctuation-joined tokens still match, plurals allowed
+    assert mentions("pipe, T&C", "t&c|threaded and coupled")
+    assert mentions("12 90 ELLs", "elbow")
+
+
 def test_pairing_is_one_to_one() -> None:
     key = [{"raw": "10 ea 2\" tee"}, {"raw": "6 ea 3\" union"}]
     pred = [{"raw": "6 ea - 3\" union"}, {"raw": "10 ea - 2\" tee"}, {"raw": "Thanks, Bob"}]

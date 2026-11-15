@@ -53,17 +53,39 @@ _SHORT = [  # spelled-out spec -> short form
 ]
 
 
-def norm_phrase(s: str) -> str:
+def phrase_tokens(s: str) -> list[str]:
     s = s.lower()
     for pat, rep in _ABBREV + _SHORT:
         s = re.sub(pat, rep, s)
-    return re.sub(r"[^a-z0-9]+", "", s)
+    return re.findall(r"[a-z0-9]+", s)
+
+
+def _contains(desc_toks: list[str], phrase_toks: list[str]) -> bool:
+    """True if a run of whole description tokens, concatenated, equals the phrase.
+
+    Spaces/punctuation are ignored ("sch 40" == "Sch-40" == "sch40"), but a match must start
+    and end on token boundaries, so "sch40" does not match inside "sch400" and "reduc" does not
+    match inside "reduced". A plural "s"/"es" on the last token is allowed ("elbows").
+    """
+    target = "".join(phrase_toks)
+    if not target:
+        return False
+    accept = {target, target + "s", target + "es"}
+    for i in range(len(desc_toks)):
+        acc = ""
+        for tok in desc_toks[i:]:
+            acc += tok
+            if acc in accept:
+                return True
+            if len(acc) >= len(target) + 2:
+                break
+    return False
 
 
 def mentions(desc: str, phrase: str) -> bool:
     """`phrase` may be "a|b" = either."""
-    d = norm_phrase(desc)
-    return any(norm_phrase(alt) in d for alt in phrase.split("|") if alt.strip())
+    d = phrase_tokens(desc)
+    return any(_contains(d, phrase_tokens(alt)) for alt in phrase.split("|") if alt.strip())
 
 
 def norm_raw(s: str) -> str:
