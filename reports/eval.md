@@ -13,7 +13,7 @@
 | uom | n/a |
 | source | n/a |
 | context_carried | n/a |
-| links | 0.0% (0/2) |
+| links | 50.0% (1/2) |
 | review_precision | n/a |
 | review_recall | 0.0% (0/2) |
 
@@ -284,11 +284,10 @@ E024-5: '4 | Union | 1/2″'
 E024-6: '6 | Hex head plug | 3/4″'
 ```
 
-## Link errors (2)
+## Link errors (1)
 
 ```
 E004.revises: key=E003 pred=None
-E008.duplicate_of: key=E006 pred=None
 ```
 
 ## needs_review errors (2)

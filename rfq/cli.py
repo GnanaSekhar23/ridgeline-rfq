@@ -52,6 +52,30 @@ def cmd_inspect(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_links(args: argparse.Namespace) -> int:
+    """Show duplicate and thread links found in code (no model calls)."""
+    from rfq.mime import parse_message
+    from rfq.pipeline import link_inbox
+
+    emails = []
+    for p in sorted(Path(args.emails).glob("*.eml")):
+        try:
+            emails.append(parse_message(p.read_bytes(), p.stem))
+        except Exception as e:
+            print(f"{p.stem}: PARSE ERROR {type(e).__name__}: {e}")
+    dups, parents = link_inbox(emails)
+    for e in emails:
+        bits = []
+        if e.id in dups:
+            bits.append(f"duplicate_of={dups[e.id]}")
+        if e.id in parents:
+            bits.append(f"thread_parent={parents[e.id]}")
+        if bits:
+            print(f"{e.id}: {'  '.join(bits)}   [{e.headers.get('subject')}]")
+    print(f"{len(dups)} duplicate(s), {len(parents)} thread link(s)")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="rfq", description="Ridgeline RFQ inbox parser")
     sub = ap.add_subparsers(dest="command", required=True)
@@ -63,6 +87,9 @@ def build_parser() -> argparse.ArgumentParser:
     i.add_argument("path", help=".eml file or directory")
     i.add_argument("--out", help="write to this file instead of stdout")
     i.set_defaults(func=cmd_inspect)
+    lk = sub.add_parser("links", help="show duplicate / thread links (no model calls)")
+    lk.add_argument("--emails", required=True, help="directory of .eml files")
+    lk.set_defaults(func=cmd_links)
     return ap
 
 

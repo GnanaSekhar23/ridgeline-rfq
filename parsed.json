@@ -58,7 +58,7 @@
   "E008": {
     "classification": "other",
     "revises": null,
-    "duplicate_of": null,
+    "duplicate_of": "E006",
     "needs_review": false,
     "review_reason": null,
     "line_items": []

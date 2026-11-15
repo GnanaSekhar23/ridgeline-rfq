@@ -31,10 +31,10 @@ def test_one_bad_email_does_not_crash(tmp_path: Path, monkeypatch) -> None:
 
     real = pl.process_email
 
-    def flaky(path: Path):
-        if path.stem == "bad":
+    def flaky(email, parent=None):
+        if email.id == "bad":
             raise ValueError("simulated")
-        return real(path)
+        return real(email, parent)
 
     monkeypatch.setattr(pl, "process_email", flaky)
     data = process_inbox(tmp_path)

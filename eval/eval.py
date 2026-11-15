@@ -243,6 +243,7 @@ def score(key: dict, pred: dict, only: set[str] | None = None) -> Score:
                     f"{kl['id']}: {'; '.join(probs)}\n    desc: {pl.get('description')!r}"
                 )
 
+        rec["links"] = [p.get("revises"), p.get("duplicate_of")]
         for f in ("revises", "duplicate_of"):
             kv, pv = k.get(f), p.get(f)
             if kv is None and pv is None:
@@ -307,7 +308,9 @@ def diff(old: dict, new: dict) -> list[str]:
     changes = []
     for eid in sorted(set(old) | set(new)):
         o, n = old.get(eid, {}), new.get(eid, {})
-        for f in ("class", "needs_review", "hallucinated"):
+        for f in ("class", "needs_review", "hallucinated", "links"):
+            if o and f not in o:
+                continue  # older baseline didn't record this field
             if o.get(f) != n.get(f):
                 changes.append(f"{eid}.{f}: {o.get(f)} -> {n.get(f)}")
         ol, nl = o.get("lines", {}), n.get("lines", {})

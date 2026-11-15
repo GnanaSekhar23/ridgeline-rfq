@@ -11,7 +11,7 @@
   "uom": "n/a",
   "source": "n/a",
   "context_carried": "n/a",
-  "links": "0.0% (0/2)",
+  "links": "50.0% (1/2)",
   "review_precision": "n/a",
   "review_recall": "0.0% (0/2)"
  },
@@ -29,6 +29,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -47,6 +51,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -68,6 +76,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -89,6 +101,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -110,6 +126,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -167,6 +187,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -187,6 +211,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -199,6 +227,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    "E006"
+   ],
    "needs_review": [
     false,
     false
@@ -244,6 +276,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -263,6 +299,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -275,6 +315,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -287,6 +331,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -299,6 +347,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -311,6 +363,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -330,6 +386,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -349,6 +409,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -361,6 +425,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     true,
     false
@@ -380,6 +448,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -402,6 +474,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -418,6 +494,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -481,6 +561,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -493,6 +577,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     true,
     false
@@ -507,6 +595,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
@@ -526,6 +618,10 @@
     "other"
    ],
    "hallucinated": 0,
+   "links": [
+    null,
+    null
+   ],
    "needs_review": [
     false,
     false
