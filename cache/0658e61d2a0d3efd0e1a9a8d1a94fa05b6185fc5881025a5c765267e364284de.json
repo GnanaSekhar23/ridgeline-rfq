@@ -1,0 +1,21 @@
+{
+ "key": "0658e61d2a0d3efd0e1a9a8d1a94fa05b6185fc5881025a5c765267e364284de",
+ "email_id": "E011",
+ "model": "gpt-4.1",
+ "prompt_version": "p4",
+ "created": "2026-11-15T15:32:46+00:00",
+ "usage": {
+  "input_tokens": 3046,
+  "cached_input_tokens": 1920,
+  "output_tokens": 85
+ },
+ "cost_usd": 0.003892,
+ "response": {
+  "reasoning": "A supplier (Raul Medina at Sabine Valve & Fitting) is replying to a quote request from one of our reps (Jenna Okafor). He is providing pricing and lead times for the requested items. This is a vendor quote, not a customer request for pricing.",
+  "classification": "vendor_quote",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

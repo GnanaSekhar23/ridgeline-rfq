@@ -1,17 +1,17 @@
 {
- "key": "845c4e45cc9daa7f4e32603860db958f28625c0df9112eb84489f3043e6840b2",
+ "key": "dfd60cd897d1d42118c90b75e421a93a42ec8a4428259909fe0f7b1f49b4dcbc",
  "email_id": "E006",
  "model": "gpt-4.1",
- "prompt_version": "p3",
- "created": "2026-11-15T15:19:21+00:00",
+ "prompt_version": "p4",
+ "created": "2026-11-15T15:32:36+00:00",
  "usage": {
-  "input_tokens": 4449,
-  "cached_input_tokens": 1920,
-  "output_tokens": 4358
+  "input_tokens": 4531,
+  "cached_input_tokens": 0,
+  "output_tokens": 4257
  },
- "cost_usd": 0.040882,
+ "cost_usd": 0.043118,
  "response": {
-  "reasoning": "A customer, Marguerite Dubois from Pelican Fabrication, is writing to Ridgeline's RFQ inbox to request a quote for a list of flanges (attached PDF) and is also adding two gasket items in the body of the email. They want pricing and lead time for all listed items.",
+  "reasoning": "A customer, Marguerite Dubois from Pelican Fabrication, is writing to Ridgeline's RFQ desk requesting a quote for a list of flanges (attached as a PDF) and additionally requests spiral wound gaskets in the body of the email. The attached PDF contains a detailed list of flanges by size and type, and the email body specifies two gasket items to be added. All items are clearly listed and readable.",
   "classification": "rfq",
   "needs_review": false,
   "review_reason": null,
@@ -21,7 +21,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L9",
     "image": null,
     "raw": "1 7 EA 1/2\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1/2\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1/2\" WELD NECK FLANGE, STD BORE",
     "qty": 7.0,
     "uom": "EA"
    },
@@ -29,7 +29,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L10",
     "image": null,
     "raw": "2 3 EA 3/4\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 3/4\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 3/4\" WELD NECK FLANGE, STD BORE",
     "qty": 3.0,
     "uom": "EA"
    },
@@ -37,7 +37,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L11",
     "image": null,
     "raw": "3 8 EA 1\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1\" WELD NECK FLANGE, STD BORE",
     "qty": 8.0,
     "uom": "EA"
    },
@@ -45,7 +45,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L12",
     "image": null,
     "raw": "4 4 EA 1-1/4\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1-1/4\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1-1/4\" WELD NECK FLANGE, STD BORE",
     "qty": 4.0,
     "uom": "EA"
    },
@@ -53,7 +53,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L13",
     "image": null,
     "raw": "5 9 EA 1-1/2\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1-1/2\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1-1/2\" WELD NECK FLANGE, STD BORE",
     "qty": 9.0,
     "uom": "EA"
    },
@@ -61,7 +61,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L14",
     "image": null,
     "raw": "6 5 EA 2\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 2\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 2\" WELD NECK FLANGE, STD BORE",
     "qty": 5.0,
     "uom": "EA"
    },
@@ -69,7 +69,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L15",
     "image": null,
     "raw": "7 10 EA 2-1/2\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 2-1/2\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 2-1/2\" WELD NECK FLANGE, STD BORE",
     "qty": 10.0,
     "uom": "EA"
    },
@@ -77,7 +77,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L16",
     "image": null,
     "raw": "8 6 EA 3\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 3\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 3\" WELD NECK FLANGE, STD BORE",
     "qty": 6.0,
     "uom": "EA"
    },
@@ -85,7 +85,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L17",
     "image": null,
     "raw": "9 2 EA 4\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 4\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 4\" WELD NECK FLANGE, STD BORE",
     "qty": 2.0,
     "uom": "EA"
    },
@@ -93,7 +93,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L18",
     "image": null,
     "raw": "10 7 EA 6\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 6\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 6\" WELD NECK FLANGE, STD BORE",
     "qty": 7.0,
     "uom": "EA"
    },
@@ -101,7 +101,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L19",
     "image": null,
     "raw": "11 3 EA 8\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 8\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 8\" WELD NECK FLANGE, STD BORE",
     "qty": 3.0,
     "uom": "EA"
    },
@@ -109,7 +109,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L20",
     "image": null,
     "raw": "12 8 EA 10\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 10\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 10\" WELD NECK FLANGE, STD BORE",
     "qty": 8.0,
     "uom": "EA"
    },
@@ -117,7 +117,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L21",
     "image": null,
     "raw": "13 4 EA 12\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 12\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 12\" WELD NECK FLANGE, STD BORE",
     "qty": 4.0,
     "uom": "EA"
    },
@@ -125,7 +125,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L22",
     "image": null,
     "raw": "14 9 EA 14\" WELD NECK FLANGE, STD BORE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 14\" WELD NECK FLANGE, STD BORE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 14\" WELD NECK FLANGE, STD BORE",
     "qty": 9.0,
     "uom": "EA"
    },
@@ -133,7 +133,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L23",
     "image": null,
     "raw": "15 5 EA 1/2\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1/2\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1/2\" SLIP-ON FLANGE",
     "qty": 5.0,
     "uom": "EA"
    },
@@ -141,7 +141,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L24",
     "image": null,
     "raw": "16 10 EA 3/4\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 3/4\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 3/4\" SLIP-ON FLANGE",
     "qty": 10.0,
     "uom": "EA"
    },
@@ -149,7 +149,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L25",
     "image": null,
     "raw": "17 6 EA 1\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1\" SLIP-ON FLANGE",
     "qty": 6.0,
     "uom": "EA"
    },
@@ -157,7 +157,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L26",
     "image": null,
     "raw": "18 2 EA 1-1/4\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1-1/4\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1-1/4\" SLIP-ON FLANGE",
     "qty": 2.0,
     "uom": "EA"
    },
@@ -165,7 +165,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L27",
     "image": null,
     "raw": "19 7 EA 1-1/2\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1-1/2\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1-1/2\" SLIP-ON FLANGE",
     "qty": 7.0,
     "uom": "EA"
    },
@@ -173,7 +173,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L28",
     "image": null,
     "raw": "20 3 EA 2\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 2\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 2\" SLIP-ON FLANGE",
     "qty": 3.0,
     "uom": "EA"
    },
@@ -181,7 +181,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L29",
     "image": null,
     "raw": "21 8 EA 2-1/2\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 2-1/2\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 2-1/2\" SLIP-ON FLANGE",
     "qty": 8.0,
     "uom": "EA"
    },
@@ -189,7 +189,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L30",
     "image": null,
     "raw": "22 4 EA 3\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 3\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 3\" SLIP-ON FLANGE",
     "qty": 4.0,
     "uom": "EA"
    },
@@ -197,7 +197,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L31",
     "image": null,
     "raw": "23 9 EA 4\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 4\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 4\" SLIP-ON FLANGE",
     "qty": 9.0,
     "uom": "EA"
    },
@@ -205,7 +205,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L32",
     "image": null,
     "raw": "24 5 EA 6\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 6\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 6\" SLIP-ON FLANGE",
     "qty": 5.0,
     "uom": "EA"
    },
@@ -213,7 +213,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L33",
     "image": null,
     "raw": "25 10 EA 8\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 8\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 8\" SLIP-ON FLANGE",
     "qty": 10.0,
     "uom": "EA"
    },
@@ -221,7 +221,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L34",
     "image": null,
     "raw": "26 6 EA 10\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 10\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 10\" SLIP-ON FLANGE",
     "qty": 6.0,
     "uom": "EA"
    },
@@ -229,7 +229,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L35",
     "image": null,
     "raw": "27 2 EA 12\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 12\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 12\" SLIP-ON FLANGE",
     "qty": 2.0,
     "uom": "EA"
    },
@@ -237,7 +237,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L36",
     "image": null,
     "raw": "28 7 EA 14\" SLIP-ON FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 14\" SLIP-ON FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 14\" SLIP-ON FLANGE",
     "qty": 7.0,
     "uom": "EA"
    },
@@ -245,7 +245,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L37",
     "image": null,
     "raw": "29 3 EA 1/2\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1/2\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1/2\" BLIND FLANGE",
     "qty": 3.0,
     "uom": "EA"
    },
@@ -253,7 +253,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L38",
     "image": null,
     "raw": "30 8 EA 3/4\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 3/4\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 3/4\" BLIND FLANGE",
     "qty": 8.0,
     "uom": "EA"
    },
@@ -261,7 +261,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L39",
     "image": null,
     "raw": "31 4 EA 1\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1\" BLIND FLANGE",
     "qty": 4.0,
     "uom": "EA"
    },
@@ -269,7 +269,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L40",
     "image": null,
     "raw": "32 9 EA 1-1/4\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1-1/4\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1-1/4\" BLIND FLANGE",
     "qty": 9.0,
     "uom": "EA"
    },
@@ -277,7 +277,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P1L41",
     "image": null,
     "raw": "33 5 EA 1-1/2\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 1-1/2\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 1-1/2\" BLIND FLANGE",
     "qty": 5.0,
     "uom": "EA"
    },
@@ -285,7 +285,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P2L2",
     "image": null,
     "raw": "34 10 EA 2\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 2\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 2\" BLIND FLANGE",
     "qty": 10.0,
     "uom": "EA"
    },
@@ -293,7 +293,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P2L3",
     "image": null,
     "raw": "35 6 EA 2-1/2\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 2-1/2\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 2-1/2\" BLIND FLANGE",
     "qty": 6.0,
     "uom": "EA"
    },
@@ -301,7 +301,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P2L4",
     "image": null,
     "raw": "36 2 EA 3\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 3\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 3\" BLIND FLANGE",
     "qty": 2.0,
     "uom": "EA"
    },
@@ -309,7 +309,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P2L5",
     "image": null,
     "raw": "37 7 EA 4\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 4\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 4\" BLIND FLANGE",
     "qty": 7.0,
     "uom": "EA"
    },
@@ -317,7 +317,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P2L6",
     "image": null,
     "raw": "38 3 EA 6\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 6\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 6\" BLIND FLANGE",
     "qty": 3.0,
     "uom": "EA"
    },
@@ -325,7 +325,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P2L7",
     "image": null,
     "raw": "39 8 EA 8\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 8\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 8\" BLIND FLANGE",
     "qty": 8.0,
     "uom": "EA"
    },
@@ -333,7 +333,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P2L8",
     "image": null,
     "raw": "40 4 EA 10\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 10\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 10\" BLIND FLANGE",
     "qty": 4.0,
     "uom": "EA"
    },
@@ -341,7 +341,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P2L9",
     "image": null,
     "raw": "41 9 EA 12\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 12\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 12\" BLIND FLANGE",
     "qty": 9.0,
     "uom": "EA"
    },
@@ -349,7 +349,7 @@
     "row_id": "RFQ_PF-26-3091.pdf!P2L10",
     "image": null,
     "raw": "42 5 EA 14\" BLIND FLANGE",
-    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026; Material: ASTM A105; Rating: 150# RF; 14\" BLIND FLANGE",
+    "description": "RFQ No.: PF-26-3091 Required By: 10/22/2026 Material: ASTM A105 Rating: 150# RF 14\" BLIND FLANGE",
     "qty": 5.0,
     "uom": "EA"
    },

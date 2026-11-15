@@ -11,7 +11,8 @@ from io import BytesIO
 import pdfplumber
 import pypdfium2 as pdfium
 
-from rfq.config import MAX_PDF_PAGES, MAX_SCAN_PAGES, SCAN_DPI
+from rfq.config import (MAX_PDF_PAGES, MAX_SCAN_PAGES, SCAN_DPI, SCAN_STRIP_HEIGHT_PX,
+                        SCAN_STRIP_OVERLAP_PX)
 from rfq.extractors.image import to_png
 from rfq.models import Doc, ImagePart, Line
 
@@ -57,21 +58,22 @@ def extract_pdf(name: str, data: bytes) -> Doc:
         doc.error = _open_error(data, e)
         return doc
     try:
-        scan_pages = _read_pages(name, pdf, doc)
+        scan_pages, mixed = _read_pages(name, pdf, doc)
     except Exception as e:  # some encrypted/corrupt PDFs open lazily and fail on first page
         doc.error = _open_error(data, e)
         return doc
     finally:
         pdf.close()
     if scan_pages:
-        _render_scans(name, data, scan_pages, doc)
+        _render_scans(name, data, scan_pages, doc, set(mixed))
     if not doc.lines and not doc.images and not doc.error:
         doc.error = "PDF has no readable text or images"
     return doc
 
 
-def _read_pages(name: str, pdf, doc: Doc) -> list[int]:
-    """Read text pages into doc.lines; return the page numbers that need rendering as scans."""
+def _read_pages(name: str, pdf, doc: Doc) -> tuple[list[int], list[int]]:
+    """Read text pages into doc.lines; return (pages to render as images, of which mixed
+    text+picture pages)."""
     scan_pages: list[int] = []
     n_pages = len(pdf.pages)
     if n_pages > MAX_PDF_PAGES:
@@ -93,7 +95,7 @@ def _read_pages(name: str, pdf, doc: Doc) -> list[int]:
                 doc.lines.append(Line(row_id=f"{name}!P{p_idx}L{n}", text=text, struck=_struck(ln, segs)))
     if mixed:
         doc.notes.append(f"page(s) {mixed} have text and a large picture; text and page image both sent")
-    return scan_pages
+    return scan_pages, mixed
 
 
 def _has_large_picture(page) -> bool:
@@ -106,7 +108,21 @@ def _has_large_picture(page) -> bool:
     return False
 
 
-def _render_scans(name: str, data: bytes, pages: list[int], doc: Doc) -> None:
+def strip_boxes(height: int, strip_h: int = SCAN_STRIP_HEIGHT_PX,
+                overlap: int = SCAN_STRIP_OVERLAP_PX) -> list[tuple[int, int]]:
+    """Top-to-bottom (top, bottom) boxes of overlapping strips covering the full height."""
+    if height <= strip_h:
+        return [(0, height)]
+    step = strip_h - overlap
+    tops = list(range(0, height - strip_h, step)) + [height - strip_h]
+    return [(t, t + strip_h) for t in dict.fromkeys(tops)]
+
+
+def _render_scans(name: str, data: bytes, pages: list[int], doc: Doc, mixed: set[int] | None = None) -> None:
+    """Pure scans -> a low-detail overview + overlapping high-detail strips (the API would
+    shrink a whole page; a strip keeps full width resolution). Text pages with a large
+    picture -> one high-detail page image."""
+    mixed = mixed or set()
     if len(pages) > MAX_SCAN_PAGES:
         doc.truncated = True
         doc.notes.append(f"{len(pages)} pages need images; only the first {MAX_SCAN_PAGES} were rendered")
@@ -116,7 +132,18 @@ def _render_scans(name: str, data: bytes, pages: list[int], doc: Doc) -> None:
     try:
         for p in pages:
             pil = pdf[p - 1].render(scale=SCAN_DPI / 72).to_pil()
+            boxes = strip_boxes(pil.height)
+            if p in mixed or len(boxes) == 1:
+                png, w, h = to_png(pil)
+                doc.images.append(ImagePart(label=f"{name} page {p}", png=png, width=w, height=h))
+                continue
             png, w, h = to_png(pil)
-            doc.images.append(ImagePart(label=f"{name} page {p}", png=png, width=w, height=h))
+            doc.images.append(ImagePart(label=f"{name} page {p} overview", png=png, width=w, height=h, detail="low"))
+            for i, (top, bottom) in enumerate(boxes, start=1):
+                png, w, h = to_png(pil.crop((0, top, pil.width, bottom)))
+                doc.images.append(ImagePart(label=f"{name} page {p} strip {i} of {len(boxes)}",
+                                            png=png, width=w, height=h))
+            doc.notes.append(f"page {p}: scanned; sent as a low-detail overview + {len(boxes)} "
+                             f"overlapping high-detail strips (top to bottom)")
     finally:
         pdf.close()

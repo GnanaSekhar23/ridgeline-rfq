@@ -18,7 +18,7 @@ RUNS_DIR = Path(os.environ.get("RFQ_RUNS_DIR") or ROOT / "runs")
 REPORTS_DIR = Path(os.environ.get("RFQ_REPORTS_DIR") or ROOT / "reports")
 
 MODEL = os.environ.get("RFQ_MODEL", "gpt-4.1")
-PROMPT_VERSION = "p3"  # bump on any prompt/schema change -> new cache keys
+PROMPT_VERSION = "p4"  # bump on any prompt/schema change -> new cache keys
 TEMPERATURE = 0.0
 REQUEST_TIMEOUT_S = 120
 MAX_RETRIES = 3  # transient errors only (429, 5xx, timeout, connection)
@@ -43,9 +43,14 @@ PRICES = {
 # Input caps (protect cost and latency on pathological attachments)
 MAX_PDF_PAGES = 20  # text pages read per PDF
 MAX_SCAN_PAGES = 6  # scanned pages rendered to images per PDF
-MAX_IMAGES_PER_EMAIL = 12
+MAX_IMAGES_PER_EMAIL = 30  # scans use 1 overview + ~3 strips per page
 MAX_IMAGE_SIDE_PX = 2048  # the API's own high-detail limit; we never send less than it would use
 SCAN_DPI = 200
+# Scanned pages (no text layer) go as a low-detail overview + overlapping high-detail strips.
+# The API shrinks a high-detail image so its SHORT side is <= 768px; a full page therefore loses
+# resolution, a wide strip <= 768px tall keeps it. Overlap so no row is cut in every strip.
+SCAN_STRIP_HEIGHT_PX = 720
+SCAN_STRIP_OVERLAP_PX = 140
 MAX_ROWS_PER_SHEET = 2000
 MAX_TEXT_LINES = 3000  # per source
 MAX_ATTACHMENT_BYTES = 25 * 1024 * 1024

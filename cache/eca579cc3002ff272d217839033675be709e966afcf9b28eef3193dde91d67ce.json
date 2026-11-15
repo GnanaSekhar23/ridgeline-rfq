@@ -1,0 +1,21 @@
+{
+ "key": "eca579cc3002ff272d217839033675be709e966afcf9b28eef3193dde91d67ce",
+ "email_id": "E012",
+ "model": "gpt-4.1",
+ "prompt_version": "p4",
+ "created": "2026-11-15T15:32:48+00:00",
+ "usage": {
+  "input_tokens": 2959,
+  "cached_input_tokens": 1920,
+  "output_tokens": 109
+ },
+ "cost_usd": 0.00391,
+ "response": {
+  "reasoning": "A customer, Gwen Aldridge from Ironwood Skid Systems, is writing to Ridgeline's RFQ desk to ask for an update on a previously requested quote (Q-26-04417) for a piping package. She references the original RFQ and indicates urgency due to an upcoming fabrication start. She is not revising the request or placing an order, just seeking a status update.",
+  "classification": "status_inquiry",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

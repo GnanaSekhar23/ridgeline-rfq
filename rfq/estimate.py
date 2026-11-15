@@ -55,7 +55,7 @@ def estimate_email(email_id: str, model: str, messages: list[dict], docs: list[D
         parts = [{"type": "text", "text": c}] if isinstance(c, str) else c
         chars += sum(len(p["text"]) for p in parts if p["type"] == "text")
     imgs = [im for d in docs for im in d.images]
-    in_tok = int(chars / CHARS_PER_TOKEN) + sum(image_tokens(model, im.width, im.height) for im in imgs)
+    in_tok = int(chars / CHARS_PER_TOKEN) + sum(image_tokens(model, im.width, im.height, im.detail) for im in imgs)
     item_like = sum(
         1 for d in docs for ln in d.lines
         if re.search(r"\d", ln.text) and not ln.struck and not ln.row_id.startswith("body!Q")

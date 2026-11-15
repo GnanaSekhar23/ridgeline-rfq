@@ -303,7 +303,25 @@ def test_scanned_pdf_becomes_images() -> None:
     Image.new("RGB", (400, 500), "white").save(buf, format="PDF")
     doc = extract_pdf("scan.pdf", buf.getvalue())
     assert doc.error is None and not doc.lines
-    assert len(doc.images) == 1 and doc.images[0].label == "scan.pdf page 1"
+    assert doc.images[0].label == "scan.pdf page 1 overview" and doc.images[0].detail == "low"
+    strips = doc.images[1:]
+    assert strips and all(im.detail == "high" and im.height <= 720 for im in strips)
+    assert strips[0].label == f"scan.pdf page 1 strip 1 of {len(strips)}"
+
+
+def test_strip_boxes_cover_page_with_overlap() -> None:
+    from rfq.extractors.pdf import strip_boxes
+
+    boxes = strip_boxes(1919, strip_h=720, overlap=140)
+    assert boxes[0][0] == 0 and boxes[-1][1] == 1919
+    assert all(b - t == 720 for t, b in boxes)
+    assert all(nxt[0] < cur[1] - 100 for cur, nxt in zip(boxes, boxes[1:]))  # real overlap
+    assert strip_boxes(600, strip_h=720) == [(0, 600)]
+
+
+def test_mixed_text_page_is_not_stripped() -> None:
+    doc = extract_pdf("mixed.pdf", _text_pdf(["Please quote the items in the photo", "Material: A105"], picture_pt=400))
+    assert [im.label for im in doc.images] == ["mixed.pdf page 1"]
 
 
 def test_broken_and_encrypted_pdf_are_errors_not_crashes() -> None:
@@ -371,7 +389,7 @@ def test_scan_page_cap_is_noted(monkeypatch) -> None:
 
     monkeypatch.setattr(pdfmod, "MAX_SCAN_PAGES", 1)
     doc = extract_pdf("scan.pdf", _scan_pdf(2))
-    assert len(doc.images) == 1 and doc.truncated
+    assert {im.label.split(" page ")[1].split()[0] for im in doc.images} == {"1"} and doc.truncated
     assert any("only the first 1 were rendered" in n for n in doc.notes)
 
 

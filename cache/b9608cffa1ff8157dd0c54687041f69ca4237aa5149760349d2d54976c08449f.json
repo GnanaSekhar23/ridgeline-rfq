@@ -1,15 +1,15 @@
 {
- "key": "b991b38ec8e4dccc1174ef0204e5f513089bcda0554ff20aa1932e86e16eae12",
+ "key": "b9608cffa1ff8157dd0c54687041f69ca4237aa5149760349d2d54976c08449f",
  "email_id": "E020",
  "model": "gpt-4.1",
- "prompt_version": "p3",
- "created": "2026-11-15T15:20:13+00:00",
+ "prompt_version": "p4",
+ "created": "2026-11-15T15:33:15+00:00",
  "usage": {
-  "input_tokens": 2938,
+  "input_tokens": 3020,
   "cached_input_tokens": 1920,
   "output_tokens": 328
  },
- "cost_usd": 0.00562,
+ "cost_usd": 0.005784,
  "response": {
   "reasoning": "A customer (Janelle Okoye from Brannock Industrial) is replying to our quote Q-26-04418, instructing us to proceed with items 1, 2, and 4 from the quoted list. She states a purchase order will follow and asks us to hold on the other items for now.",
   "classification": "purchase_order",

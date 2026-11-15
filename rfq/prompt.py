@@ -56,6 +56,10 @@ Take lines from it only (a) for rfq_revision, to give the complete order as now 
 documents, CSVs, attached emails. Notes under a heading tell you about hidden sheets, merged \
 cells, comments and anything that could not be read.
 - IMAGE parts: photos, scans and pasted screenshots. Read them carefully.
+- A scanned page comes as one low-detail "overview" (for layout and headings only) followed by \
+overlapping high-detail "strip 1 of N", "strip 2 of N"... from top to bottom. Read every row \
+from the strips. A row near a strip edge appears in two strips: list it ONCE. For an item read \
+from a strip, set image to that strip's label.
 - READ PROBLEMS: attachments that could not be opened or were only partly read. If the \
 customer's request depends on them, it is still a request: return what you can read and set \
 needs_review with the reason.
@@ -187,7 +191,8 @@ def build_messages(email: Email, docs: list[Doc], problems: list[str] | None = N
         for im in d.images:
             content.append({"type": "text", "text": f"IMAGE label: {im.label}"})
             b64 = base64.b64encode(im.png).decode("ascii")
-            content.append({"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}", "detail": IMAGE_DETAIL}})
+            content.append({"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}",
+                                                                "detail": im.detail or IMAGE_DETAIL}})
     return [{"role": "system", "content": SYSTEM}, {"role": "user", "content": content}], truncated
 
 

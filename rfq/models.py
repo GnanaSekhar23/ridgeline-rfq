@@ -27,6 +27,7 @@ class ImagePart:
     png: bytes
     width: int
     height: int
+    detail: str = "high"  # OpenAI image detail: "high" to read, "low" for a cheap overview
 
 
 @dataclass
