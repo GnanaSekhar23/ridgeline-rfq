@@ -10,3 +10,5 @@ runs/*
 # NOTE: cache/ is deliberately NOT ignored — committed model responses make dev replayable with no key.
 
 *.zip
+
+app/overrides.json
