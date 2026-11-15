@@ -31,6 +31,7 @@ def cmd_parse(args: argparse.Namespace) -> int:
 
 def cmd_inspect(args: argparse.Namespace) -> int:
     """Dump how the MIME layer sees each email (no model calls)."""
+    from rfq.extractors import describe_docs, extract_all
     from rfq.mime import describe, parse_message
 
     target = Path(args.path)
@@ -38,7 +39,8 @@ def cmd_inspect(args: argparse.Namespace) -> int:
     chunks = []
     for p in paths:
         try:
-            chunks.append(describe(parse_message(p.read_bytes(), p.stem)))
+            email = parse_message(p.read_bytes(), p.stem)
+            chunks.append(describe(email) + describe_docs(extract_all(email)))
         except Exception as e:
             chunks.append(f"===== {p.stem}\nPARSE ERROR: {type(e).__name__}: {e}\n")
     text = "\n".join(chunks)

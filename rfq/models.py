@@ -13,20 +13,34 @@ class Line:
 
     row_id: str  # stable id shown to the model, e.g. "body!B12", "Sheet1!R5", "a.pdf!P1L8"
     text: str
-    struck: bool = False  # strikethrough / crossed out in the source
+    struck: bool = False  # the whole line is struck through / deleted in the source
     cells: list[str] | None = None  # table cells, when the line is a table row
+    style: str | None = None  # e.g. "Heading 2" for a Word heading
+    note: str | None = None  # e.g. "struck cells: C5" when only part of a row is struck
+
+
+@dataclass
+class ImagePart:
+    """A picture the model should look at (scan page, photo, pasted screenshot)."""
+
+    label: str  # e.g. "IMG_1.jpg" or "scan.pdf page 2"
+    png: bytes
+    width: int
+    height: int
 
 
 @dataclass
 class Doc:
     """What an extractor produced from one source. Extractors never raise; they set `error`."""
 
-    source: str  # "body" or the attachment filename
-    kind: str  # body | xlsx | csv | docx | pdf | image | html | eml | unknown
+    source: str  # "body" or the attachment filename — what goes in line_items[].source
+    kind: str  # body | xlsx | csv | docx | pdf | image | html | eml | text | unknown
     lines: list[Line] = field(default_factory=list)
-    images: list[bytes] = field(default_factory=list)  # PNG bytes for vision (scans, photos)
+    images: list[ImagePart] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)  # context: sheet names, hidden sheets skipped, ...
-    error: str | None = None  # set when the source could not be read
+    error: str | None = None  # set when the source could not be read at all
+    truncated: bool = False  # part of the source was dropped (page cap, size cap)
+    skipped: bool = False  # deliberately not used (e.g. logo image) — not an error
 
 
 @dataclass

@@ -8,6 +8,7 @@ from __future__ import annotations
 import logging
 from pathlib import Path
 
+from rfq.extractors import extract_all
 from rfq.mime import parse_message
 from rfq.models import Result
 
@@ -15,8 +16,9 @@ log = logging.getLogger(__name__)
 
 
 def process_email(path: Path) -> Result:
-    """Stub: parses the MIME (so parse failures surface here) and returns an empty `other`."""
-    parse_message(path.read_bytes(), path.stem)
+    """Stub: parses MIME and extracts every part (so failures surface here), returns `other`."""
+    email = parse_message(path.read_bytes(), path.stem)
+    extract_all(email)
     return Result(classification="other")
 
 
