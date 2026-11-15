@@ -129,7 +129,8 @@ def _email(atts: list[Attachment]) -> Email:
 
 def test_xlsx_rows_sheets_strike_hidden() -> None:
     doc = extract_xlsx("bom.xlsx", _xlsx())
-    by_id = {ln.row_id: ln for ln in doc.lines}
+    by_id = {ln.row_id.removeprefix("bom.xlsx!"): ln for ln in doc.lines}
+    assert all(ln.row_id.startswith("bom.xlsx!") for ln in doc.lines)
     assert by_id["Fittings SCH 80!R1"].text == "ALL CS UNLESS NOTED"
     assert by_id["Fittings SCH 80!R3"].text == '10 | 2" | Tee'
     assert by_id["Fittings SCH 80!R3"].cells == ["10", '2"', "Tee"]
@@ -141,6 +142,37 @@ def test_xlsx_rows_sheets_strike_hidden() -> None:
     notes = " ".join(doc.notes)
     assert "hidden sheet 'Rev A'" in notes and "merged cells A1:C1" in notes
     assert "galvanized please" in notes and "2 visible sheets" in notes
+
+
+def test_two_workbooks_with_same_sheet_name_have_unique_row_ids() -> None:
+    def book(item: str) -> bytes:
+        wb = openpyxl.Workbook()
+        wb.active.title = "Sheet1"
+        wb.active.append(["Qty", "Item"])
+        wb.active.append([5, item])
+        buf = BytesIO()
+        wb.save(buf)
+        return buf.getvalue()
+
+    mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    docs = extract_all(_email([Attachment("pipe.xlsx", mime, book("pipe")),
+                               Attachment("valves.xlsx", mime, book("valve"))]))
+    ids = [ln.row_id for d in docs for ln in d.lines]
+    assert len(ids) == len(set(ids))
+    assert "pipe.xlsx!Sheet1!R2" in ids and "valves.xlsx!Sheet1!R2" in ids
+
+
+def test_all_row_ids_unique_across_mixed_attachments() -> None:
+    mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    atts = [
+        Attachment("a.xlsx", mime, _xlsx()),
+        Attachment("b.xlsx", mime, _xlsx()),
+        Attachment("a.csv", "text/csv", b"Qty,Item\n1,tee\n"),
+        Attachment("a.pdf", "application/pdf", _text_pdf(["1 EA tee"])),
+        Attachment("a.docx", "application/octet-stream", _docx()),
+    ]
+    ids = [ln.row_id for d in extract_all(_email(atts)) for ln in d.lines]
+    assert len(ids) == len(set(ids))
 
 
 # ---------------------------------------------------------------- csv

@@ -1,4 +1,4 @@
-"""Excel (.xlsx/.xlsm) -> Doc. Row ids: <sheet>!R<row>.
+"""Excel (.xlsx/.xlsm) -> Doc. Row ids: <file>!<sheet>!R<row> (unique across workbooks).
 
 Keeps what an ISR would use: sheet names (often carry the spec), merged banner notes,
 cell comments. Skips hidden sheets, rows and columns (noted, not silently). Marks struck rows.
@@ -72,7 +72,7 @@ def _sheet(ws, doc: Doc) -> None:
         whole = len(struck_cells) == len(filled)
         doc.lines.append(
             Line(
-                row_id=f"{ws.title}!R{r}",
+                row_id=f"{doc.source}!{ws.title}!R{r}",
                 text=row_text(cells),
                 cells=cells,
                 struck=whole,
