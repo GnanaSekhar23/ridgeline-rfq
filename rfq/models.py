@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+from datetime import datetime
 from typing import Any
 
 
@@ -41,9 +42,15 @@ class Attachment:
 class Email:
     id: str
     headers: dict[str, str | None]
-    body: str  # current message text, quoted history removed
-    quoted: str = ""  # quoted history (context only, never a line source)
+    body: str  # current message text, history removed
+    forwarded: str = ""  # forwarded content (counts as the request when one of our reps forwards)
+    quoted: str = ""  # quoted reply history (context; source only for revisions / "items 1-3")
     attachments: list[Attachment] = field(default_factory=list)
+    sender: str = ""  # bare lower-case address
+    internal: bool = False  # sender is one of our own reps
+    date: datetime | None = None
+    body_kind: str = "text"  # text | html | none — which MIME part the body came from
+    image_alts: dict[str, str] = field(default_factory=dict)  # content-id -> HTML alt text
 
 
 @dataclass

@@ -29,6 +29,27 @@ def cmd_parse(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_inspect(args: argparse.Namespace) -> int:
+    """Dump how the MIME layer sees each email (no model calls)."""
+    from rfq.mime import describe, parse_message
+
+    target = Path(args.path)
+    paths = sorted(target.glob("*.eml")) if target.is_dir() else [target]
+    chunks = []
+    for p in paths:
+        try:
+            chunks.append(describe(parse_message(p.read_bytes(), p.stem)))
+        except Exception as e:
+            chunks.append(f"===== {p.stem}\nPARSE ERROR: {type(e).__name__}: {e}\n")
+    text = "\n".join(chunks)
+    if args.out:
+        Path(args.out).write_text(text, encoding="utf-8")
+        print(f"wrote {len(paths)} emails to {args.out}")
+    else:
+        print(text)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="rfq", description="Ridgeline RFQ inbox parser")
     sub = ap.add_subparsers(dest="command", required=True)
@@ -36,6 +57,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--emails", required=True, help="directory of .eml files")
     p.add_argument("--out", required=True, help="output JSON path")
     p.set_defaults(func=cmd_parse)
+    i = sub.add_parser("inspect", help="show how emails are split (no model calls)")
+    i.add_argument("path", help=".eml file or directory")
+    i.add_argument("--out", help="write to this file instead of stdout")
+    i.set_defaults(func=cmd_inspect)
     return ap
 
 

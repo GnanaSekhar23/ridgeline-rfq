@@ -1,6 +1,6 @@
-"""Per-email processing. Step 1: stub only — every email becomes `other`.
+"""Per-email processing. So far: MIME parse, then a stub result (`other`).
 
-Later steps replace `process_email` with mime -> extract -> prompt -> cache/llm -> validate.
+Later steps add extract -> prompt -> cache/llm -> validate.
 """
 
 from __future__ import annotations
@@ -8,14 +8,15 @@ from __future__ import annotations
 import logging
 from pathlib import Path
 
+from rfq.mime import parse_message
 from rfq.models import Result
 
 log = logging.getLogger(__name__)
 
 
 def process_email(path: Path) -> Result:
-    """Stub: reads the file (so unreadable files fail here) and returns an empty `other`."""
-    path.read_bytes()
+    """Stub: parses the MIME (so parse failures surface here) and returns an empty `other`."""
+    parse_message(path.read_bytes(), path.stem)
     return Result(classification="other")
 
 
