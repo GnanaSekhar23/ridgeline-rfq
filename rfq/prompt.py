@@ -9,10 +9,10 @@ from __future__ import annotations
 import base64
 import hashlib
 
-from rfq.config import IMAGE_DETAIL, MAX_PROMPT_CHARS
+from rfq.config import IMAGE_DETAIL, MATCHER_ENABLED, MAX_PROMPT_CHARS
 from rfq.models import Doc, Email
 
-SYSTEM = """\
+_SYSTEM_TEMPLATE = """\
 You read one email from the RFQ inbox of Ridgeline Industrial Supply, a distributor of pipe, \
 fittings, flanges, valves, gaskets, bolting and related industrial supplies. Our inbox is \
 rfq@ridgeline-supply.example. Anyone at @ridgeline-supply.example is one of our own reps. \
@@ -95,6 +95,7 @@ pressure class, rating, part number or price is NEVER a quantity.
 -> EA, feet -> FT, rolls -> RL, pairs -> PR, boxes -> BX, packs -> PK), or null when no unit is stated.
 - rfq_revision: return the COMPLETE order as the customer now intends it — unchanged earlier \
 items (from quoted history) plus changes, minus removals; a changed line uses its new quantity.
+{attrs_rule}
 
 ## Several visible sheets in one workbook
 Decide for each such workbook, and record it in sheet_decisions:
@@ -114,6 +115,14 @@ vague quantity (qty null), a spec implied by a heading, a list you can read in f
 
 line_items is empty for vendor_quote, status_inquiry, auto_reply and other.
 """
+
+_ATTRS_RULE = (
+    "- attrs: the same item restated in the catalog's vocabulary (the allowed values are in the "
+    "schema). Use only what the email says or clearly applies to this item — the same evidence as "
+    "the description. null = not stated. \"other\" = stated but not one of the listed values (e.g. a "
+    "material grade or option we do not list). You do NOT choose a part number; code does that.\n"
+)
+SYSTEM = _SYSTEM_TEMPLATE.replace("{attrs_rule}\n", _ATTRS_RULE if MATCHER_ENABLED else "")
 
 
 def _section(title: str) -> str:

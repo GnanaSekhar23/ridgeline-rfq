@@ -10,6 +10,7 @@ import openai
 import pytest
 
 from rfq.cache import Cache
+from rfq.config import MATCHER_ENABLED
 from rfq.llm import Extractor
 from rfq.models import Doc, Email, ImagePart, Line
 from rfq.prompt import build_messages
@@ -18,6 +19,9 @@ from rfq.schema import response_format
 GOOD = {"reasoning": "A customer asks us to price one item.", "classification": "rfq",
         "needs_review": False, "review_reason": None, "sheet_decisions": [], "line_items": [
             {"row_id": "body!B1", "image": None, "raw": "4 ea 2in tee", "description": "2in tee", "qty": 4, "uom": "EA"}]}
+if MATCHER_ENABLED:
+    GOOD["line_items"][0]["attrs"] = {"product": "tee", "size": "2", "spec": None, "material": None,
+                                      "ends": None, "extra": None}
 
 
 def _resp(content: str, finish: str = "stop", refusal=None, tokens=(1000, 200)):

@@ -42,14 +42,14 @@ def test_every_synthetic_email_replays_from_cache(replay) -> None:
 
 STRICT_KEYS = ("line_checks", "review_reason_mentions")  # finer assertions, tested separately
 
-# Known failures under the current prompt (p4). Tried in p5/p6: both were fixed on this set,
-# but dev context_carried got worse, so the prompt was reverted. strict=True: if a later prompt
-# fixes one, the test turns red so the mark gets removed.
+# Known failures under the current prompt (p7 = p4 + matcher attrs). Prompt rules tried in p5/p6
+# fixed both on this set but changed dev results, so they were not kept. strict=True: if a later
+# prompt fixes one, the test turns red so the mark gets removed.
 KNOWN_FAILURES = {
-    "S08": "p4: the model does not flag a PO that only cites a quote number; the code safety net "
+    "S08": "p7: the model does not flag a PO that only cites a quote number; the code safety net "
            "flags it, but with a generic reason that does not name Q-26-05120",
-    "S09": "p4: 'six tees same' spec (sch 40, butt weld) is carried onto the caps listed after "
-           "them; prompt rules that fixed it (p5/p6) regressed dev context_carried",
+    "S09": "p7: 'six tees same' spec (sch 40, butt weld) is carried onto the caps listed after "
+           "them; prompt rules that fixed it (p5/p6) were not kept",
 }
 
 

@@ -18,7 +18,11 @@ RUNS_DIR = Path(os.environ.get("RFQ_RUNS_DIR") or ROOT / "runs")
 REPORTS_DIR = Path(os.environ.get("RFQ_REPORTS_DIR") or ROOT / "reports")
 
 MODEL = os.environ.get("RFQ_MODEL", "gpt-4.1")
-PROMPT_VERSION = "p4"  # bump on any prompt/schema change -> new cache keys
+# Catalog matcher: the model adds normalized attributes to each line (same call) and code picks
+# the part. ON by default (prompt p7). The one dev line that changed with it (E005-6 context) also
+# flipped on an unrelated prompt change, so it is treated as noise. RFQ_MATCHER=0 turns it off.
+MATCHER_ENABLED = os.environ.get("RFQ_MATCHER", "1").strip().lower() not in ("0", "false", "no", "off")
+PROMPT_VERSION = "p7" if MATCHER_ENABLED else "p4"  # bump on any prompt/schema change -> new cache keys
 # (p5/p6 tried two extra rules — spec carry-over, quote-number references; p6 fixed both on the
 #  synthetic set but made dev context_carried worse, so it was reverted to p4. See DECISIONS.md.)
 TEMPERATURE = 0.0

@@ -1,0 +1,21 @@
+{
+ "key": "a98e2a9109fbec8394879d284704ee4708519c83e4e8a215c8e4e8af9eae0e55",
+ "email_id": "E012",
+ "model": "gpt-4.1",
+ "prompt_version": "p7",
+ "created": "2026-11-15T16:12:52+00:00",
+ "usage": {
+  "input_tokens": 4553,
+  "cached_input_tokens": 2944,
+  "output_tokens": 100
+ },
+ "cost_usd": 0.00549,
+ "response": {
+  "reasoning": "Gwen Aldridge from Ironwood Skid Systems is writing to Ridgeline to ask for an update on a previously requested quote (Q-26-04417) for the Skid 14 piping package. She wants to know the status so she can issue a purchase order soon. This is a status inquiry, not a new request or revision.",
+  "classification": "status_inquiry",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

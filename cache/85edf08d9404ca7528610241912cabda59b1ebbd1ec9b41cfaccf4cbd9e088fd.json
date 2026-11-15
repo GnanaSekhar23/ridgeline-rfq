@@ -1,0 +1,118 @@
+{
+ "key": "85edf08d9404ca7528610241912cabda59b1ebbd1ec9b41cfaccf4cbd9e088fd",
+ "email_id": "E015",
+ "model": "gpt-4.1",
+ "prompt_version": "p7",
+ "created": "2026-11-15T16:13:01+00:00",
+ "usage": {
+  "input_tokens": 4891,
+  "cached_input_tokens": 0,
+  "output_tokens": 798
+ },
+ "cost_usd": 0.016166,
+ "response": {
+  "reasoning": "A customer (Renee Castillo from Tidewater Process Systems) is sending a purchase order to Ridgeline Industrial Supply, referencing a previous quote. The attached PDF lists the specific items they are ordering. This is a purchase order committing to buy the listed items.",
+  "classification": "purchase_order",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": "PO_TPS-88213.pdf!P1L10",
+    "image": null,
+    "raw": "1 210 FT 2\" SCH 80 SMLS A106B pipe, PE, random lengths",
+    "description": "2\" SCH 80 SMLS A106B pipe, PE, random lengths (PO TPS-88213)",
+    "qty": 210.0,
+    "uom": "FT",
+    "attrs": {
+     "product": "pipe",
+     "size": "2",
+     "spec": "SCH 80",
+     "material": "A106B SMLS",
+     "ends": "PE",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "PO_TPS-88213.pdf!P1L11",
+    "image": null,
+    "raw": "2 24 EA 2\" 90 deg elbow, LR, BW, SCH 80, A234 WPB",
+    "description": "2\" 90 deg elbow, LR, BW, SCH 80, A234 WPB (PO TPS-88213)",
+    "qty": 24.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "90 elbow",
+     "size": "2",
+     "spec": "SCH 80",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": "lr"
+    }
+   },
+   {
+    "row_id": "PO_TPS-88213.pdf!P1L12",
+    "image": null,
+    "raw": "3 16 EA 2\" WN flange, 300# RF, A105, SCH 80 bore",
+    "description": "2\" WN flange, 300# RF, A105, SCH 80 bore (PO TPS-88213)",
+    "qty": 16.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "weld neck flange",
+     "size": "2",
+     "spec": "300#",
+     "material": "A105",
+     "ends": "RF",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "PO_TPS-88213.pdf!P1L13",
+    "image": null,
+    "raw": "4 16 EA 2\" spiral wound gasket, 316/graphite, 300#, w/ inner ring",
+    "description": "2\" spiral wound gasket, 316/graphite, 300#, w/ inner ring (PO TPS-88213)",
+    "qty": 16.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "spiral wound gasket",
+     "size": "2",
+     "spec": "300#",
+     "material": "316/GRAPHITE",
+     "ends": null,
+     "extra": null
+    }
+   },
+   {
+    "row_id": "PO_TPS-88213.pdf!P1L14",
+    "image": null,
+    "raw": "5 64 EA Stud bolt B7, 5/8\"-11 x 3-3/4\", w/ 2 heavy hex nuts",
+    "description": "Stud bolt B7, 5/8\"-11 x 3-3/4\", w/ 2 heavy hex nuts (PO TPS-88213)",
+    "qty": 64.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "stud bolt",
+     "size": "5/8 x 3-3/4",
+     "spec": null,
+     "material": "B7/2H",
+     "ends": null,
+     "extra": null
+    }
+   },
+   {
+    "row_id": "PO_TPS-88213.pdf!P1L15",
+    "image": null,
+    "raw": "6 6 EA 2\" gate valve, 300# RF, A216 WCB, bolted bonnet",
+    "description": "2\" gate valve, 300# RF, A216 WCB, bolted bonnet (PO TPS-88213)",
+    "qty": 6.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "gate valve",
+     "size": "2",
+     "spec": "300#",
+     "material": "WCB",
+     "ends": "RF",
+     "extra": null
+    }
+   }
+  ]
+ }
+}

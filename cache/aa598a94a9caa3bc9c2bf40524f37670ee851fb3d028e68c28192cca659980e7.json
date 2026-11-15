@@ -1,0 +1,21 @@
+{
+ "key": "aa598a94a9caa3bc9c2bf40524f37670ee851fb3d028e68c28192cca659980e7",
+ "email_id": "E014",
+ "model": "gpt-4.1",
+ "prompt_version": "p7",
+ "created": "2026-11-15T16:12:56+00:00",
+ "usage": {
+  "input_tokens": 4448,
+  "cached_input_tokens": 0,
+  "output_tokens": 101
+ },
+ "cost_usd": 0.009704,
+ "response": {
+  "reasoning": "Gulf Pipe & Flange Warehouse is sending a promotional email to Ridgeline's RFQ inbox advertising a sale on flanges and gaskets. This is a marketing message, not a request for quote, order, or status update. No items are being requested from Ridgeline; instead, Gulf Pipe & Flange is offering to sell these items to us.",
+  "classification": "other",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

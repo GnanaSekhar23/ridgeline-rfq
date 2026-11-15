@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_KEY = ROOT / "data" / "dev" / "answer_key.json"
 REQUEST_KINDS = {"rfq", "rfq_revision", "purchase_order"}
 PAIR_THRESHOLD = 60.0  # rapidfuzz token_sort_ratio on normalised raw text
-DETAILS = ("all", "summary", "classes", "lines", "links", "review")
+DETAILS = ("all", "summary", "classes", "lines", "links", "review", "matcher")
 
 # ---------------------------------------------------------------- phrase normalisation
 # Both the description and the key phrase go through the same rewrite, then all
@@ -169,10 +169,39 @@ class Score:
     rev_fn: int = 0
     review_fails: list[str] = field(default_factory=list)
     per_email: dict = field(default_factory=dict)
+    # optional matcher (scored on paired lines that carry a `match`)
+    m_scored: int = 0
+    m_right: int = 0
+    m_confident_wrong: int = 0
+    m_nic_key: int = 0
+    m_nic_found: int = 0
+    m_pred_counts: dict = field(default_factory=dict)
+    m_fails: list[str] = field(default_factory=list)
 
 
 def _pct(a: int, b: int) -> str:
     return f"{100 * a / b:.1f}% ({a}/{b})" if b else "n/a"
+
+
+def score_match(s: "Score", kl: dict, pl: dict) -> None:
+    """README: confident wrong = we named a part and the answer was a different part,
+    not_in_catalog, or ambiguous."""
+    km, pm = kl.get("match"), pl.get("match")
+    s.m_scored += 1
+    s.m_pred_counts[pm] = s.m_pred_counts.get(pm, 0) + 1
+    right = km == pm and (km != "matched" or kl.get("sku") == pl.get("sku"))
+    s.m_right += right
+    if pm == "matched" and not right:
+        s.m_confident_wrong += 1
+    if km == "not_in_catalog":
+        s.m_nic_key += 1
+        s.m_nic_found += pm == "not_in_catalog"
+    if not right:
+        kind = "CONFIDENT WRONG" if pm == "matched" else "miss"
+        s.m_fails.append(
+            f"{kl['id']}: {kind} key={km} {kl.get('sku') or ''} pred={pm} {pl.get('sku') or ''}\n"
+            f"    reason: {pl.get('match_reason')}"
+        )
 
 
 def score(key: dict, pred: dict, only: set[str] | None = None) -> Score:
@@ -237,6 +266,8 @@ def score(key: dict, pred: dict, only: set[str] | None = None) -> Score:
                 probs.append(f"missing {missing}")
             if present:
                 probs.append(f"must-not {present}")
+            if pl.get("match"):
+                score_match(s, kl, pl)
             rec["lines"][kl["id"]] = "ok" if not probs else "; ".join(probs)
             if probs:
                 s.line_fails.append(
@@ -266,6 +297,18 @@ def score(key: dict, pred: dict, only: set[str] | None = None) -> Score:
 
 
 def headline(s: Score) -> dict:
+    h = _headline_core(s)
+    if s.m_scored:
+        h.update({
+            "matcher_confident_wrong": s.m_confident_wrong,
+            "matcher_not_in_catalog_recall": _pct(s.m_nic_found, s.m_nic_key),
+            "matcher_accuracy": _pct(s.m_right, s.m_scored),
+            "matcher_predictions": ", ".join(f"{k}={v}" for k, v in sorted(s.m_pred_counts.items())),
+        })
+    return h
+
+
+def _headline_core(s: Score) -> dict:
     return {
         "silent_losses": len(s.silent_losses),
         "hallucinated_lines": len(s.hallucinated),
@@ -301,6 +344,7 @@ def render(s: Score, detail: str) -> str:
     section("lines", "Paired-line field errors", s.line_fails)
     section("links", "Link errors", s.link_fails)
     section("review", "needs_review errors", s.review_fails)
+    section("matcher", "Matcher errors", s.m_fails)
     return "\n".join(out) + "\n"
 
 

@@ -32,11 +32,14 @@ def _inbox(tmp: Path, n: int = 3) -> Path:
 
 
 def _answer() -> str:
+    from rfq.config import MATCHER_ENABLED
+
+    line = {"row_id": "body!B1", "image": None, "raw": "tee", "description": "2in tee", "qty": None, "uom": "EA"}
+    if MATCHER_ENABLED:
+        line["attrs"] = {"product": "tee", "size": "2", "spec": None, "material": None, "ends": None, "extra": None}
     return json.dumps({
         "reasoning": "A customer asks us to price a tee.", "classification": "rfq",
-        "needs_review": False, "review_reason": None, "sheet_decisions": [],
-        "line_items": [{"row_id": "body!B1", "image": None, "raw": "tee", "description": "2in tee",
-                        "qty": None, "uom": "EA"}],
+        "needs_review": False, "review_reason": None, "sheet_decisions": [], "line_items": [line],
     })
 
 

@@ -1,0 +1,70 @@
+{
+ "key": "3c31d2543be077374332adfd578675c518cb321301f281c6794e98611d0b2dd3",
+ "email_id": "S09",
+ "model": "gpt-4.1",
+ "prompt_version": "p7",
+ "created": "2026-11-15T16:23:21+00:00",
+ "usage": {
+  "input_tokens": 4194,
+  "cached_input_tokens": 2944,
+  "output_tokens": 311
+ },
+ "cost_usd": 0.00646,
+ "response": {
+  "reasoning": "A customer (Jo Landreneau from Acadiana Weld) is writing to Ridgeline's RFQ inbox requesting pricing on several pipe fittings. The request is for specific quantities and types of elbows, tees, and caps. The items are described in the body of the email.",
+  "classification": "rfq",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": "body!B1",
+    "image": null,
+    "raw": "twelve 2\" 90 deg elbows, sch 40 butt weld",
+    "description": "2\" 90 deg elbows, sch 40 butt weld",
+    "qty": 12.0,
+    "uom": null,
+    "attrs": {
+     "product": "90 elbow",
+     "size": "2",
+     "spec": "SCH 40",
+     "material": null,
+     "ends": "BW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B1",
+    "image": null,
+    "raw": "six 2\" tees same",
+    "description": "2\" tees, sch 40 butt weld",
+    "qty": 6.0,
+    "uom": null,
+    "attrs": {
+     "product": "tee",
+     "size": "2",
+     "spec": "SCH 40",
+     "material": null,
+     "ends": "BW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B1",
+    "image": null,
+    "raw": "a couple of 2\" caps",
+    "description": "2\" caps, sch 40 butt weld",
+    "qty": null,
+    "uom": null,
+    "attrs": {
+     "product": "cap",
+     "size": "2",
+     "spec": "SCH 40",
+     "material": null,
+     "ends": "BW",
+     "extra": null
+    }
+   }
+  ]
+ }
+}

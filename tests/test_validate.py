@@ -7,8 +7,16 @@ from rfq.schema import Extraction
 from rfq.validate import build_result, normalize_uom
 
 
+from rfq.config import MATCHER_ENABLED
+
+NO_ATTRS = {"product": None, "size": None, "spec": None, "material": None, "ends": None, "extra": None}
+
+
 def _ln(row_id, raw, desc="d", qty=None, uom=None, image=None):
-    return {"row_id": row_id, "image": image, "raw": raw, "description": desc, "qty": qty, "uom": uom}
+    d = {"row_id": row_id, "image": image, "raw": raw, "description": desc, "qty": qty, "uom": uom}
+    if MATCHER_ENABLED:
+        d["attrs"] = NO_ATTRS
+    return d
 
 
 def _ans(kind, lines, **kw):
@@ -159,6 +167,23 @@ def test_prompt_carries_the_general_rules() -> None:
                    "NOT a reason for needs_review"):
         assert phrase in SYSTEM
     assert '\\"' not in SYSTEM  # no stray backslashes in examples
+
+
+def test_matcher_runs_only_when_lines_carry_attrs() -> None:
+    from types import SimpleNamespace
+
+    from rfq.schema import Attrs
+
+    def ans(attrs):
+        lo = SimpleNamespace(row_id="body!B2", image=None, raw="4 ea 2in gate valve", description="2in tee",
+                             qty=4, uom="EA", **({"attrs": attrs} if attrs is not None else {}))
+        return SimpleNamespace(classification="rfq", needs_review=False, review_reason=None,
+                               sheet_decisions=[], line_items=[lo])
+
+    plain = build_result(EMAIL, DOCS, ans(None)).line_items[0]
+    assert plain.match is None and "match" not in build_result(EMAIL, DOCS, ans(None)).to_json()["line_items"][0]
+    m = build_result(EMAIL, DOCS, ans(Attrs(**{**NO_ATTRS, "product": "tee", "size": "2"}))).line_items[0]
+    assert m.match == "ambiguous" and m.candidates and m.match_reason
 
 
 def test_normalize_uom() -> None:

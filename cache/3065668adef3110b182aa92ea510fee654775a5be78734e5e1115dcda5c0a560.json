@@ -1,0 +1,118 @@
+{
+ "key": "3065668adef3110b182aa92ea510fee654775a5be78734e5e1115dcda5c0a560",
+ "email_id": "E018",
+ "model": "gpt-4.1",
+ "prompt_version": "p7",
+ "created": "2026-11-15T16:13:18+00:00",
+ "usage": {
+  "input_tokens": 4497,
+  "cached_input_tokens": 0,
+  "output_tokens": 679
+ },
+ "cost_usd": 0.014426,
+ "response": {
+  "reasoning": "A customer, Dale Thibodeaux from Pelican Bay Utilities, is writing to Ridgeline's RFQ desk requesting pricing for a list of items needed for a lift station rebuild. The list is pasted directly in the email body and includes quantities, descriptions, and sizes. The customer also mentions a required delivery date but does not attach any files.",
+  "classification": "rfq",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": "body!B7",
+    "image": null,
+    "raw": "Weld neck flange, 150# RF, A105, STD bore",
+    "description": "Weld neck flange, 150# RF, A105, STD bore, 4\"",
+    "qty": 8.0,
+    "uom": null,
+    "attrs": {
+     "product": "weld neck flange",
+     "size": "4",
+     "spec": "150#",
+     "material": "A105",
+     "ends": "RF",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B10",
+    "image": null,
+    "raw": "90 deg elbow, LR, BW, SCH 40, A234 WPB",
+    "description": "90 deg elbow, LR, BW, SCH 40, A234 WPB, 4\"",
+    "qty": 12.0,
+    "uom": null,
+    "attrs": {
+     "product": "90 elbow",
+     "size": "4",
+     "spec": "SCH 40",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": "lr"
+    }
+   },
+   {
+    "row_id": "body!B13",
+    "image": null,
+    "raw": "Spiral wound gasket, 304/graphite, 150#",
+    "description": "Spiral wound gasket, 304/graphite, 150#, 4\"",
+    "qty": 8.0,
+    "uom": null,
+    "attrs": {
+     "product": "spiral wound gasket",
+     "size": "4",
+     "spec": "150#",
+     "material": "304/GRAPHITE",
+     "ends": null,
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B16",
+    "image": null,
+    "raw": "Stud bolt, B7, 4-1/2\" long, w/ 2 heavy hex nuts",
+    "description": "Stud bolt, B7, 4-1/2\" long, w/ 2 heavy hex nuts, 3/4\"",
+    "qty": 32.0,
+    "uom": null,
+    "attrs": {
+     "product": "stud bolt",
+     "size": "3/4 x 4-1/2",
+     "spec": null,
+     "material": "B7/2H",
+     "ends": null,
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B19",
+    "image": null,
+    "raw": "Eccentric reducer, BW, SCH 40, A234 WPB",
+    "description": "Eccentric reducer, BW, SCH 40, A234 WPB, 6\" x 4\"",
+    "qty": 6.0,
+    "uom": null,
+    "attrs": {
+     "product": "eccentric reducer",
+     "size": "6 x 4",
+     "spec": "SCH 40",
+     "material": "A234 WPB",
+     "ends": "BW",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B22",
+    "image": null,
+    "raw": "PTFE thread tape, white, heavy duty",
+    "description": "PTFE thread tape, white, heavy duty, 12 rolls",
+    "qty": 12.0,
+    "uom": "RL",
+    "attrs": {
+     "product": "ptfe thread tape",
+     "size": null,
+     "spec": null,
+     "material": null,
+     "ends": null,
+     "extra": null
+    }
+   }
+  ]
+ }
+}

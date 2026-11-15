@@ -1,0 +1,70 @@
+{
+ "key": "120133fc19f6267abbd94194d66f8538ef81ca0d85c12d89e066fe300f3014e4",
+ "email_id": "S04",
+ "model": "gpt-4.1",
+ "prompt_version": "p7",
+ "created": "2026-11-15T16:23:08+00:00",
+ "usage": {
+  "input_tokens": 4415,
+  "cached_input_tokens": 2944,
+  "output_tokens": 489
+ },
+ "cost_usd": 0.008326,
+ "response": {
+  "reasoning": "Owen Price from Cypress Process Services is writing to Ridgeline's RFQ desk requesting a quote for stainless steel valves as per the attached spreadsheet. The customer notes that unions have been crossed out and should not be quoted. The request is for the remaining items on the list, excluding the struck-out union line.",
+  "classification": "rfq",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": "CP-2209_valves.xlsx!Valves!R2",
+    "image": null,
+    "raw": "1 | 8 | EA | 1\" | Ball valve, 2-pc, 316 SS, threaded, 1000 WOG",
+    "description": "Valves sheet: Item 1, 8 EA, 1\" Ball valve, 2-pc, 316 SS, threaded, 1000 WOG",
+    "qty": 8.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "ball valve",
+     "size": "1",
+     "spec": "1000 WOG",
+     "material": "316 SS",
+     "ends": "THD",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "CP-2209_valves.xlsx!Valves!R3",
+    "image": null,
+    "raw": "2 | 4 | EA | 1-1/2\" | Ball valve, 2-pc, 316 SS, threaded, 1000 WOG",
+    "description": "Valves sheet: Item 2, 4 EA, 1-1/2\" Ball valve, 2-pc, 316 SS, threaded, 1000 WOG",
+    "qty": 4.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "ball valve",
+     "size": "1-1/2",
+     "spec": "1000 WOG",
+     "material": "316 SS",
+     "ends": "THD",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "CP-2209_valves.xlsx!Valves!R5",
+    "image": null,
+    "raw": "4 | 2 | EA | 2\" | Y-strainer, 316 SS, threaded, 800#",
+    "description": "Valves sheet: Item 4, 2 EA, 2\" Y-strainer, 316 SS, threaded, 800#",
+    "qty": 2.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "y-strainer",
+     "size": "2",
+     "spec": "800#",
+     "material": "316 SS",
+     "ends": "THD",
+     "extra": null
+    }
+   }
+  ]
+ }
+}

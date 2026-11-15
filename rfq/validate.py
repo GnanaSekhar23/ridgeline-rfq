@@ -18,6 +18,7 @@ from dataclasses import dataclass, field
 from rapidfuzz import fuzz
 
 from rfq.config import MAX_LINE_ITEMS, REQUEST_KINDS
+from rfq.matcher import match_line
 from rfq.models import Doc, Email, Line, LineItem, Result
 
 log = logging.getLogger(__name__)
@@ -267,8 +268,13 @@ def build_result(
         if sig in seen:
             continue
         seen.add(sig)
-        items.append(LineItem(raw=raw.strip(), description=lo.description.strip(), qty=_num(qty),
-                              uom=normalize_uom(uom) if uom else None, source=source))
+        li = LineItem(raw=raw.strip(), description=lo.description.strip(), qty=_num(qty),
+                      uom=normalize_uom(uom) if uom else None, source=source)
+        attrs = getattr(lo, "attrs", None)  # present only when the matcher is enabled
+        if attrs is not None:
+            m = match_line(attrs, f"{lo.description} {raw}")
+            li.sku, li.match, li.match_reason, li.candidates = m.sku, m.match, m.reason, m.candidates or None
+        items.append(li)
     if dropped:
         log.info("%s: dropped %d model line(s): %s", email.id, len(dropped), "; ".join(dropped[:10]))
     for src, raws in image_raws.items():

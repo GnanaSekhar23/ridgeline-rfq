@@ -1,0 +1,150 @@
+{
+ "key": "ceea7885c4ed384de59937db5c81aa618e1026af197be6e1a3c54770b927c9e0",
+ "email_id": "E003",
+ "model": "gpt-4.1",
+ "prompt_version": "p7",
+ "created": "2026-11-15T16:11:03+00:00",
+ "usage": {
+  "input_tokens": 4414,
+  "cached_input_tokens": 2944,
+  "output_tokens": 855
+ },
+ "cost_usd": 0.011252,
+ "response": {
+  "reasoning": "A customer, Terrence Bailey from Bayou Contracting, is writing to Ridgeline's RFQ desk requesting pricing for a list of pipe, fittings, and valves for a project. The specifications for pipe and fittings are given in the message, and the list is clear and itemized. The customer also mentions a desired delivery date but does not request a quote revision or place an order.",
+  "classification": "rfq",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": "body!B4",
+    "image": null,
+    "raw": "1) 20 jts - 2\"",
+    "description": "PIPE. All pipe SCH 40 A53B ERW, T&C. 20 jts - 2\"",
+    "qty": 20.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "pipe",
+     "size": "2",
+     "spec": "SCH 40",
+     "material": "A53B ERW",
+     "ends": "T&C",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B5",
+    "image": null,
+    "raw": "2) 10 jts - 3\"",
+    "description": "PIPE. All pipe SCH 40 A53B ERW, T&C. 10 jts - 3\"",
+    "qty": 10.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "pipe",
+     "size": "3",
+     "spec": "SCH 40",
+     "material": "A53B ERW",
+     "ends": "T&C",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B6",
+    "image": null,
+    "raw": "3) 6 jts - 4\"",
+    "description": "PIPE. All pipe SCH 40 A53B ERW, T&C. 6 jts - 4\"",
+    "qty": 6.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "pipe",
+     "size": "4",
+     "spec": "SCH 40",
+     "material": "A53B ERW",
+     "ends": "T&C",
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B8",
+    "image": null,
+    "raw": "4) 12 ea - 2\" 90 ell",
+    "description": "FITTINGS - fittings are 150# malleable iron, black. 12 ea - 2\" 90 ell",
+    "qty": 12.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "90 elbow",
+     "size": "2",
+     "spec": "150#",
+     "material": "MI BLACK",
+     "ends": null,
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B9",
+    "image": null,
+    "raw": "5) 8 ea - 2\" tee",
+    "description": "FITTINGS - fittings are 150# malleable iron, black. 8 ea - 2\" tee",
+    "qty": 8.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "tee",
+     "size": "2",
+     "spec": "150#",
+     "material": "MI BLACK",
+     "ends": null,
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B10",
+    "image": null,
+    "raw": "6) 6 ea - 2\" union",
+    "description": "FITTINGS - fittings are 150# malleable iron, black. 6 ea - 2\" union",
+    "qty": 6.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "union",
+     "size": "2",
+     "spec": "150#",
+     "material": "MI BLACK",
+     "ends": null,
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B12",
+    "image": null,
+    "raw": "7) 4 ea - 2\" gate, bronze, 125#",
+    "description": "VALVES. 4 ea - 2\" gate, bronze, 125#",
+    "qty": 4.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "gate valve",
+     "size": "2",
+     "spec": "125#",
+     "material": "BRONZE",
+     "ends": null,
+     "extra": null
+    }
+   },
+   {
+    "row_id": "body!B13",
+    "image": null,
+    "raw": "8) 2 ea - 2\" check, swing, bronze, 125#",
+    "description": "VALVES. 2 ea - 2\" check, swing, bronze, 125#",
+    "qty": 2.0,
+    "uom": "EA",
+    "attrs": {
+     "product": "swing check valve",
+     "size": "2",
+     "spec": "125#",
+     "material": "BRONZE",
+     "ends": null,
+     "extra": null
+    }
+   }
+  ]
+ }
+}

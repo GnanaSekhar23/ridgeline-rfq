@@ -1,0 +1,21 @@
+{
+ "key": "6b27cb441f0c8a550c6d825f8dc88368a76d0db61410add4c42016e5ef499421",
+ "email_id": "S08",
+ "model": "gpt-4.1",
+ "prompt_version": "p7",
+ "created": "2026-11-15T16:23:17+00:00",
+ "usage": {
+  "input_tokens": 4206,
+  "cached_input_tokens": 3840,
+  "output_tokens": 101
+ },
+ "cost_usd": 0.00346,
+ "response": {
+  "reasoning": "A customer (Tim Arceneaux from Pelican Plant Services) is writing to us to place a purchase order (PO 77812) against our quote Q-26-05120. The message commits to buy the items quoted previously. No new items are listed in this message; the order is for the items and quantities in Q-26-05120.",
+  "classification": "purchase_order",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

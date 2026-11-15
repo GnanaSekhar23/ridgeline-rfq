@@ -1,0 +1,21 @@
+{
+ "key": "e5787091832e562ec9463bf61396a9ed381b5d50796c9e6f0893ba88d2d849da",
+ "email_id": "E011",
+ "model": "gpt-4.1",
+ "prompt_version": "p7",
+ "created": "2026-11-15T16:12:50+00:00",
+ "usage": {
+  "input_tokens": 4640,
+  "cached_input_tokens": 2944,
+  "output_tokens": 91
+ },
+ "cost_usd": 0.005592,
+ "response": {
+  "reasoning": "A supplier (Raul Medina at Sabine Valve & Fitting) is replying to our rep Jenna Okafor with pricing and lead times for a list of fittings and valves. This is a vendor quote in response to our earlier RFQ. No items are being requested from us; the supplier is quoting us.",
+  "classification": "vendor_quote",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

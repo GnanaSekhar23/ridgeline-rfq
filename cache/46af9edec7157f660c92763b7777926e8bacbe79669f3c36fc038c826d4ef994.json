@@ -1,0 +1,21 @@
+{
+ "key": "46af9edec7157f660c92763b7777926e8bacbe79669f3c36fc038c826d4ef994",
+ "email_id": "E013",
+ "model": "gpt-4.1",
+ "prompt_version": "p7",
+ "created": "2026-11-15T16:12:54+00:00",
+ "usage": {
+  "input_tokens": 4594,
+  "cached_input_tokens": 2944,
+  "output_tokens": 104
+ },
+ "cost_usd": 0.005604,
+ "response": {
+  "reasoning": "This is an automated delivery failure notification from our own mail server, indicating that our outgoing quote request to a supplier (sales@ironbridgevalve.example) could not be delivered. No one is asking us for a quote or order; this is a system message about an email delivery issue. The attached original message is our own outgoing RFQ, not a customer request to us.",
+  "classification": "auto_reply",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}

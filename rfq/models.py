@@ -75,6 +75,11 @@ class LineItem:
     qty: float | None
     uom: str | None
     source: str
+    # optional matcher fields (README "Optional: matching to the catalog")
+    sku: str | None = None
+    match: str | None = None  # matched | not_in_catalog | ambiguous ; None = matcher not run
+    match_reason: str | None = None
+    candidates: list[str] | None = None
 
 
 @dataclass
@@ -87,4 +92,11 @@ class Result:
     line_items: list[LineItem] = field(default_factory=list)
 
     def to_json(self) -> dict[str, Any]:
-        return asdict(self)
+        d = asdict(self)
+        for li in d["line_items"]:
+            if li.get("match") is None:  # matcher not run: keep the core contract only
+                for k in ("sku", "match", "match_reason", "candidates"):
+                    li.pop(k, None)
+            elif not li.get("candidates"):
+                li.pop("candidates", None)
+        return d

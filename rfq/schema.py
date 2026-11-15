@@ -17,9 +17,9 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, create_model
 
-from rfq.config import MAX_LINE_ITEMS
+from rfq.config import MATCHER_ENABLED, MAX_LINE_ITEMS
 
 Uom = Literal["EA", "FT", "M", "IN", "BX", "PK", "PR", "DZ", "RL", "LB", "SET", "GAL", "BAG", "CS"]
 Classification = Literal[
@@ -31,7 +31,33 @@ class _Strict(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
-class LineOut(_Strict):
+def _choice(name: str):
+    """Literal of the catalog's own values for `name`, plus "other" (stated but not stocked)."""
+    from rfq.catalog import vocab
+
+    values = tuple(vocab().get(name, ())) + ("other",)
+    return Literal[values]  # type: ignore[valid-type]
+
+
+class Attrs(_Strict):
+    """The line normalized into the catalog's vocabulary. Code — not the model — picks the part.
+    null = the customer did not state it; "other" = stated, but not one of the listed values."""
+
+    product: _choice("product") | None = Field(description="What the item is, in catalog terms.")
+    size: str | None = Field(
+        description='Nominal size in inches, no quote marks: "2", "1-1/2", "3/4"; reducing "6 x 4"; '
+        'bolts "diameter x length" without thread pitch ("3/4 x 4-1/2"); nipples "3/4 x 6" or "3/4 x close".'
+    )
+    spec: _choice("spec") | None = Field(description="Schedule or pressure class / rating as stated.")
+    material: _choice("material") | None = Field(description="Material / grade as stated or clearly applied.")
+    ends: _choice("ends") | None = Field(description="End or face type as stated (THD, BW, SW, RF, PE ...).")
+    extra: _choice("extra") | None = Field(
+        description="A distinguishing option as stated (LR, full port, 13CR trim ...). Not cosmetic details "
+        "like 'STD bore', 'black', 'random lengths'."
+    )
+
+
+class _LineBase(_Strict):
     row_id: str | None = Field(
         description="The [row id] of the text/table line this item is on. null only for items read from an image."
     )
@@ -48,6 +74,17 @@ class LineOut(_Strict):
     )
     qty: float | None = Field(description="Quantity as stated; null if vague ('a couple') or missing.")
     uom: Uom | None = Field(description="Unit as stated, mapped to the allowed list; null if none stated.")
+
+
+# The model-facing line. With the matcher on, each line also carries `attrs` (last field).
+# Both variants are named "LineOut" so each produces exactly the schema its cache was recorded with.
+if MATCHER_ENABLED:
+    LineOut = create_model(
+        "LineOut", __base__=_LineBase,
+        attrs=(Attrs, Field(description="The item in catalog terms, from what the email says about it.")),
+    )
+else:
+    LineOut = create_model("LineOut", __base__=_LineBase)
 
 
 class SheetDecision(_Strict):
