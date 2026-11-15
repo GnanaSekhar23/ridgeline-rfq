@@ -97,6 +97,20 @@ def _nearest(base: list[Part], used: dict[str, str]) -> str:
     return f"; nearest {best.sku} {best.description} differs: {', '.join(m)}" if m else ""
 
 
+def _no_size(catalog: tuple[Part, ...], product: str, used: dict[str, str], want: str, note: str) -> Match:
+    """The line states no size. If exactly one fitting part is stocked without a size, that is the
+    item (nothing to choose between); otherwise the size must come from the customer."""
+    of_product = [p for p in catalog if p.product == product]
+    if not any(v == "other" for v in used.values()):
+        fits = [p for p in of_product if all(_agrees(a, v, p) for a, v in used.items())]
+        unsized = [p for p in fits if not p.size.strip()]
+        if len(unsized) == 1:
+            p = unsized[0]
+            return Match("matched", p.sku,
+                         f"{want}: no size stated; the catalog's unsized item fits — {p.description}{note}")
+    return Match("ambiguous", None, f"{product}: size not stated ({len(of_product)} stocked sizes){note}")
+
+
 def match_line(attrs, text: str) -> Match:
     """attrs: schema.Attrs (or None); text: the line's description + raw (evidence for attrs)."""
     catalog = parts()
@@ -107,12 +121,6 @@ def match_line(attrs, text: str) -> Match:
     product = attrs.product
     if product == "other":
         return Match("not_in_catalog", None, "product type not in the catalog")
-    size_key = parse_size(attrs.size)
-    if size_key is None:
-        n = sum(1 for p in catalog if p.product == product)
-        return Match("ambiguous", None, f"{product}: size not stated ({n} stocked sizes)")
-
-    base = [p for p in catalog if p.product == product and parse_size(p.size) == size_key]
     used: dict[str, str] = {}
     ignored: list[str] = []
     for a in ATTRS:
@@ -125,6 +133,12 @@ def match_line(attrs, text: str) -> Match:
             ignored.append(f"{a} {v}")
     note = f" (ignored unsupported {', '.join(ignored)})" if ignored else ""
     want = _spec_text(product, attrs.size, used)
+
+    size_key = parse_size(attrs.size)
+    if size_key is None:
+        return _no_size(catalog, product, used, want, note)
+
+    base = [p for p in catalog if p.product == product and parse_size(p.size) == size_key]
 
     if not base:
         return Match("not_in_catalog", None, f'{want}: no stocked {product} in {attrs.size}"{note}')

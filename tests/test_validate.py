@@ -286,3 +286,37 @@ def test_unit_filled_only_when_missing() -> None:
     r = build_result(EMAIL, [doc], _ans("rfq", [_ln("body!B1", '7 jts - 3" black pipe', qty=7),
                                                 _ln("body!B2", "120 ft 1in poly", qty=120, uom="EA")]))
     assert [li.uom for li in r.line_items] == ["EA", "EA"]  # filled when null; a uom the model gave is kept
+
+
+# ---------------------------------------------------------------- item-less request: name what it points at
+from rfq.validate import find_references  # noqa: E402
+
+
+def test_find_references_quote_po_and_earlier_order() -> None:
+    assert find_references("Release this against your quotation Q-31-00877 please.") == ["quote Q-31-00877"]
+    assert find_references("Go ahead per quote # RX-4410.") == ["quote RX-4410"]
+    assert find_references("Our P.O. #8820-B covers the list we discussed.") == ["PO 8820-B"]
+    assert find_references("Purchase order no. 51007 attached to follow") == ["PO 51007"]
+    assert find_references("Need the same as last time, ship Friday") == ['an earlier order ("same as last time")']
+    assert find_references("Please repeat our last order for the plant") == \
+        ['an earlier order ("repeat our last order")']
+    both = find_references("PO 4417 against your quote Q-31-00877")
+    assert both == ["quote Q-31-00877", "PO 4417"]
+
+
+def test_find_references_ignores_plain_words() -> None:
+    for text in ("Thanks for the quote, we'll be in touch", "Ship to PO Box 12, Port Allen",
+                 "Port 5 gate, deliver before noon", "Please quote the attached list"):
+        assert find_references(text) == [], text
+
+
+def test_itemless_request_names_its_reference_else_generic() -> None:
+    ref = Email(id="T", headers={}, body="Treat this as PO 66120 against your quote Q-31-00877.")
+    r = build_result(ref, [], _ans("purchase_order", []))
+    assert r.needs_review and r.review_reason == \
+        "refers to quote Q-31-00877, PO 66120; its items are not in this email"
+    fwd = Email(id="T", headers={}, body="see below", forwarded="Same as before, 2 trucks")
+    assert "same as before" in build_result(fwd, [], _ans("rfq", [])).review_reason
+    plain = Email(id="T", headers={}, body="Can you price this for us?")
+    assert build_result(plain, [], _ans("rfq", [])).review_reason == \
+        "classified as a request but no line items could be extracted"

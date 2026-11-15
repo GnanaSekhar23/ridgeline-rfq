@@ -18,12 +18,5 @@
 | review_recall | 100.0% (2/2) |
 | matcher_confident_wrong | 0 |
 | matcher_not_in_catalog_recall | 100.0% (16/16) |
-| matcher_accuracy | 99.5% (209/210) |
-| matcher_predictions | ambiguous=1, matched=193, not_in_catalog=16 |
-
-## Matcher errors (1)
-
-```
-E018-6: miss key=matched RL-17191 pred=ambiguous 
-    reason: ptfe thread tape: size not stated (2 stocked sizes)
-```
+| matcher_accuracy | 100.0% (210/210) |
+| matcher_predictions | matched=194, not_in_catalog=16 |

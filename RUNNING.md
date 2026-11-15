@@ -72,7 +72,7 @@ python data/check_format.py parsed.json --emails data/dev/emails
 ```
 python eval/eval.py parsed.json            # vs data/dev/answer_key.json -> reports/eval.md
 python eval/eval.py parsed.json --baseline reports/eval.json   # what changed since last time
-pytest -q                                  # 136 tests; synthetic inbox replays from tests/synthetic/cache
+pytest -q                                  # 143 tests; synthetic inbox replays from tests/synthetic/cache
 ```
 
 ## Review app

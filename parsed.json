@@ -1559,9 +1559,9 @@
         "qty": 12,
         "uom": "RL",
         "source": "body",
-        "sku": null,
-        "match": "ambiguous",
-        "match_reason": "ptfe thread tape: size not stated (2 stocked sizes)"
+        "sku": "RL-17191",
+        "match": "matched",
+        "match_reason": "ptfe thread tape: no size stated; the catalog's unsized item fits — PTFE THREAD TAPE"
       }
     ]
   },

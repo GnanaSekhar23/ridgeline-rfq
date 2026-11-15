@@ -153,3 +153,45 @@ def test_output_fields_only_when_matcher_ran() -> None:
                                              match_reason="y", candidates=["RL-1", "RL-2"])]).to_json()
     assert "candidates" not in matched["line_items"][0]
     assert check({"E1": matched, "E2": amb, "E3": plain}) == []
+
+
+# ---------------------------------------------------------------- no size stated: the unsized item
+def test_no_size_matches_the_one_unsized_part() -> None:
+    unsized = [p for p in parts() if not p.size.strip()]
+    assert unsized, "catalog has no unsized part to test with"
+    for p in unsized:
+        if sum(1 for q in unsized if q.product == p.product) != 1:
+            continue
+        m = match_line(A(product=p.product), p.product)
+        assert (m.match, m.sku) == ("matched", p.sku)
+        assert "no size stated; the catalog's unsized item fits" in m.reason
+
+
+def test_no_size_without_an_unsized_part_stays_ambiguous() -> None:
+    sized_only = next(prod for prod in sorted({p.product for p in parts()})
+                      if all(q.size.strip() for q in parts() if q.product == prod)
+                      and sum(1 for q in parts() if q.product == prod) > 1)
+    m = match_line(A(product=sized_only), sized_only)
+    assert m.match == "ambiguous" and m.sku is None and "size not stated" in m.reason
+
+
+def test_no_size_with_several_unsized_or_disagreeing_part_stays_ambiguous(monkeypatch) -> None:
+    import rfq.matcher as matcher
+    from types import SimpleNamespace
+
+    def A(**kw):  # free values: these invented parts are outside the schema's catalog vocabulary
+        base = {"product": None, "size": None, "spec": None, "material": None, "ends": None, "extra": None}
+        return SimpleNamespace(**{**base, **kw})
+
+    two = (_P("u1", product="sealant", size="", spec="", ends="", material="PTFE"),
+           _P("u2", product="sealant", size="", spec="", ends="", material="ANAEROBIC"),
+           _P("s1", product="sealant", size="1/2", spec="", ends=""))
+    monkeypatch.setattr(matcher, "parts", lambda: two)
+    assert match_line(A(product="sealant"), "sealant").match == "ambiguous"  # two unsized: must ask
+    # a stated attribute narrows the unsized ones to one -> that one
+    m = match_line(A(product="sealant", material="PTFE"), "ptfe sealant")
+    assert (m.match, m.sku) == ("matched", "u1")
+    one = (_P("u1", product="sealant", size="", spec="", ends="", material="PTFE"),)
+    monkeypatch.setattr(matcher, "parts", lambda: one)
+    # the only unsized part disagrees with what the customer stated -> not forced
+    assert match_line(A(product="sealant", material="ANAEROBIC"), "anaerobic sealant").match == "ambiguous"

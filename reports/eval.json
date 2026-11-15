@@ -16,8 +16,8 @@
   "review_recall": "100.0% (2/2)",
   "matcher_confident_wrong": 0,
   "matcher_not_in_catalog_recall": "100.0% (16/16)",
-  "matcher_accuracy": "99.5% (209/210)",
-  "matcher_predictions": "ambiguous=1, matched=193, not_in_catalog=16"
+  "matcher_accuracy": "100.0% (210/210)",
+  "matcher_predictions": "matched=194, not_in_catalog=16"
  },
  "per_email": {
   "E001": {

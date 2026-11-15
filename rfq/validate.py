@@ -280,6 +280,35 @@ def drop_overridden_defaults(description: str, raw: str) -> str:
     return out if out == description else _tidy(out)
 
 
+# ---------------------------------------------------------------- what an item-less request points at
+_REF_ID = r"([A-Z0-9][A-Z0-9/-]*\d[A-Z0-9/-]*)"  # an identifier with at least one digit
+_REF_PATTERNS = [
+    ("quote", re.compile(r"\b(Q-\d{2}-\d{3,6})\b", re.I)),
+    ("quote", re.compile(r"\bquot(?:e|ation)\s*(?:#|no\.?|number|ref\.?)\s*:?\s*" + _REF_ID, re.I)),
+    ("PO", re.compile(r"\b(?:P\.?O\.?(?![A-Za-z])|purchase\s+order)\s*(?:#|no\.?|number)?\s*:?\s*"
+                      + _REF_ID, re.I)),
+]
+_REF_PHRASES = re.compile(
+    r"\b(same as (?:before|last time|the last (?:one|order))|(?:our|the|my) (?:last|previous) order"
+    r"|as (?:per|on) (?:our|the) last order|repeat (?:of )?(?:our|the) last order)\b", re.I)
+
+
+def find_references(text: str) -> list[str]:
+    """References an item-less request points at instead of listing items: a quote number,
+    a PO number, or an earlier order ("same as last time"). In order: quotes, POs, phrases."""
+    found: list[str] = []
+    for kind, pat in _REF_PATTERNS:
+        for m in pat.finditer(text):
+            ref = f"{kind} {m.group(1).upper()}"
+            if ref not in found and not any(ref.split()[1] in f for f in found):
+                found.append(ref)
+    for m in _REF_PHRASES.finditer(text):
+        ref = f'an earlier order ("{m.group(1).lower()}")'
+        if ref not in found:
+            found.append(ref)
+    return found
+
+
 # ---------------------------------------------------------------- assembly
 def _sheet_of(row_id: str) -> tuple[str, str] | None:
     parts = row_id.split("!")
@@ -402,7 +431,11 @@ def build_result(
             reasons.append(f"{src}: scanned rows may be misread (item numbers: {issue})")
 
     if not items and not reasons:
-        reasons.append("classified as a request but no line items could be extracted")
+        refs = find_references(f"{email.body or ''}\n{email.forwarded or ''}")
+        if refs:
+            reasons.append(f"refers to {', '.join(refs)}; its items are not in this email")
+        else:
+            reasons.append("classified as a request but no line items could be extracted")
     result = Result(classification=kind, line_items=items)
     if reasons:
         result.needs_review = True

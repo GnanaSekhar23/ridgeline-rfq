@@ -32,7 +32,11 @@ different prompt (`p8-nomatch`) with no cached answers, so it would call the mod
    - 1 part: `matched`.
    - More than 1: `ambiguous`, with up to 10 `candidates` and the attributes that tell them apart.
    - `other`, an unstocked size, or an unknown product: `not_in_catalog`.
-   - No size or no product: `ambiguous`.
+   - **No size stated:** among the parts of that product that agree with every stated attribute,
+     if exactly one is stocked without a size (e.g. thread tape or dope), it is `matched`
+     ("no size stated; the catalog's unsized item fits"). With zero or several unsized parts the
+     size must come from the customer: `ambiguous`.
+   - No product: `ambiguous`.
    - Every verdict comes with a one-line `match_reason` a rep can check.
 
 **Never left to the model alone:** choosing between candidates, deciding not-in-catalog, and
@@ -43,12 +47,12 @@ name) onto catalog terms.
 
 ## Measured on dev (`eval/eval.py` → `reports/eval.md`)
 
-| | first version (p7) | p7 + matcher code fixes | **now (p8)** |
-|---|---|---|---|
-| confident wrong matches | 0 | 0 | **0** |
-| not-in-catalog recall | 16/16 | 16/16 | **16/16** |
-| match accuracy | 184/209 (88%) | 208/209 (99.5%) | **209/210 (99.5%)** |
-| predictions | 168 matched · 26 NIC · 15 ambiguous | 192 · 16 · 1 | **193 · 16 · 1** |
+| | first version (p7) | p7 + matcher code fixes | p8 | **p8 + no-size rule** |
+|---|---|---|---|---|
+| confident wrong matches | 0 | 0 | 0 | **0** |
+| not-in-catalog recall | 16/16 | 16/16 | 16/16 | **16/16** |
+| match accuracy | 184/209 (88%) | 208/209 (99.5%) | 209/210 (99.5%) | **210/210 (100%)** |
+| predictions | 168 matched · 26 NIC · 15 ambiguous | 192 · 16 · 1 | 193 · 16 · 1 | **194 · 16 · 0** |
 
 p8 scores 210 lines instead of 209 because a validation fix (trimming an image line's raw to its
 model / part-number line) made one nameplate line pair with the answer key; it matched correctly.
@@ -59,10 +63,8 @@ p8 replaced the prompt's examples with neutral invented ones; the matcher result
 - **Material subset:** 7 galvanized fittings written as plain "galv".
 - **THD ≈ TBE:** one threaded nipple.
 - **Length in feet:** one threaded-rod line whose size included its length.
-
-**The one miss left: a thread-tape line with no size, left ambiguous on purpose.** The catalog has
-a size-less tape and a sized one. Picking the size-less one because "no size was stated" would be
-a guess, so it's left to a rep.
+- **No-size rule:** one thread-tape line with no size; the catalog's unsized tape is the item
+  (0 new calls, no prompt change).
 
 **Cost:** the attributes add output tokens. Dev costs **$0.3683** with the matcher (p8), against
 $0.2753 without it when that was last measured (p4): about +$0.004 per email.
@@ -71,7 +73,7 @@ $0.2753 without it when that was last measured (p4): about +$0.004 per email.
 
 - **Tuned on dev.** The code fixes were chosen by reading dev errors. Each one is a general rule,
   but held-out data will show cases dev doesn't, such as other material families or unusual
-  sizes. Expect accuracy below 99.5% there, with errors still landing on *ambiguous* or
+  sizes. Expect accuracy below 100% there, with errors still landing on *ambiguous* or
   *not in catalog* rather than a wrong part. The evidence check and exact hard filters are what
   hold that line.
 - **Material subset in the other direction.** A customer's `GALV` agrees with `A53 GALV` *and*
