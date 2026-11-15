@@ -1,6 +1,6 @@
 # Cost report
 
-Run `20261115T153653Z-1c2e1e`, model `gpt-4.1`. Prices: `rfq/config.py` PRICES (USD per 1M tokens).
+Run `20261115T160246Z-4adb13`, model `gpt-4.1`. Prices: `rfq/config.py` PRICES (USD per 1M tokens).
 
 | | value |
 |---|---|

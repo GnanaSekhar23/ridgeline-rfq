@@ -19,6 +19,8 @@ REPORTS_DIR = Path(os.environ.get("RFQ_REPORTS_DIR") or ROOT / "reports")
 
 MODEL = os.environ.get("RFQ_MODEL", "gpt-4.1")
 PROMPT_VERSION = "p4"  # bump on any prompt/schema change -> new cache keys
+# (p5/p6 tried two extra rules — spec carry-over, quote-number references; p6 fixed both on the
+#  synthetic set but made dev context_carried worse, so it was reverted to p4. See DECISIONS.md.)
 TEMPERATURE = 0.0
 REQUEST_TIMEOUT_S = 120
 MAX_RETRIES = 3  # transient errors only (429, 5xx, timeout, connection)

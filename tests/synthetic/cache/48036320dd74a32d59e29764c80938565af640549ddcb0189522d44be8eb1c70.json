@@ -1,0 +1,54 @@
+{
+ "key": "48036320dd74a32d59e29764c80938565af640549ddcb0189522d44be8eb1c70",
+ "email_id": "S05",
+ "model": "gpt-4.1",
+ "prompt_version": "p4",
+ "created": "2026-11-15T15:48:49+00:00",
+ "usage": {
+  "input_tokens": 3430,
+  "cached_input_tokens": 1792,
+  "output_tokens": 358
+ },
+ "cost_usd": 0.007036,
+ "response": {
+  "reasoning": "A customer (Gus Merrick from Red Stick Boiler) is writing to Ridgeline's RFQ desk requesting pricing for a list of boiler room materials. The list is provided as a photographed note embedded in the attached document. The request is clear and all items are visible in the image.",
+  "classification": "rfq",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": [
+   {
+    "row_id": null,
+    "image": "boiler_room_list.docx picture 1",
+    "raw": "6 - 3/4\" ball valve, brass, threaded",
+    "description": "Shop list - boiler room: 3/4\" ball valve, brass, threaded",
+    "qty": 6.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": null,
+    "image": "boiler_room_list.docx picture 1",
+    "raw": "10 - 3/4\" 90 ell, black MI 150#",
+    "description": "Shop list - boiler room: 3/4\" 90 ell, black malleable iron 150#",
+    "qty": 10.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": null,
+    "image": "boiler_room_list.docx picture 1",
+    "raw": "4 - 3/4\" x 6\" nipple, black sch 40",
+    "description": "Shop list - boiler room: 3/4\" x 6\" nipple, black schedule 40",
+    "qty": 4.0,
+    "uom": "EA"
+   },
+   {
+    "row_id": null,
+    "image": "boiler_room_list.docx picture 1",
+    "raw": "2 - 3/4\" union, black MI 150#",
+    "description": "Shop list - boiler room: 3/4\" union, black malleable iron 150#",
+    "qty": 2.0,
+    "uom": "EA"
+   }
+  ]
+ }
+}

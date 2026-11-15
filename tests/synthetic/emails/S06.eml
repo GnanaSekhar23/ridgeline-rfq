@@ -1,0 +1,21 @@
+From: Accounts Payable <ap@lakeshorepetro.example>
+To: Ridgeline RFQ Desk <rfq@ridgeline-supply.example>
+Subject: Remittance advice - payment 0098812
+Date: Tue, 10 Nov 2026 08:00:00 -0600
+Message-ID: <s06.synthetic@lakeshorepetro.example>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Remittance advice
+
+Payment number: 0098812
+Payment date: 11/10/2026
+Amount: $4,512.30 USD
+
+Invoices paid:
+INV-552019   $3,120.00
+INV-552044   $1,392.30
+
+This payment was sent by ACH to the account on file.
+Lakeshore Petrochemical - Accounts Payable

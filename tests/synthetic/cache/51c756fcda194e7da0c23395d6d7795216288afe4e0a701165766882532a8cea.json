@@ -1,0 +1,21 @@
+{
+ "key": "51c756fcda194e7da0c23395d6d7795216288afe4e0a701165766882532a8cea",
+ "email_id": "S01",
+ "model": "gpt-4.1",
+ "prompt_version": "p4",
+ "created": "2026-11-15T15:48:36+00:00",
+ "usage": {
+  "input_tokens": 2642,
+  "cached_input_tokens": 1920,
+  "output_tokens": 76
+ },
+ "cost_usd": 0.003012,
+ "response": {
+  "reasoning": "This is an automatic out-of-office reply from Carla Benoit at Marshland Fabrication to Ridgeline's RFQ inbox. It does not contain any request or order, only a notification of absence and an alternate contact for urgent matters.",
+  "classification": "auto_reply",
+  "needs_review": false,
+  "review_reason": null,
+  "sheet_decisions": [],
+  "line_items": []
+ }
+}
