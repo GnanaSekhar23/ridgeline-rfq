@@ -2,32 +2,46 @@
 
 1. Parse every .eml (one bad file -> flagged entry, the rest carry on).
 2. Inbox-level links in code: duplicates and thread parents.
-3. Per email: extract -> (model, step 6) -> validate (step 7). Duplicates are not re-processed:
+3. Per email: extract -> one model call (cached) -> validate. Duplicates are not re-processed:
    they copy the original's classification, get duplicate_of and no lines.
 """
 
 from __future__ import annotations
 
 import logging
+from dataclasses import dataclass
 from pathlib import Path
 
+from rfq.config import MODEL
+from rfq.costlog import RunLog
 from rfq.dedupe import find_duplicates
-from rfq.extractors import extract_all
+from rfq.extractors import extract_all, read_problems
+from rfq.llm import Extractor
 from rfq.mime import parse_message
 from rfq.models import Email, Result
 from rfq.threads import find_parents
+from rfq.validate import build_result
 
 log = logging.getLogger(__name__)
 
 
-def process_email(email: Email, parent: str | None = None) -> Result:
-    """Stub until step 6: extracts every part (so failures surface here), returns `other`.
-    `parent` becomes `revises` when the classification is rfq_revision."""
-    extract_all(email)
-    result = Result(classification="other")
-    if result.classification == "rfq_revision":
-        result.revises = parent
-    return result
+@dataclass
+class Context:
+    extractor: Extractor
+    runlog: RunLog | None = None
+
+
+def process_email(email: Email, parent: str | None = None, ctx: Context | None = None) -> Result:
+    ctx = ctx or Context(extractor=Extractor())
+    docs = extract_all(email)
+    outcome = ctx.extractor.run(email, docs)
+    if ctx.runlog:
+        ctx.runlog.record(email.id, outcome, n_images=sum(len(d.images) for d in docs))
+    return build_result(
+        email, docs, outcome.extraction,
+        parent=parent, problems=read_problems(docs),
+        model_error=outcome.error, prompt_truncated=outcome.prompt_truncated,
+    )
 
 
 def failed_result(reason: str) -> Result:
@@ -58,7 +72,8 @@ def link_inbox(emails: list[Email]) -> tuple[dict[str, str], dict[str, str]]:
     return dups, parents
 
 
-def process_inbox(emails_dir: Path) -> dict[str, dict]:
+def process_inbox(emails_dir: Path, ctx: Context | None = None) -> dict[str, dict]:
+    ctx = ctx or Context(extractor=Extractor(), runlog=None)
     paths = sorted(emails_dir.glob("*.eml"))
     results: dict[str, Result] = {}
     parsed: dict[str, Email] = {}
@@ -73,9 +88,11 @@ def process_inbox(emails_dir: Path) -> dict[str, dict]:
 
     for eid, email in parsed.items():
         if eid in dups:
+            if ctx.runlog:
+                ctx.runlog.record(eid, skipped=f"duplicate of {dups[eid]}")
             continue
         try:
-            results[eid] = process_email(email, parent=parents.get(eid))
+            results[eid] = process_email(email, parent=parents.get(eid), ctx=ctx)
         except Exception as e:
             log.exception("failed on %s", eid)
             results[eid] = failed_result(_error(e))
@@ -88,3 +105,11 @@ def process_inbox(emails_dir: Path) -> dict[str, dict]:
         )
 
     return {p.stem: results[p.stem].to_json() for p in paths}
+
+
+def run_inbox(emails_dir: Path, model: str = MODEL) -> tuple[dict[str, dict], RunLog]:
+    """CLI entry: process with a run log and write the cost report."""
+    runlog = RunLog(model=model)
+    out = process_inbox(emails_dir, Context(extractor=Extractor(model=model), runlog=runlog))
+    runlog.finish()
+    return out, runlog

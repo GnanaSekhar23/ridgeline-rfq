@@ -8,7 +8,7 @@ import logging
 import sys
 from pathlib import Path
 
-from rfq.pipeline import process_inbox
+from rfq.config import MODEL
 
 
 def _write_json_atomic(path: Path, data: dict) -> None:
@@ -19,13 +19,52 @@ def _write_json_atomic(path: Path, data: dict) -> None:
 
 
 def cmd_parse(args: argparse.Namespace) -> int:
+    import os
+
+    from rfq.pipeline import run_inbox
+
     emails_dir = Path(args.emails)
     if not emails_dir.is_dir():
         print(f"--emails: not a directory: {emails_dir}", file=sys.stderr)
         return 1
-    results = process_inbox(emails_dir)
+    if args.offline:
+        os.environ["RFQ_OFFLINE"] = "1"
+    results, runlog = run_inbox(emails_dir, model=args.model)
     _write_json_atomic(Path(args.out), results)
-    print(f"wrote {len(results)} emails to {args.out}")
+    rows = runlog.rows
+    calls = sum(r.get("live_calls", 0) for r in rows)
+    hits = sum(1 for r in rows if r.get("cache_hit"))
+    errs = sum(1 for r in rows if r.get("error"))
+    paid = sum(r.get("live_cost_usd", 0) for r in rows)
+    print(f"wrote {len(results)} emails to {args.out} | model calls: {calls}, cache hits: {hits}, "
+          f"no answer: {errs}, paid this run: ${paid:.4f} | log: {runlog.dir}")
+    return 0
+
+
+def cmd_estimate(args: argparse.Namespace) -> int:
+    """Price a run before making it: render every prompt, count tokens approximately."""
+    from rfq.estimate import estimate_email
+    from rfq.extractors import extract_all
+    from rfq.mime import parse_message
+    from rfq.pipeline import link_inbox
+    from rfq.prompt import build_messages
+
+    emails = [parse_message(p.read_bytes(), p.stem) for p in sorted(Path(args.emails).glob("*.eml"))]
+    dups, _ = link_inbox(emails)
+    print(f"model {args.model}; {len(dups)} duplicate(s) skipped\n")
+    print(f"{'email':8} {'in tok':>8} {'out tok':>8} {'imgs':>4} {'$':>8}")
+    tot_in = tot_out = 0
+    tot = 0.0
+    for e in emails:
+        if e.id in dups:
+            continue
+        docs = extract_all(e)
+        est = estimate_email(e.id, args.model, build_messages(e, docs)[0], docs)
+        tot_in += est.input_tokens
+        tot_out += est.output_tokens
+        tot += est.cost_usd
+        print(f"{e.id:8} {est.input_tokens:>8,} {est.output_tokens:>8,} {est.images:>4} {est.cost_usd:>8.4f}")
+    print(f"{'TOTAL':8} {tot_in:>8,} {tot_out:>8,} {'':>4} {tot:>8.4f}")
     return 0
 
 
@@ -82,7 +121,13 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("parse", help="parse every .eml in a directory")
     p.add_argument("--emails", required=True, help="directory of .eml files")
     p.add_argument("--out", required=True, help="output JSON path")
+    p.add_argument("--model", default=MODEL, help=f"OpenAI model (default {MODEL})")
+    p.add_argument("--offline", action="store_true", help="never call the model; cache only")
     p.set_defaults(func=cmd_parse)
+    es = sub.add_parser("estimate", help="estimate tokens and cost of a run (no model calls)")
+    es.add_argument("--emails", required=True, help="directory of .eml files")
+    es.add_argument("--model", default=MODEL)
+    es.set_defaults(func=cmd_estimate)
     i = sub.add_parser("inspect", help="show how emails are split (no model calls)")
     i.add_argument("path", help=".eml file or directory")
     i.add_argument("--out", help="write to this file instead of stdout")

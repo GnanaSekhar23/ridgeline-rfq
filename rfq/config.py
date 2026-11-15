@@ -13,15 +13,27 @@ except ImportError:  # pragma: no cover
     pass
 
 ROOT = Path(__file__).resolve().parent.parent
-CACHE_DIR = ROOT / "cache"
-RUNS_DIR = ROOT / "runs"
-REPORTS_DIR = ROOT / "reports"
+CACHE_DIR = Path(os.environ.get("RFQ_CACHE_DIR") or ROOT / "cache")
+RUNS_DIR = Path(os.environ.get("RFQ_RUNS_DIR") or ROOT / "runs")
+REPORTS_DIR = Path(os.environ.get("RFQ_REPORTS_DIR") or ROOT / "reports")
 
-MODEL = os.environ.get("RFQ_MODEL", "gpt-4.1-mini")
-PROMPT_VERSION = "v0"
+MODEL = os.environ.get("RFQ_MODEL", "gpt-4.1")
+PROMPT_VERSION = "p1"  # bump on any prompt/schema change -> new cache keys
 TEMPERATURE = 0.0
-REQUEST_TIMEOUT_S = 90
-MAX_RETRIES = 3
+REQUEST_TIMEOUT_S = 120
+MAX_RETRIES = 3  # transient errors only (429, 5xx, timeout, connection)
+MAX_OUTPUT_TOKENS = 16000
+IMAGE_DETAIL = "high"  # scans and photos of lists need full resolution
+MAX_PROMPT_CHARS = 200_000  # rendered text budget per email (~50k tokens); beyond -> truncated + review
+
+# USD per 1M tokens: (input, cached input, output). Check https://openai.com/api/pricing before
+# trusting dollar figures; these are the list prices this code was written against.
+PRICES = {
+    "gpt-4.1": (2.00, 0.50, 8.00),
+    "gpt-4.1-mini": (0.40, 0.10, 1.60),
+    "gpt-4o": (2.50, 1.25, 10.00),
+    "gpt-4o-mini": (0.15, 0.075, 0.60),
+}
 
 # Input caps (protect cost and latency on pathological attachments)
 MAX_PDF_PAGES = 20  # text pages read per PDF

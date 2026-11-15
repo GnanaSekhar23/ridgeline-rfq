@@ -1,62 +1,62 @@
 {
   "E001": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E002": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E003": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E004": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E005": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E006": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E007": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E008": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": "E006",
     "needs_review": false,
@@ -64,131 +64,131 @@
     "line_items": []
   },
   "E009": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E010": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E011": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E012": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E013": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E014": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E015": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E016": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E017": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E018": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E019": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E020": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E021": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E022": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response; AldenMarine_RFQ_AM-26-0412.pdf: PDF is password-protected / encrypted and cannot be opened",
     "line_items": []
   },
   "E023": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   },
   "E024": {
-    "classification": "other",
+    "classification": "rfq",
     "revises": null,
     "duplicate_of": null,
-    "needs_review": false,
-    "review_reason": null,
+    "needs_review": true,
+    "review_reason": "model unavailable (no API key or offline) and no cached response",
     "line_items": []
   }
 }
