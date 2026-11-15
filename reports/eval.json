@@ -1,0 +1,535 @@
+{
+ "headline": {
+  "silent_losses": 19,
+  "hallucinated_lines": 0,
+  "lost_requests": 20,
+  "phantom_requests": 0,
+  "classification": "4.2% (1/24)",
+  "line_recall": "0.0% (0/210)",
+  "line_precision": "n/a",
+  "qty": "n/a",
+  "uom": "n/a",
+  "source": "n/a",
+  "context_carried": "n/a",
+  "links": "0.0% (0/2)",
+  "review_precision": "n/a",
+  "review_recall": "0.0% (0/2)"
+ },
+ "per_email": {
+  "E001": {
+   "lines": {
+    "E001-1": "missed",
+    "E001-2": "missed",
+    "E001-3": "missed",
+    "E001-4": "missed",
+    "E001-5": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E002": {
+   "lines": {
+    "E002-1": "missed",
+    "E002-2": "missed",
+    "E002-3": "missed",
+    "E002-4": "missed",
+    "E002-5": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E003": {
+   "lines": {
+    "E003-1": "missed",
+    "E003-2": "missed",
+    "E003-3": "missed",
+    "E003-4": "missed",
+    "E003-5": "missed",
+    "E003-6": "missed",
+    "E003-7": "missed",
+    "E003-8": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E004": {
+   "lines": {
+    "E004-1": "missed",
+    "E004-2": "missed",
+    "E004-3": "missed",
+    "E004-4": "missed",
+    "E004-5": "missed",
+    "E004-6": "missed",
+    "E004-7": "missed",
+    "E004-8": "missed"
+   },
+   "class": [
+    "rfq_revision",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E005": {
+   "lines": {
+    "E005-1": "missed",
+    "E005-2": "missed",
+    "E005-3": "missed",
+    "E005-4": "missed",
+    "E005-5": "missed",
+    "E005-6": "missed",
+    "E005-7": "missed",
+    "E005-8": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E006": {
+   "lines": {
+    "E006-1": "missed",
+    "E006-2": "missed",
+    "E006-3": "missed",
+    "E006-4": "missed",
+    "E006-5": "missed",
+    "E006-6": "missed",
+    "E006-7": "missed",
+    "E006-8": "missed",
+    "E006-9": "missed",
+    "E006-10": "missed",
+    "E006-11": "missed",
+    "E006-12": "missed",
+    "E006-13": "missed",
+    "E006-14": "missed",
+    "E006-15": "missed",
+    "E006-16": "missed",
+    "E006-17": "missed",
+    "E006-18": "missed",
+    "E006-19": "missed",
+    "E006-20": "missed",
+    "E006-21": "missed",
+    "E006-22": "missed",
+    "E006-23": "missed",
+    "E006-24": "missed",
+    "E006-25": "missed",
+    "E006-26": "missed",
+    "E006-27": "missed",
+    "E006-28": "missed",
+    "E006-29": "missed",
+    "E006-30": "missed",
+    "E006-31": "missed",
+    "E006-32": "missed",
+    "E006-33": "missed",
+    "E006-34": "missed",
+    "E006-35": "missed",
+    "E006-36": "missed",
+    "E006-37": "missed",
+    "E006-38": "missed",
+    "E006-39": "missed",
+    "E006-40": "missed",
+    "E006-41": "missed",
+    "E006-42": "missed",
+    "E006-43": "missed",
+    "E006-44": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E007": {
+   "lines": {
+    "E007-1": "missed",
+    "E007-2": "missed",
+    "E007-3": "missed",
+    "E007-4": "missed",
+    "E007-5": "missed",
+    "E007-6": "missed",
+    "E007-7": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E008": {
+   "lines": {},
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E009": {
+   "lines": {
+    "E009-1": "missed",
+    "E009-2": "missed",
+    "E009-3": "missed",
+    "E009-4": "missed",
+    "E009-5": "missed",
+    "E009-6": "missed",
+    "E009-7": "missed",
+    "E009-8": "missed",
+    "E009-9": "missed",
+    "E009-10": "missed",
+    "E009-11": "missed",
+    "E009-12": "missed",
+    "E009-13": "missed",
+    "E009-14": "missed",
+    "E009-15": "missed",
+    "E009-16": "missed",
+    "E009-17": "missed",
+    "E009-18": "missed",
+    "E009-19": "missed",
+    "E009-20": "missed",
+    "E009-21": "missed",
+    "E009-22": "missed",
+    "E009-23": "missed",
+    "E009-24": "missed",
+    "E009-25": "missed",
+    "E009-26": "missed",
+    "E009-27": "missed",
+    "E009-28": "missed",
+    "E009-29": "missed",
+    "E009-30": "missed",
+    "E009-31": "missed",
+    "E009-32": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E010": {
+   "lines": {
+    "E010-1": "missed",
+    "E010-2": "missed",
+    "E010-3": "missed",
+    "E010-4": "missed",
+    "E010-5": "missed",
+    "E010-6": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E011": {
+   "lines": {},
+   "class": [
+    "vendor_quote",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E012": {
+   "lines": {},
+   "class": [
+    "status_inquiry",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E013": {
+   "lines": {},
+   "class": [
+    "auto_reply",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E014": {
+   "lines": {},
+   "class": [
+    "other",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E015": {
+   "lines": {
+    "E015-1": "missed",
+    "E015-2": "missed",
+    "E015-3": "missed",
+    "E015-4": "missed",
+    "E015-5": "missed",
+    "E015-6": "missed"
+   },
+   "class": [
+    "purchase_order",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E016": {
+   "lines": {
+    "E016-1": "missed",
+    "E016-2": "missed",
+    "E016-3": "missed",
+    "E016-4": "missed",
+    "E016-5": "missed",
+    "E016-6": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E017": {
+   "lines": {},
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    true,
+    false
+   ]
+  },
+  "E018": {
+   "lines": {
+    "E018-1": "missed",
+    "E018-2": "missed",
+    "E018-3": "missed",
+    "E018-4": "missed",
+    "E018-5": "missed",
+    "E018-6": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E019": {
+   "lines": {
+    "E019-1": "missed",
+    "E019-2": "missed",
+    "E019-3": "missed",
+    "E019-4": "missed",
+    "E019-5": "missed",
+    "E019-6": "missed",
+    "E019-7": "missed",
+    "E019-8": "missed",
+    "E019-9": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E020": {
+   "lines": {
+    "E020-1": "missed",
+    "E020-2": "missed",
+    "E020-3": "missed"
+   },
+   "class": [
+    "purchase_order",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E021": {
+   "lines": {
+    "E021-1": "missed",
+    "E021-2": "missed",
+    "E021-3": "missed",
+    "E021-4": "missed",
+    "E021-5": "missed",
+    "E021-6": "missed",
+    "E021-7": "missed",
+    "E021-8": "missed",
+    "E021-9": "missed",
+    "E021-10": "missed",
+    "E021-11": "missed",
+    "E021-12": "missed",
+    "E021-13": "missed",
+    "E021-14": "missed",
+    "E021-15": "missed",
+    "E021-16": "missed",
+    "E021-17": "missed",
+    "E021-18": "missed",
+    "E021-19": "missed",
+    "E021-20": "missed",
+    "E021-21": "missed",
+    "E021-22": "missed",
+    "E021-23": "missed",
+    "E021-24": "missed",
+    "E021-25": "missed",
+    "E021-26": "missed",
+    "E021-27": "missed",
+    "E021-28": "missed",
+    "E021-29": "missed",
+    "E021-30": "missed",
+    "E021-31": "missed",
+    "E021-32": "missed",
+    "E021-33": "missed",
+    "E021-34": "missed",
+    "E021-35": "missed",
+    "E021-36": "missed",
+    "E021-37": "missed",
+    "E021-38": "missed",
+    "E021-39": "missed",
+    "E021-40": "missed",
+    "E021-41": "missed",
+    "E021-42": "missed",
+    "E021-43": "missed",
+    "E021-44": "missed",
+    "E021-45": "missed",
+    "E021-46": "missed",
+    "E021-47": "missed",
+    "E021-48": "missed",
+    "E021-49": "missed",
+    "E021-50": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E022": {
+   "lines": {},
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    true,
+    false
+   ]
+  },
+  "E023": {
+   "lines": {
+    "E023-1": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  },
+  "E024": {
+   "lines": {
+    "E024-1": "missed",
+    "E024-2": "missed",
+    "E024-3": "missed",
+    "E024-4": "missed",
+    "E024-5": "missed",
+    "E024-6": "missed"
+   },
+   "class": [
+    "rfq",
+    "other"
+   ],
+   "hallucinated": 0,
+   "needs_review": [
+    false,
+    false
+   ]
+  }
+ }
+}
