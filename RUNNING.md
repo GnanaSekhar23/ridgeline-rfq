@@ -79,4 +79,4 @@ dev inbox by default; for another inbox, set `APP_EMAILS` (the email folder) and
 
 ## Recording
 
-Link: _to be added_
+Link: https://docs.google.com/videos/d/1__Pg4BfPvQcYOFtuNKyW1ZYzm__wmL89fQJg43NI7hM/play?usp=sharing
